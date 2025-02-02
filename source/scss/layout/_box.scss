@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------------------
+// Box layout
+// -----------------------------------------------------------------------------
+
+.box {
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 10px;
+
+    &_title {
+        color: white;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 10px 10px 0px 0px;
+        font-weight: 700;
+    }
+
+    &_content {
+        padding: 0.5rem;
+        border-radius: 0px 0px 10px 10px;
+
+        @include breakpoint("medium") {
+            padding: 2rem;
+        }
+    }
+}
+
+.scroll {
+    overflow-y: scroll;
+}

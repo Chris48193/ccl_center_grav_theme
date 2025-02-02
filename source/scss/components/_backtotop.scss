@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// Back to Top
+// -----------------------------------------------------------------------------
+
+.top-button {
+    position:fixed;
+    z-index: 999;
+    right: 20px;
+    transition:0.3s;
+    padding:10px 20px;
+    background:get-color('secondary');
+    color:$white;
+    font-size:10px;
+    border-radius:0;
+    bottom: 20px;
+}

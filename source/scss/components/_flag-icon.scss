@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    #FLAG ICONS
+\*------------------------------------*/
+
+$flag-icons-path: '~flag-icons/flags';
+$flag-icons-included-countries: gb, dk, de, il, pl, pt, es, no, cz, gr, nl, hr, ie;
+$flag-icons-use-square: false;
+
+@import '~flag-icons/sass/flag-icons';
+
+// when GRAV language key is used (see partials/langswitcher.html.twig)
+.fi-en {
+    @extend .fi-gb;
+}

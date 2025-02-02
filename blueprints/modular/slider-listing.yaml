@@ -1,0 +1,37 @@
+title: Slider-listing
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+
+            header.items:
+              type: list
+              label: Items
+              style: vertical
+              collapsed: true
+              fields:
+                .text:
+                  type: text
+                  label: Title
+                  validate:
+                    required: true
+                .id:
+                  type: text
+                  label: ID
+                .image:
+                  type: filepicker
+                  label: Image
+                  preview_images: true
+                  validate:
+                    required: true
+                .content:
+                  type: markdown
+                  label: Content
+                  validate:
+                    required: true

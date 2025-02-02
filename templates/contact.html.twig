@@ -1,0 +1,12 @@
+{% extends "default.html.twig" %}
+
+{% block content %}
+    <div class="grid-x grid-margin-x contact align-center">
+        <div class="cell medium-7">
+            {% include "forms/form.html.twig" %}
+        </div>
+        <div class="cell medium-5">
+            {{ page.content|raw }}
+        </div>
+    </div>
+{% endblock %}

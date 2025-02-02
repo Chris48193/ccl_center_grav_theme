@@ -1,0 +1,192 @@
+// -----------------------------------------------------------------------------
+// Simple page-level setup
+// -----------------------------------------------------------------------------
+body {
+    overflow-x: hidden;
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-weight: bold;
+        color: get-color("secondary");
+    }
+}
+body:not(.home) {
+    .page-head {
+        .claim-container {
+            @include breakpoint('medium') {
+                .claim{
+                    padding: 2rem 0 3rem;
+                }
+            }
+        }
+        .background-image {
+            display: none;
+        }
+    }
+    .social-media {
+        display: none;
+    }
+}
+
+.page-main {
+    display: block;
+    position: relative;
+    word-wrap: break-word;
+    section , .section {
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+        @include breakpoint('medium') {
+            padding-bottom: 3.5rem;
+            padding-top: 3.5rem;
+        }
+        @include breakpoint('large') {
+            padding-bottom: 5rem;
+            padding-top: 5rem;
+        }
+    }
+}
+main, .reveal-overlay {
+    ul.no-bullet, ol.no-bullet {
+        li {
+            padding-left:0!important;
+            &:before {
+                content:none!important;
+            }
+        }
+    }
+    ul:not(.unstyled-list) {
+        --icon-space: 1.3em;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1rem;
+        margin-left: 0;
+        li {
+            padding-left: var(--icon-space);
+            position:relative;
+            &:before {
+                content: "\f105";
+                font-family: var(--fa-style-family, $icon-font-family);
+                font-weight: var(--fa-style,900);
+                display: inline-block;
+                margin-left: calc( var(--icon-space) * -1 );
+                width: var(--icon-space);
+                color: get-color('primary');
+            }
+        }
+    }
+    ol:not(.unstyled-list) {
+        list-style: none;
+        counter-reset: my-awesome-counter;
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0;
+        position:relative;
+        >li {
+            counter-increment: my-awesome-counter;
+            margin-bottom: 1rem;
+            min-height: 45px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 1rem;
+            padding-left:60px;
+            &:before {
+                content: "0" counter(my-awesome-counter);
+                font-weight: bold;
+                font-size: 1rem;
+                font-family: $body-font-family;
+                line-height: 1;
+                background: get-color('primary');
+                border-radius: 50%;
+                padding: 10px;
+                color: $white;
+                position:absolute;
+                left:0;
+                top: -5px;
+            }
+            &:last-child {
+                border-bottom:none;
+            }
+        }
+        @include breakpoint('medium') {
+            >li {
+                padding-left:70px;
+            }
+        }
+    }
+
+    .facts {
+        .fact {
+            padding: 0.7rem;
+            color: white;
+            border-radius: 10px;
+
+            .title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                min-height: 3rem;
+            }
+        }
+    }
+}
+.page-foot {
+
+    .foot-menu {
+        background-color: get-color("secondary");
+        padding-block: 4rem;
+
+        @include breakpoint("medium") {
+            padding-block: 0;
+        }
+
+        ul {
+            justify-content: space-around;
+        }
+
+        a {
+            color: $white;
+        }
+    }
+}
+
+.wow {
+    visibility: hidden;
+}
+
+// Contact form styles
+.contact {
+    .form-label {
+        display: none;
+    }
+
+    .border {
+        border: 1px solid get-color("secondary");
+    }
+
+    .button {
+        background-color: get-color("tertiary");
+    }
+}
+
+// Login form styles
+#grav-login {
+    padding-top: 0 !important;
+    
+    label {
+        font-size: 1rem;
+    }
+
+    .border {
+        border: 1px solid get-color("secondary");
+    }
+
+}
+
+.download-button {
+    background: white;
+    border: solid 2px get-color("orange");
+    color: get-color("secondary");
+    font-weight: 700;
+
+    &:hover, &:focus {
+        // border: solid 2px get-color("primary");
+        background: get-color("orange");
+    }
+}

@@ -1,0 +1,33 @@
+title: Contact
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.team:
+              type: list
+              collapsed: true
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .name:
+                  type: text
+                  label: Name
+                .role:
+                  type: text
+                  label: Role
+                .email:
+                  type: email
+                  label: Email
+                .website:
+                  type: url
+                  label: Website
+                .image:
+                  type: filepicker
+                  label: Image
+                  preview_images: true

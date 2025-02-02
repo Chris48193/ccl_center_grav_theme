@@ -1,0 +1,32 @@
+{% for meta in page.metadata %}
+    <meta {% if meta.name %}name="{{ meta.name|e }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv|e }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset|e }}" {% endif %}{% if meta.property %}property="{{ meta.property|e }}" {% endif %}{% if meta.content %}content="{{ meta.content|raw }}" {% endif %}/>
+{% endfor %}
+
+{% set preview = grav.uri.base(true) ~ media['user://open-graph/voice-og.png'].url() %}
+{% if page.template == "news" %}
+    {% set preview = grav.uri.base(true) ~ media['user://open-graph/news.jpg'].url() %}
+
+    {% if page.header.linkPreviewImage %}
+        {% set preview = grav.uri.base(true) ~ media[page.header.linkPreviewImage].url() %}
+    {% elseif page.header.thumbnail %}
+        {% set preview = grav.uri.base(true) ~ media[page.header.thumbnail].url() %}
+    {% elseif page.header.images[0].image %}
+        {% set preview = grav.uri.base(true) ~ media[page.header.images[0].image].url() %}
+    {% endif %}
+{% endif %}
+
+{% set description = page.header.description|default(site.metadata.description) %}
+{% set description_sm = page.header.description_sm|default(description) %}
+<meta property="og:title" content="{{ header.title|e("html") }}" />
+<meta property="og:image" content="{{ preview }}" />
+<meta property="description" content="{{ description|raw }}" />
+<meta property="og:description" content="{{ description_sm|raw }}" />
+<meta property="og:url" content="{{ page.url(true, true) }}" />
+
+<meta name="twitter:card" content="summary_large_image"></meta>
+<meta name="twitter:title" content="{{ header.title|e("html") }}" >
+<meta name="twitter:description" content="{{ description_sm|raw }}" />
+<meta name="twitter:image" content="{{ preview }}" />
+<meta property="twitter:url" content="{{ page.url(true, true) }}" />
+
+<meta name="keywords" content="{{ page.header.keywords|default(page.title|split(' '))|join(', ') }}" />

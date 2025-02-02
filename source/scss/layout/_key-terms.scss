@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------------
+// Styles for the Key terms
+// -----------------------------------------------------------------------------
+
+.key-terms {
+    .name_listing {
+        margin-left: 0 !important;
+        max-height: 35rem;
+        overflow: scroll;
+
+        .item,button {
+            margin-bottom: 1rem;
+
+            &:before {
+                color: get-color("tertiary");
+                transition: all 0.3s;
+            }
+
+            &:hover {
+                color: get-color("secondary");
+                cursor: pointer;
+            }
+        }
+
+        .active {
+            button {
+                font-weight: 700;
+                color: get-color("secondary");
+            }
+
+            &:before {
+                color: get-color("tertiary");
+                transform-origin: center;
+                transform: rotate(180deg) translate(10px, 0);
+            }
+        }
+    }
+
+    line-height: normal;
+    .box_title {
+        padding: 1rem 1rem;
+        font-size: 1rem;
+        text-transform: none !important;
+        text-align: center;
+    }
+}

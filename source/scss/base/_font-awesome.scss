@@ -1,0 +1,38 @@
+// -----------------------------------------------------------------------------
+// Font Awesome
+// -----------------------------------------------------------------------------
+
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts' !default;
+$fa-font-size-base: $global-font-size !default;
+$fa-li-width: 1.5em !default;
+$fa-li-top: 0 !default;
+
+
+@import
+    '~@fortawesome/fontawesome-free/scss/fontawesome.scss',
+    '~@fortawesome/fontawesome-free/scss/brands.scss',
+    '~@fortawesome/fontawesome-free/scss/regular.scss',
+    '~@fortawesome/fontawesome-free/scss/solid.scss',
+    '~@fortawesome/fontawesome-free/scss/v4-shims.scss';
+
+/**
+ * List icons
+ */
+.#{$fa-css-prefix} {
+    &-ul {
+        padding-left: 0;
+        margin-left: $fa-li-width;
+        list-style-type: none;
+
+        & > li {
+            position: relative;
+        }
+    }
+
+    &-li {
+        position: absolute;
+        left: -$fa-li-width;
+        width: $fa-li-width;
+        top: $fa-li-top;
+    }
+}

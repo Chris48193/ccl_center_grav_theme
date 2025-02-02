@@ -1,0 +1,25 @@
+{% extends "default.html.twig" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+        {% block info %}{% endblock %}
+         <h1>
+            {{ page.title|raw }}
+        </h1>
+        {{ page.content|raw }}
+        <div class="cell small-12">
+            
+            {% embed "partials/list.html.twig" with { collection: page.header.images, columns: page.header.columns|default(3) } %}
+                {% block item %}
+                    <div class="cell">
+                        {{ page.media[item.image].quality(100).html(item.url)|raw }}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        </div>
+
+{% endblock %}
+

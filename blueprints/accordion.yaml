@@ -1,0 +1,20 @@
+title: Accordion
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.items:
+              type: list
+              collapsed: true
+              fields:
+                .title:
+                  type: text
+                  label: title
+                .content:
+                  type: markdown
+                  label: text

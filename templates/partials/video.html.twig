@@ -1,0 +1,42 @@
+{% set id = id|defined("video-" ~ random()) %}
+{% set player_classes = classes
+    ~ " video-js vjs-default-skin vjs-fluid vjs-big-play-centered"
+%}
+
+{% if "youtu" in url %}
+    {% set setup = {
+        techOrder: ["youtube"],
+        sources: [
+            {
+                src: url,
+                type: "video/youtube"
+            }
+        ],
+        youtube: {
+            enablePrivacyEnhancedMode: "true",
+            ytControls: 2,
+            cc_load_policy: 1
+        },
+        controls: false,
+        fluid: true,
+        children: ["MediaLoader"]
+    } %}
+{% else %}
+    {% set setup = {} %}
+{% endif %}
+
+{% if url %}
+    <video id="{{ id }}"
+        class="{{ player_classes|trim }}"
+        controls
+        preload="auto"
+        poster="{{ poster }}"
+        data-setup='{{ setup|json_encode(constant("JSON_HEX_QUOT")) }}'>
+        {% if "youtube" not in url %}
+            <source src="{{ url }}" type="video/mp4" />
+        {% endif %}
+        {% if translate %}
+            <track kind='captions' src='{{ translate }}' srclang='en' label='English' default />
+        {% endif %}
+    </video>
+{% endif %}

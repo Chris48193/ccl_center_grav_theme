@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// accordion 
+// -----------------------------------------------------------------------------
+
+.accordion {
+    .accordion-item {
+        &.is-active {
+            a.accordion-title {
+                background: get-color('primary');
+                .h6 {
+                    color:$body-font-color;
+                }
+            }
+        }
+        a.accordion-title{
+            border-radius:0!important;
+            transition:0.3s;
+            color:$white;
+            background:get-color('secondary');
+            .h6 {
+                margin-bottom: 0;
+                color:$white;
+            }
+        }
+        .accordion-content {
+            border-radius:0!important;
+            .margin-top{
+                margin-top: 20px;
+            }
+            .image-link {
+                background:none;
+            }
+        }
+    }
+}
+.image-link {
+    background:none;
+    transition:0.3s;
+    img {
+        transition:0.3s;
+    }
+    &:hover {
+        img {
+            opacity: 0.5;
+        }
+    }
+}

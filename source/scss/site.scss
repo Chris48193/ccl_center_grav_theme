@@ -1,0 +1,43 @@
+@charset 'UTF-8';
+
+@import
+    '~@eurice/grav-webpack5-node18/scss/abstracts/mixins',
+    'abstracts/variables';
+
+@import
+    'vendors/foundation',
+    'vendors/featherlight';
+
+@import
+    'base/fonts',
+    'base/font-awesome';
+
+@import
+    'layout/atsi',
+    'layout/2-col',
+    'layout/page',
+    'layout/news-events',
+    'layout/box',
+    'layout/head-nav',
+    'layout/hero',
+    'layout/main',
+    'layout/partners',
+    'layout/key-terms',
+    'layout/funding';
+
+@import
+    'components/accordion',
+    'components/backtotop',
+    'components/items_slider',
+    'components/svg',
+    'components/side-navigation',
+    'components/flag-icon';
+
+@import
+    'utilities/background',
+    'utilities/border',
+    'utilities/color',
+    'utilities/spacing';
+
+@import
+    'themes/theme';

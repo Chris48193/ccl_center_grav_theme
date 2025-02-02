@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// Spacing
+// -----------------------------------------------------------------------------
+
+$u-breakpoint-classes: (
+    null: 'small',
+    'md-': 'medium',
+    'lg-': 'large',
+) !default;
+
+$u-spacing-directions: (
+    't': '-top',
+    'b': '-bottom',
+    'l': '-left',
+    'r': '-right'
+) !default;
+
+$u-spacing-sizes: 12 !default;
+
+$u-spacing-factor: 0.5rem !default;
+
+$u-breakpoint-properties: (
+    'margin': 'm',
+    'padding': 'p',
+) !default;
+
+
+@each $infix, $breakpoint in $u-breakpoint-classes {
+    @include breakpoint($breakpoint) {
+        @each $direction-namespace, $direction-rules in $u-spacing-directions {
+            @for $i from 0 through $u-spacing-sizes {
+                @each $prop, $abbrev in $u-breakpoint-properties {
+                    .#{$infix}#{$abbrev}#{$direction-namespace}-#{$i} {
+                        @each $direction in $direction-rules {
+                            #{$prop}#{$direction}: $i * $u-spacing-factor !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

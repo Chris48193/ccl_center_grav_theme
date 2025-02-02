@@ -1,0 +1,13 @@
+{% set classes = classes|default("svg-container") %}
+{% set ratio = ratio|defined(false) %}
+
+{% if ratio %}
+    {% set style = " style='padding-bottom: " ~ (100 / ratio) ~ "%;'" %}
+{% endif %}
+
+{% if image %}
+    {% set svg = read_file(page.media[image].url|replace({ "/user": "user:/" })) %}
+    <div class="{{ classes }}"{{ style ? style|raw : "" }}>
+        {{ svg|raw }}
+    </div>
+{% endif %}

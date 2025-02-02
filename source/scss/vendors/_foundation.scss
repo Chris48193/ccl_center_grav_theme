@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// Foundation for sites
+// -----------------------------------------------------------------------------
+
+@import '~foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-typography;
+@include foundation-forms;
+@include foundation-grid;
+@include foundation-xy-grid-classes(
+    $base-grid: true,
+    $margin-grid: true,
+    $padding-grid: false,
+    $block-grid: true,
+    $collapse: false,
+    $offset: false,
+    $vertical-grid: false,
+    $frame-grid: false,
+);
+@include foundation-flex-classes;
+@include foundation-media-object;
+@include foundation-button;
+@include foundation-accordion;
+@include foundation-menu;
+@include foundation-visibility-classes;
+@include foundation-dropdown;
+@include foundation-menu;
+@include foundation-dropdown-menu;
+@include foundation-accordion-menu;
+@include foundation-prototype-rounded;
+@include foundation-card;
+@include foundation-callout;
+@include foundation-close-button;
+@include foundation-reveal;
+
+// .callout {
+//     background-color: $light-gray;
+// }

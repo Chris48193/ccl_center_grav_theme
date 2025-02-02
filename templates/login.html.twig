@@ -1,0 +1,12 @@
+{% extends 'default.html.twig' %}
+
+{% block content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell medium-8 large-6">
+                {% include 'partials/messages.html.twig' %}
+                {% include 'partials/login-form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

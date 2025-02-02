@@ -1,0 +1,17 @@
+{% set links = [
+    {
+        "url": "https://www.facebook.com/share.php?u=" ~ page.canonical|url_encode,
+        "icon": "facebook",
+    },
+    {
+        "url": "https://linkedin.com/sharing/share-offsite/?url=" ~ page.canonical|url_encode,
+        "icon": "linkedin",
+    },
+] %}
+
+{% for item in links %}
+    <a href="{{ item.url }}" class="button small mt-1 black" target="_blank">
+        <i class="fa fa-fw fa-{{ item.icon }}"></i>
+    </a>
+    &nbsp;
+{% endfor %}

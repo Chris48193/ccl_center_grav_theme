@@ -1,0 +1,27 @@
+{% macro pageLinkName(text) %}
+    {{- text|lower|replace({'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss'})|regex_replace('/[^A-Za-z0-9-]+/', '-' )|trim('-')|url_encode -}}
+{% endmacro %}
+
+
+{% macro period(start, end) %}
+    {% set end = end|defined(start) %}
+    {% set start = date(start) %}
+    {% set end = date(end) %}
+    {% set format = 'd M Y' %}
+
+    {{ start|date(format) }}
+
+    {% if end > start %}
+        &mdash; {{ end|date(format) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro news_image(news, size, classes) %}
+
+    {% if news.header.thumbnail|defined %}
+        {% set image = news.media[news.header.thumbnail] %}
+    {% else %}
+        {% set image = news.media["theme://images/news.jpg"] %}
+    {% endif %}
+    {{ image.cropZoom(size,size).html("thumbnail for " ~ news.title, "thumbnail for " ~ news.title, classes)|raw }}
+{% endmacro %}

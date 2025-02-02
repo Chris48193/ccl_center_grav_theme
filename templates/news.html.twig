@@ -1,0 +1,60 @@
+{% extends "default.html.twig" %}
+
+{% set category = page.taxonomy.news_category|first %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <div class="title-news text-center">
+        <h1>{{ page.title }}</h1>
+        <time datetime='{{ page.date|date("c") }}' class="" style="display:block;">
+            {{ page.date|date("j F Y") }}, {{ (page.content|split(" ")|length / 200)|round }} min read
+        </time>
+    </div>
+
+    <div class="grid-container bg-grey mt-2 news-page">
+        {% if page.header.banner_image %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell banner_image mt-1">
+                    {{ page.media[page.header.banner_image].cropZoom(1700,400).html("Banner image for " ~ page.title, "Banner image for " ~ page.title)|raw }}
+                </div>
+            </div>
+        {% endif %}
+        <div class="grid-x grid-margin-x pt-4">
+            <div class="cell medium-10 medium-push-2 pt-1">
+                <div class="tag mb-2 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                <div>
+                    {{ page.content|raw }}
+                </div>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell">
+                        {% embed "partials/list.html.twig" with { collection: page.header.images, columns: page.header.columns|default(3) } %}
+                            {% block item %}
+                                <div class="cell mb-4">
+                                    {{
+                                        page.media[item.image].lightbox(1200, 675).cropZoom(
+                                            600,
+                                            400
+                                        ).quality(
+                                            70
+                                        ).html(
+                                            item.text
+                                        )|raw
+                                    }}
+                                    <div class="text-center">{{ item.text|raw }}</div>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+                </div>
+            </div>
+            <div class="cell medium-2 medium-pull-10 pt-1">
+                Share:
+                <div>
+                    {% include "partials/share.html.twig" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

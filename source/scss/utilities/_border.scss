@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// Border colors
+// -----------------------------------------------------------------------------
+
+$u-border-colors: map-merge(
+    $foundation-palette,
+    (
+        'white': $white,
+    )
+) !default;
+
+
+@each $name, $color in $u-border-colors {
+    .border-#{$name} {
+        border: 3px solid $color;
+    }
+
+    .news-item-border-#{$name} {
+        border-top: 6px solid $color;
+    }
+}

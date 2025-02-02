@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// Featherlight lightbox
+// -----------------------------------------------------------------------------
+
+
+@import '~featherlight/src/featherlight.css';
+@import '~featherlight/src/featherlight.gallery.css';
+
+
+// Featherlight overrides
+.featherlight {
+    &-previous,
+    &-next {
+        &:hover { background-color: transparent; }
+
+        span { text-shadow: 0 0 5px rgba($primary-color, .25); }
+    }
+
+    &-caption {
+        & > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+// Grav lightboxes only sets rel attribute, so we have to add styles manually
+a[rel='lightbox'] {
+    @include thumbnail;
+    @include thumbnail-link;
+    overflow: hidden;
+}
+

@@ -1,0 +1,8 @@
+{% set tag = tag|default("h2") %}
+{% set classes = classes|default("mb-4 text-center") %}
+
+<{{tag}} class="{{ classes }}">
+    <span>
+        {{ title|raw }}
+    </span>
+</{{tag}}>

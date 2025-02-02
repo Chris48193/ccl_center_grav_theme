@@ -1,0 +1,42 @@
+title: Event
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        event:
+          type: tab
+          title: Event
+          ordering@: content
+          fields:
+            header.event.dt:
+              type: section
+              title: Date & Time
+              underline: true
+            header.event.start:
+              type: datetime
+              label: Start
+              format: 'Y-m-d'
+              help: Use the date selector to enter a start date and time for this event.
+              validate:
+                type: required
+            header.event.end:
+              type: datetime
+              label: End
+              format: 'Y-m-d'
+              help: Use the date selector to enter an end date and time for this event.
+            header.event.lct:
+              type: section
+              title: Location
+              underline: true
+            header.event.location:
+              type: text
+              label: Location
+              help: Where is this event located?
+            header.event.url:
+              type: text
+              label: URL
+              placeholder: 'http:://event-website.com'

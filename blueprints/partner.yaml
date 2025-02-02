@@ -1,0 +1,79 @@
+title: Partner
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.acronym:
+              type: text
+              label: acronym
+            header.role:
+              type: markdown
+              label: Role:
+              ordering@: content
+            header.quote:
+              type: markdown
+              label: Quote
+            header.quotename:
+              type: text
+              label: Quote Name
+            header.logo:
+              type: filepicker
+              label: Image
+              preview_images: true
+            header.links:
+              type: list
+              label: Social Links
+              collapsed: true
+              fields:
+                .text:
+                  type: text
+                  label: text
+                .url:
+                  type: text
+                  label: url
+            header.team:
+              type: list
+              label: Team
+              collapsed: true
+              fields:
+                .name:
+                  type: text
+                  label: name
+                .role:
+                  type: text
+                  label: role
+                .email:
+                  type: text
+                  label: email
+                .image:
+                  type: filepicker
+                  folder: '@self'
+                  preview_images: true
+                  label: Image
+                .copyright:
+                  type: text
+                  label: copyright
+            header.address:
+              type: text
+              label: Address
+            header.lat:
+              type: text
+              label: lat
+            header.lon:
+              type: text
+              label: lon
+            header.flag:
+              type: text
+              label: flag
+            header.iso_3:
+              type: text
+              label: Country's ISO 3 Code
+            header.country:
+              type: text
+              label: country

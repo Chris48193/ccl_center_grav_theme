@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// Default theme styles
+// -----------------------------------------------------------------------------
+
+.theme-list {
+    & > ol {
+        margin-left: 1.25 * $list-side-margin;
+        margin-bottom: $list-margin-bottom;
+
+        & > li {
+            position: relative;
+            margin-bottom: 1em;
+            padding-left: 1.25em;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: -1.5em;
+                z-index: -1;
+                border-radius: 50%;
+                width: 1.75em;
+                height: 1.75em;
+                background-color: get-color('secondary');
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{% extends "default.html.twig" %}
+
+{% block content %}
+    <div class="grid-x grid-margin-x main">
+        {% for page in page.children.visible() %}
+            <a href="{{ page.url }}" class="cell medium-5">
+                {{ page.title }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

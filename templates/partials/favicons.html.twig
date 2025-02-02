@@ -1,0 +1,8 @@
+{% set faviconPath = "theme://images/favicons/" %}
+
+<link href="{{ url(faviconPath ~ "favicon.ico") }}" rel="shortcut icon" type="image/ico">
+
+{% for size in [16, 32] %}
+    {% set dimension = size ~ "x" ~ size %}
+    <link href="{{ url(faviconPath ~ "favicon-" ~ dimension ~ ".png") }}" rel="icon" type="image/png" sizes="{{ dimension }}">
+{% endfor %}

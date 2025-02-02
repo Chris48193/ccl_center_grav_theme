@@ -1,0 +1,22 @@
+title: Accordion
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.items:
+              type: list
+              label: Box
+              collapsed: true
+              fields:
+                .title:
+                  type: text
+                  label: title
+                .content:
+                  type: markdown
+                  label: content

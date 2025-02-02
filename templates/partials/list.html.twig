@@ -1,0 +1,25 @@
+{% set classes = classes|default("grid-x grid-margin-x align-center") %}
+
+{% if columns|defined(false) %}
+    {% if columns is iterable %}
+        {% set large_cols = columns.large %}
+        {% set medium_cols = columns.medium %}
+        {% set small_cols = columns.small %}
+    {% else %}
+        {% set large_cols = columns|default(3) %}
+        {% set medium_cols = (large_cols/2)|round(0, "ceil") %}
+        {% set small_cols = 1 %}
+    {% endif %}
+
+    {% set classes = [classes, "small-up-" ~ small_cols, "medium-up-" ~ medium_cols, "large-up-" ~ large_cols]|join(" ") %}
+{% endif %}
+
+{% if not collection is empty %}
+    <div class="{{ classes }}">
+        {% for item in collection %}
+            {% block item %}
+                <div class="cell">{{ item }}</div>
+            {% endblock %}
+        {% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,97 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+{% extends "default.html.twig" %}
+{% set size = 300 %}
+
+{% block content %}
+
+    {# Events-Bereich #}
+    <div class="grid-container news-listing">
+        <div class="grid-x grid-margin-x">
+            <div class="cell text-center">
+                {# Check if events exist #}
+                {% if page.collection('events')|length > 0 %}
+                    {# <h2 class="h3">Latest Events</h2> #}
+                    {% include "partials/event-list.html.twig" with { collection: page.collection('events') } %}
+
+                    <div class="grid-x grid-margin-x align-center">
+                        <div class="cell medium-4 mb-10">
+                            <a href="/events" class="button expanded"><i class="fa fa-list"></i> All Events</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="grid-x grid-margin-x align-center">
+                        <div class="cell medium-4 mb-10">
+                            <a href="/events" class="button expanded"><i class="fa fa-list"></i> Show past events</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {# News-Bereich #}
+    <div class="grid-container news-listing">
+        <div class="grid-x grid-margin-x">
+            <div class="cell">
+                {# <h2 class="h3">News and Updates</h2> #}
+                {% set news = page.collection()|first %}
+                {% set category = news.taxonomy.news_category|first %}
+
+                <div class="media-object stack-for-small align-middle bg-grey-light">
+                    <div class="media-object-section">
+                        <a href="{{ news.url }}">
+                            {{ helpers.news_image(news, size, "") }}
+                        </a>
+                    </div>
+                    <div class="media-object-section pl-1 pr-1">
+                        <div class="tag mb-2 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                        <h3 class="mb-2 title">
+                            {{ news.title|raw }}
+                        </h3>
+                        <div>{{ news.header.subheader ? : news.summary(200)|markdown|raw }}</div>
+                        <div>
+                            <a href="{{ news.url }}" class="button">
+                                Learn more
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-4 large-3 mt-4">
+                <h2>Categories</h2>
+                <p>
+                    <a href="{{ page.url }}">All ({{ page.children|length }})</a></br>
+                    {% set news_categories = taxonomy.taxonomy['news_category'] %}
+                    {% if news_categories %}
+                        {% for category in news_categories %}
+                            {% set cat = page.find(page.url ~ '/' ~ category|first|first).taxonomy.news_category|first %}
+                            <a href="{{ page.url ~ '/news_category:' ~ cat }}">{{ cat|raw }} ({{ taxonomy.findTaxonomy({'news_category':cat})|length }})</a></br>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="cell medium-8 large-9">
+                <div class="grid-x grid-margin-x">
+                    {% for news in page.collection() %}
+                        {% set category = news.taxonomy.news_category|first %}
+                        <div class="cell medium-4 mt-4 bg-grey-light">
+
+                            <a href="{{ news.url }}">
+                                <div>
+                                    {{ helpers.news_image(news, size, "img news-item-border-" ~ site.cat_color_map[category]|default('orange')) }}
+                                </div>
+                                <div class="tag mb-2 ml-1 mr-1 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                                <div class="ml-1 mr-1">
+                                    <h5 class="title">{{ news.header.hero_title|default(news.title)|raw }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

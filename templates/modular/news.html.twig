@@ -1,0 +1,43 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+<div class="grid-container news-teaser">
+    <div class="grid-x grid-margin-x">
+        
+        <div class="cell large-4">
+            {% set news = page.collection()|first %}
+            {% set category = news.taxonomy.news_category|first %}
+
+            <a href="{{ news.url }}" class="teaser-box">
+                <div class="image">{{ helpers.news_image(news, 350, "news-item-border-" ~ site.cat_color_map[category]|default('orange')) }}</div>
+                <div class="content">
+                    <div class="tag bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                    <div class="title" style="font-size:2rem;">{{ news.header.hero_title|default(news.header.title)|raw }}</div>
+                </div>
+            </a>
+        </div>
+        <div class="cell large-8">
+            <div class="grid-x grid-margin-x">
+                {% set startIndex = 1 %}
+                {% for news in page.collection()|slice(startIndex) %}
+                    {% set category = news.taxonomy.news_category|first %}
+
+                    <div class="cell large-4">
+                        <a href="{{ news.url }}" class="teaser-box">
+                            <div class="image">{{ helpers.news_image(news, 200, "news-item-border-" ~ site.cat_color_map[category]|default('orange')) }}</div>
+                            <div class="content">
+                                <div class="tag bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                                <div class="title">{{ news.header.hero_title|default(news.header.title)|raw }}</div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+        <div class="cell text-right">
+            <a href="/news-and-events" class="button">See more News &amp; Events</a>
+        </div>
+    </div>
+</div>

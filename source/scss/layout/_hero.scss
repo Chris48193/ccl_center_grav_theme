@@ -1,0 +1,218 @@
+// -----------------------------------------------------------------------------
+// Hero
+// -----------------------------------------------------------------------------
+.hero-wrapper {
+    padding-top: 9rem;
+
+    @include breakpoint("large") {
+        padding-top: 5rem;
+    }
+
+    .hero-container {
+        max-width: 1700px;
+        margin: auto;
+
+        .page-title {
+            display: none;
+        }
+
+        .hero-slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider {
+            padding-bottom: 4rem;
+
+            @include breakpoint("medium") {
+                padding-bottom: 3rem;
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+                color: get-color("secondary");
+            }
+
+            .swiper-pagination-bullet-active {
+                background: get-color("secondary");
+            }
+
+            .swiper-pagination-bullet {
+                width: 1rem;
+                height: 0.3rem;
+                border-radius: 0;
+            }
+        }
+
+        .hero-slider-image {
+            width: 100%;
+        }
+
+        .hero-image {
+            background-image: url("../images/hero.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 18rem;
+
+            @media screen and (min-width: 638px) and (max-width: 1500px) {
+                margin-left: 0 !important;
+            }
+        }
+
+        .hero-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include breakpoint("medium") {
+                justify-content: space-between;
+            }
+        }
+
+        .swiper-navigation {
+            display: flex;
+        }
+        
+        .swiper-hero-button-prev,
+        .swiper-hero-button-next {
+            background-color: get-color("secondary");
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .swiper-hero-button-prev {
+            // position: relative;
+            // left: -20px; /* Move outside container */
+            &::after {
+                content: "\f060";
+                font-family: $icon-font-family;
+                font-weight: 700;
+            }
+        }
+        
+        .swiper-hero-button-next {
+            // position: relative;
+            // right: -20px; /* Move outside container */
+            &::after {
+                content: "\f061";
+                font-family: $icon-font-family;
+                font-weight: 700;
+            }
+        }
+          
+
+        .claim-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .claim {
+                text-align: center;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                .claim-text {
+                    font-weight: bold;
+                    font-size: 22px;
+                    line-height: normal;
+                    color: get-color("secondary");
+                }
+                @include breakpoint('medium') {
+                    text-align: left;
+                    margin-top: 3.5rem;
+                    margin-bottom: 3.5rem;
+                    .claim-text {
+                        font-size: 2rem;
+                    }
+                }
+
+                @include breakpoint('large') {
+                    .claim-text {
+                        font-size: 3rem;
+                    }
+                }
+
+                @include breakpoint('xxlarge') {
+                    .claim-text {
+                        font-size: 4rem;
+                    }
+                }
+
+                .detail {
+                    text-align: justify;
+
+                    .author {
+                        text-align: right;
+                        font-style: italic;
+                        color: get-color("secondary");
+                    }
+                }
+
+                .button {
+                    background-color: get-color("tertiary");
+                    color: $white;
+                    font-weight: 700;
+                }
+
+            }
+        }
+
+        .copyright {
+            display: none;
+        }
+    }
+}
+
+body:not(.home) {
+    .hero-wrapper {
+        .hero-container {
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: 100% 100%;
+            background-color: rgba(255, 255, 255, 0.45);
+            background-blend-mode: overlay;
+            position: relative;
+            max-width: 100% !important;
+
+            .hero-image, .claim-container {
+                display: none;
+            }
+
+            .page-title {
+                display: block;
+                min-height: 13rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                
+                h1 {
+                    // position: absolute;
+                    margin-top: 1rem;
+                }
+
+                span {
+                    position: absolute;
+                    bottom: 4rem;
+                    font-weight: 700;
+
+                }
+            }
+
+            .copyright {
+                display: block !important;
+                position: absolute;
+                right: 1rem;
+                bottom: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

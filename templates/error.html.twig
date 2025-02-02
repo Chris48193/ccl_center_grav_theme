@@ -1,0 +1,12 @@
+{% extends "default.html.twig" %}
+
+
+{% block outer_content %}
+    <div class="grid-container grid-x section {{ page.header.page_classes }}">
+        <div class="cell">
+            <h1>{{ 'PLUGIN_ERROR.ERROR'|t }} {{ header.http_response_code }}</h1>
+
+            <p>{{ page.content|raw }}</p>
+        </div>
+    </div>
+{% endblock %}

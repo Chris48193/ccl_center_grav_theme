@@ -1,0 +1,8 @@
+{% extends "default.html.twig" %}
+
+
+{% block content %}
+    <div class="event-list">
+        {% include "partials/event-list.html.twig" with { collection: page.collection } %}
+    </div>
+{% endblock %}

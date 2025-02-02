@@ -1,0 +1,65 @@
+title: News
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.thumbnail:
+              type: filepicker
+              preview_images: true
+              label: Thumbnail
+              ordering@: content
+            header.hero_title:
+              type: text
+              label: Hero and preview title
+              ordering@: header.thumbnail
+            header.images:
+              type: list
+              label: Image gallery
+              ordering@: header.hero_title
+              fields:
+                .image:
+                  type: filepicker
+                  label: Image
+                  preview_images: true
+                .text:
+                  type: text
+                  label: Caption
+                  help: Optional image caption
+            header.columns:
+              type: number
+              label: Columns
+              default: 3
+              ordering@: header.images
+              validate:
+                type: number
+                min: 1
+            header.linkPreviewImage:
+              type: filepicker
+              label: Link preview image
+              preview_images: true
+            header.banner_image:
+              type: filepicker
+              label: Banner image
+              preview_images: true
+
+        options:
+          fields:
+            publishing:
+              fields:
+                header.date:
+                  format: 'Y-m-d'
+                  default: today
+
+        advanced:
+          ordering@: options
+          fields:
+            overrides:
+              fields:
+                header.visible:
+                  default: 0
+

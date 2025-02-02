@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<html class="no-js" lang="{{ grav.language.getActive ? : site.default_lang }}">
+    <head>
+        {% block head %}
+            <meta charset="utf-8" />
+            <meta name="viewport"
+                content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>{{ header.title ? (header.title|e("html") ~ " | ")|raw : "" }}{{ site.title|e("html")|raw }}</title>
+
+            {% include "partials/metadata.html.twig" %}
+
+            <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+            {% do assets.add("runtime", 100) %}
+            {% do assets.add("vendors", 90) %}
+            {% do assets.add("site", 80) %}
+
+            {% if page.header.assets %}
+                {% for asset in page.header.assets %}
+                    {% do assets.add(asset) %}
+                {% endfor %}
+            {% endif %}
+
+            {% block stylesheets deferred %}
+            {{ assets.css()|raw }}
+        {% endblock %}
+
+        {% include "partials/favicons.html.twig" %}
+        {% endblock %}
+    </head>
+    
+
+    <body class="{{ page.header.body_classes }}">
+        {% include "partials/no-js.html.twig" %}
+        {% block header %}
+            <header class="page-head">
+                 <div class="data-sticky-container"> 
+                    <div data-sticky data-options="marginTop:0; stickyOn:small">
+                        {% block navigation %}
+                            {% include "partials/navigation.html.twig" %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </header>
+        {% endblock %}
+
+        {% block hero %}
+            {% include "partials/hero.html.twig" %}
+        {% endblock %}
+        
+        {% block sidenavigation %}
+            {% include "partials/side-navigation.html.twig" %}
+        {% endblock %}
+
+        {% block main %}
+            <main class="page-main">
+                {% block content %}
+                    {{ content }}
+                {% endblock %}
+            </main>
+        {% endblock %}
+
+        {% block footer %}
+            <footer class="page-foot">
+                {% include "partials/foot-nav.html.twig" %}
+            </footer>
+        {% endblock %}
+
+        {% block bottom deferred %}
+        {{ assets.js()|raw }}
+        {{ assets.js("bottom")|raw }}
+        {% endblock %}
+        
+        <a href="#" id="top-button" class="top-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </body>
+</html>

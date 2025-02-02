@@ -1,0 +1,30 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell">{{ content|raw }}</div>
+    </div>
+    <div class="grid-x grid-margin-x align-center">
+        {% for item in page.header.items %}
+            <div class="cell medium-{{ page.header.columns|default(10) }}">
+                {% if item.file %}
+                    {% set url = page.url ~ '/' ~ item.file %}
+                    {% set poster = page.url ~ '/' ~ item.poster %}
+                {% else %}
+                    {% set url = item.url %}
+                    {% set poster = item.poster %}
+                {% endif %}
+                {% include "partials/video.html.twig" with {
+                    id: item.id,
+                    url: url,
+                    poster: poster,
+                    caption: caption,
+                    translate : item.translate
+                } %}
+                {% if item.caption %}
+                    <div class="mt-2">
+                        {{ item.caption|markdown|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

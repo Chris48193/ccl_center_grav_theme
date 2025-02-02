@@ -1,0 +1,31 @@
+title: Key-terms
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+
+            header.items:
+              type: list
+              label: Items
+              style: vertical
+              collapsed: true
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                  validate:
+                    required: true
+                .id:
+                  type: text
+                  label: ID
+                .content:
+                  type: markdown
+                  label: Content
+                  validate:
+                    required: true

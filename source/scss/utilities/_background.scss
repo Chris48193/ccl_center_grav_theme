@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// Background color
+// -----------------------------------------------------------------------------
+
+$u-background-colors: map-merge(
+    $foundation-palette,
+    (
+        'white': $white,
+    ),
+) !default;
+
+
+@each $name, $color in $u-background-colors {
+    .bg-#{$name} {
+        background: $color;
+    }
+}

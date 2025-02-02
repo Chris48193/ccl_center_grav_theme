@@ -1,0 +1,61 @@
+<div class="hero-wrapper">
+    {% if page.header.type != "home"  %}
+        {% set image = page.header.hero_image|default("theme://images/HERO_wave.svg") %}
+        {% if page.template == "news" %}
+            {# {% set image = page.find("/news-and-events").header.hero_image %} #}
+            {% set image = "theme://images/news_hero.jpg" %}
+        {% endif %}
+        {% set styles = "background-image:url('" ~ page.media[image].url ~ "');"  %}
+    {% endif %}
+    <div class="grid-container hero-container" style={{ styles|raw }}>
+        <div class="grid-x grid-margin-x">
+            <div class="cell medium-6 wow fadeInLeft animated hero-slider-container" data-wow-delay="0.3s">
+                <div class="swiper hero-slider">
+                    <div class="swiper-wrapper" data-featherlight-gallery data-featherlight-filter="a">
+                        {% for item in page.header.artist_pictures %}
+                            {% set image = item.img|default("theme://images/dummy.png") %}
+                            
+                            {% set id = item.id|default(helpers.pageLinkName(item.text)) %}
+
+                            <div class="swiper-slide">
+                                <div class="text-center">
+                                    <a href="{{ page.media[image].resize(700,700).url() }}">{{ page.media[image].quality(90).cropZoom(1000,900).html(item.desc|default("Artist images"), item.desc|default("Artist images"), "hero-slider-image")|raw }}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="cell medium-6 claim-container">
+                <div class="claim wow fadeInRight animated" data-wow-delay="0.3s">
+                    <div class="claim-text">Encouraging Citizen</div>
+                    <div class="claim-text">Engagement Using</div>
+                    <div class="claim-text">Artist-Led Innovation</div>
+                    <div class="mt-5 mb-7 detail">
+                        VOICE uses a new approach where artists take the lead, bringing together different groups to solve environmental problems in their area. They work together to create green and digital solutions, making the ecosystem stronger and more resilient.
+                        <div class="author mt-2">VOICE project Team</div>
+                    </div>
+                    <div class="hero-controls">
+                        <div class="swiper-navigation show-for-medium">
+                            <div class="swiper-hero-button-prev mr-1" tabindex="0"></div>
+                            <div class="swiper-hero-button-next" tabindex="0"></div>
+                        </div>
+                    
+                        <a href="/contact" class="button mb-0">Contact us</a>
+                    </div>
+                </div>
+            </div>
+            {# {% if page.template == "news" %} #}
+            {% if page.parent and not page.parent.root %}
+                <div class="cell medium-12 page-title text-center">
+                    <span><a href="{{ page.parent.url }}">{{ page.parent.title }}</a> / {{ page.header.hero_title|default(page.header.title)|raw }}</span>
+                </div>
+            {% else %}
+                <div class="cell medium-12 page-title text-center"><h1>{{ page.title|raw }}</h1></div>
+            {% endif %}
+        </div>
+        <div class="copyright">{{ page.header.copyright|raw }}</div>
+    </div>
+</div>

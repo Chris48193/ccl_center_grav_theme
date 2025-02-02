@@ -1,0 +1,99 @@
+// -----------------------------------------------------------------------------
+// News & Events layout
+// -----------------------------------------------------------------------------
+
+.news-page, .news-listing {
+    .tag {
+        padding-inline: 1rem;
+        padding-block: 0.2rem;
+        // background-color: get-color("primary");
+        color: white;
+        font-weight: 700;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .img {
+        width: 100%;
+    }
+}
+
+.news-listing  {
+    .tag {
+        font-weight: 300 !important;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        padding-inline: 0.5rem !important;
+    }
+
+    .title {
+        color: black;
+    }
+
+    .button {
+        background-color: get-color("tertiary");
+    }
+}
+.events {
+    background: get-color("secondary");
+    padding: 0.5rem;
+    padding-top: 2rem;
+}
+
+.event-list {
+    .card {
+        background-color: #97c4f8;
+
+        div:hover {
+            color: white;
+        }
+    }
+}
+
+.news-teaser {
+    .teaser-box {
+
+        margin-bottom: 3rem;
+        display: block;
+        // border: solid 1px get-color("secondary");
+        .image {
+            height: 70%;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .tag {
+            padding-inline: 0.6rem;
+            padding-block: 0.1rem;
+            // background-color: get-color("primary");
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: black;
+        }
+
+        .content {
+            padding: 0 0.5rem 1.5rem 0.5rem;
+            background-color: get-color("grey");
+            line-height: normal;
+        }
+    }
+
+    .button {
+        background-color: get-color("tertiary");
+        color: white;
+        font-weight: 700;
+    }
+}

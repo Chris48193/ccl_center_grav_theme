@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// @font-face declarations
+// -----------------------------------------------------------------------------
+
+@include google-font-face(
+    'Open Sans',
+    '~fonts/open-sans-v17-latin',
+    (
+        $global-weight-normal: (normal italic),
+        $global-weight-bold: (normal),
+    )
+);

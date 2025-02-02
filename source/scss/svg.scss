@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    #SVG
+\*------------------------------------*/
+
+@import 'abstracts/variables';
+@import '~foundation-sites/scss/foundation';
+
+@include foundation-reveal;
+@include foundation-close-button;
+
+.svg-trigger {
+    cursor: pointer;
+    polygon, stroke, rect {
+        transition:0.3s;
+    }
+    &:hover {
+        polygon {
+            fill: get-color('secondary');
+        }
+        rect {
+            stroke: get-color('secondary');
+        }
+        rect.hover-effect {
+            fill: get-color('secondary');
+        }
+    }
+}

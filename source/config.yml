@@ -1,0 +1,14 @@
+entry:
+  site:
+    - js/site.js
+    - js/wow.js
+  slider:
+    - js/slider.js
+  svg:
+    - js/svg.js
+  partners:
+    - js/partners.js
+  box:
+    - js/box.js
+  video:
+    - js/video.js

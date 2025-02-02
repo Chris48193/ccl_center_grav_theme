@@ -1,0 +1,68 @@
+{% import _self as self %}
+{% set user = grav.user %}
+
+<div class="grid-container">
+    <nav class="head-nav grid-x align-middle" role="navigation">
+        <div class="cell large-4 text-center logo-container">
+            <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
+                {{ page.media["theme://images/logo.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
+                {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo logo-dark")|raw }}
+            </a>
+        </div>
+        <div class="cell text-center hide-for-large">
+            <button class="button head-nav__menu-toggle hide-for-large" type="button" data-toggle="responsive-menu">
+                <i class="head-nav__menu-icon"></i>
+                <span class="head-nav__menu-text">Menu</span>
+            </button>
+        </div>
+        <div class="cell large-8">
+            <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
+                <ul class="head-nav__menu menu vertical large-horizontal" data-responsive-menu="accordion large-dropdown">
+                    {{ self.loop(pages, 1) }}
+                    <li class="head-nav__item">
+                        {% if user.authenticated %}
+                            <a class="head-nav__link" href="{{ uri.addNonce(base_url_relative ~ uri.path ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce')|e }}">
+                                <i class="fa fa-fw fa-sign-out"></i>
+                                Logout
+                            </a>
+                        {# {% else %}
+                            <a class="head-nav__link" href="/login">
+                                <i class="fa fa-fw fa-sign-in"></i>
+                                Login
+                            </a> #}
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+{% macro loop(page, levels = 2) %}
+    {% import _self as self %}
+    {% for p in page.children.visible %}
+        {% set active = p.active or p.activeChild %}
+        {% set children = p.children.visible.count > 0 %}
+        {% set recurse = children and levels > 0 and p.header.children_visible|defined(true) %}
+        {% set classes = ["head-nav__item"] %}
+
+        {% if active %}
+            {% set classes = classes|merge(["head-nav__item--active"]) %}
+        {% endif %}
+
+        {% if recurse %}
+            {% set classes = classes|merge(["head-nav__item--has-submenu"])%}
+        {% endif %}
+
+        <li class="{{ implode(" ", classes) }}">
+            <a href="{{ p.routable ? p.url : "#" }}" class="head-nav__link {{ active ? "head-nav__link--active" : "" }}">
+                {{ p.menu }}
+            </a>
+
+            {% if recurse %}
+                <ul class="head-nav__submenu">
+                    {{ self.loop(p, levels - 1) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+@import
+    'abstracts/variables';
+
+@import
+    'swiper/scss',
+    'swiper/scss/a11y',
+    'swiper/scss/controller',
+    'swiper/scss/pagination',
+    'swiper/scss/navigation';
+
+$swiper-bullet-margin: 1.5rem;
+$swiper-bullet-size: 0.8rem;
+
+// Overrides + Extensions
+.swiper-pagination-horizontal {
+    
+    .swiper-pagination-bullet {
+        margin: $swiper-bullet-margin;
+        width: $swiper-bullet-size;
+        height: $swiper-bullet-size;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: get-color('secondary');
+    }
+}

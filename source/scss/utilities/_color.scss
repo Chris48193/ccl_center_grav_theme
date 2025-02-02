@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// Text colors
+// -----------------------------------------------------------------------------
+
+$u-text-colors: map-merge(
+    $foundation-palette,
+    (
+        'white': $white,
+    )
+) !default;
+
+
+@each $name, $color in $u-text-colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}

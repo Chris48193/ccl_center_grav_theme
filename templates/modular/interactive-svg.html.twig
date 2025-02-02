@@ -1,0 +1,34 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+<div class="cell">
+    {{ page.content|raw }}
+</div>
+<div class="cell {{ page.header.class|raw }}">
+    <div class="wow bounceInUp" data-wow-delay="0.3s" >
+        {% include "partials/inline-svg.html.twig" with { image: page.header.image, ratio: page.header.ratio }%}
+    </div>
+</div>
+
+{% set size = 100 %}
+
+{% set triggers = [] %}
+{% for item in page.header.items %}
+    {% set triggers = triggers|merge([item.id]) %}
+    {% set modal_id = helpers.pageLinkName(item.id) ~ "-modal" %}
+
+    <div id="{{ modal_id }}" class="reveal modal large" data-reveal>
+        <div class="stack-for-small media-object align-middle">
+            <h3><span>{{ item.title|raw }}</span></h3>
+        </div>
+        {{ item.textarea|markdown |raw }}
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+
+{% if triggers %}
+    <script type="text/javascript">
+        var triggers = {{ triggers|json_encode|raw }};
+    </script>
+{% endif %}

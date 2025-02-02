@@ -1,0 +1,24 @@
+{% extends "default.html.twig" %}
+{% import "partials/macros.html.twig" as helpers %}
+
+{% block outer_content %}
+    {% for module in page.collection() %}
+        {% set id = helpers.pageLinkName(module.menu) %}
+        {% set outer_classes = module.header.outer_classes|defined("section") %}
+        {% set inner_classes = ([inner_classes, module.header.inner_classes]|join(" ")|trim)|default("large-10") %}
+
+        <section id="section:{{ id }}" class="{{ outer_classes }}">
+            {% if module.header.show_title|defined(true) %}
+                <div class="grid-container">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell">
+                            {% include "partials/title.html.twig" with {"title": module.title, "tag": "h2", "classes": page.header.title_classes} only %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {{ module.content|raw }}
+        </section>
+    {% endfor %}
+{% endblock %}

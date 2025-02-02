@@ -1,0 +1,46 @@
+{% set format = "d M Y" %}
+<div class="event-section grid-x grid-margin-x align-center">
+    {% for item in collection.published %}
+        {% set event = item.header.event %}
+        {% set url = event.url ?: item.url %}
+
+        <div class="cell {{ page.header.extra_class == "event-list" ? "medium-8" : "medium-6" }}  mb-1">
+            {% if event.url %}
+                <a class="card" style="background-color:#ececec;" href="{{ url }}" target="_blank">
+            {% else %}
+                <div class="card" style="background-color:#ececec;">
+            {% endif %}
+                <div class="card-section">
+                    <div class="content text-center">
+                        <h6 class="mb-2 mt-0"><i class="fa fa-calendar text-primary"></i> {{ item.title|raw }}
+                        </h4>
+
+                        <div style="color:black;">
+                            {% if event.start %}
+                                {{ event.start|date(format)|raw }}
+                            {% endif %}
+
+                            {% if event.end and event.end != event.start %}
+                                &mdash; {{ event.end|date(format)|raw }}
+                            {% endif %}
+                        </div>
+
+                        {% if event.location %}
+                            <div style="color:black;">
+                                <i>{{ event.location|raw }}</i>
+                            </div>
+                        {% endif %}
+
+                        <div style="color:black;">
+                            {{ item.summary|markdown|raw }}
+                        </div>
+                    </div>
+                </div>
+            {% if event.url %}
+                </a>
+            {% else %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

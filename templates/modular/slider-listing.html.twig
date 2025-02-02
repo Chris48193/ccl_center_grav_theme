@@ -1,0 +1,35 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x">
+        <div class="cell large-12 list">
+            <div class="swiper items-slider">
+                <div class="swiper-wrapper">
+                    {% for item in page.header.items %}
+                        {% set image = item.image|default("theme://images/dummy.png") %}
+                        {% set id = item.id|default(helpers.pageLinkName(item.text)) %}
+
+                        <button class="swiper-slide item" data-open="{{ id }}">
+                            {# <div class="image">{{ page.media[image].cropResize(300,300).html('', item.text)|raw }}</div> #}
+                            <div class="image">{{ page.media[image].cropZoom(300,300).html("image for " ~ item.text, "image for " ~ item.text)|raw }}</div>
+                            <div class="text">{{ item.text }}</div>
+                        </button>
+
+
+                        <div class="reveal items-reveal" id="{{ id }}" data-reveal>
+                            <div>
+                                {% include "partials/box.html.twig" with {title: item.text, content: item.content, title_classes: page.header.color|default("bg-tertiary")} %}
+                            </div>
+
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>

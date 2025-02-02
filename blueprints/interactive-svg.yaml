@@ -1,0 +1,28 @@
+title: Work Packages / Approach
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          fields:
+            header.items:
+              type: list
+              label: Work Packages
+              style: vertical
+              collapsed: true
+              fields:
+                .title:
+                  type: text
+                  label: title
+                .id:
+                  type: text
+                  label: id
+                .content:
+                  type: markdown
+                  label: text
