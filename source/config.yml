@@ -6,8 +6,6 @@ entry:
     - js/slider.js
   svg:
     - js/svg.js
-  partners:
-    - js/partners.js
   box:
     - js/box.js
   video:

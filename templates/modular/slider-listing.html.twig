@@ -9,16 +9,21 @@
                         {% set image = item.image|default("theme://images/dummy.png") %}
                         {% set id = item.id|default(helpers.pageLinkName(item.text)) %}
 
-                        <button class="swiper-slide item" data-open="{{ id }}">
-                            {# <div class="image">{{ page.media[image].cropResize(300,300).html('', item.text)|raw }}</div> #}
-                            <div class="image">{{ page.media[image].cropZoom(300,300).html("image for " ~ item.text, "image for " ~ item.text)|raw }}</div>
-                            <div class="text">{{ item.text }}</div>
-                        </button>
+                        <div class="swiper-slide item">
+                            <div class="image">{{ page.media[image].cropZoom(500,500).html("image for " ~ item.text, "image for " ~ item.text)|raw }}</div>
+
+                            <div class="text">
+                                <div class="title">{{ item.text|raw }}</div>
+                                <div class="duration">Durée: {{ item.duration|raw }}</div>
+                                <div class="price">Frais: {{ item.price|raw }}</div>
+                                <button class="button" data-open="{{ id }}">En savoir plus</button>
+                            </div>
+                        </div>
 
 
-                        <div class="reveal items-reveal" id="{{ id }}" data-reveal>
+                        <div class="reveal large items-reveal" id="{{ id }}" data-reveal>
                             <div>
-                                {% include "partials/box.html.twig" with {title: item.text, content: item.content, title_classes: page.header.color|default("bg-tertiary")} %}
+                                {% include "partials/box.html.twig" with {title: item.text, content: item.content, title_classes: page.header.color|default("bg-secondary")} %}
                             </div>
 
                             <button class="close-button" data-close aria-label="Close modal" type="button">

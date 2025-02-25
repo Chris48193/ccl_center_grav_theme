@@ -1,0 +1,46 @@
+title: Slider-listing
+'@extends':
+    type: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+
+            header.jobs:
+              type: list
+              label: Jobs
+              fields:
+                .titre:
+                  type: text
+                  label: Titre
+                .lieu:
+                  type: text
+                  label: Lieu
+                .contrat:
+                  type: text
+                  label: Contrat
+                .duree:
+                  type: text
+                  label: Durée
+                .teaser:
+                  type: text
+                  label: Teaser
+                .content:
+                  type: markdown
+                  label: Content
+                .show_job:
+                  type: toggle
+                  label: Show Job
+                  highlight: 1
+                  default: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+                  validate:
+                    type: bool
+                .id:
+                  type: text
+                  label: ID

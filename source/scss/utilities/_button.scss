@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+// Button styles
+// -----------------------------------------------------------------------------
+
+.styled-button {
+    background-color: get-color("secondary-light");
+    color: get-color("secondary");
+    border-radius: 10px;
+    padding-inline: 3rem;
+    font-weight: 700;
+
+    @include breakpoint('large') {
+        padding-inline: 5rem;
+    }
+
+    &:hover {
+        background-color: darken(get-color("secondary"), 2%);
+        color: white;
+    }
+}

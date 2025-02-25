@@ -9,7 +9,7 @@
     <div class="title-news text-center">
         <h1>{{ page.title }}</h1>
         <time datetime='{{ page.date|date("c") }}' class="" style="display:block;">
-            {{ page.date|date("j F Y") }}, {{ (page.content|split(" ")|length / 200)|round }} min read
+            {{ page.date|date("j F Y") }}, {{ (page.content|split(" ")|length / 200)|round }} minute de lecture
         </time>
     </div>
 
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="cell medium-2 medium-pull-10 pt-1">
-                Share:
+                Partager:
                 <div>
                     {% include "partials/share.html.twig" %}
                 </div>

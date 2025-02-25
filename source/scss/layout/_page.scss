@@ -129,64 +129,42 @@ main, .reveal-overlay {
 .page-foot {
 
     .foot-menu {
-        background-color: get-color("secondary");
+        background-color: get-color("secondary-light");
         padding-block: 4rem;
+        font-weight: 700;
 
         @include breakpoint("medium") {
             padding-block: 0;
         }
 
+        .copyright {
+            text-align: center;
+
+            @include breakpoint("medium") {
+                text-align: left;
+            }
+        }
+
         ul {
-            justify-content: space-around;
+            justify-content: center;
+            text-align: center;
+
+            @include breakpoint("medium") {
+                justify-content: end;
+                text-align: right;
+            }
         }
 
         a {
-            color: $white;
+            color: $secondary-color;
+
+            &:hover {
+                color: darken(get-color("secondary"), 2%);
+            }
         }
     }
 }
 
 .wow {
     visibility: hidden;
-}
-
-// Contact form styles
-.contact {
-    .form-label {
-        display: none;
-    }
-
-    .border {
-        border: 1px solid get-color("secondary");
-    }
-
-    .button {
-        background-color: get-color("tertiary");
-    }
-}
-
-// Login form styles
-#grav-login {
-    padding-top: 0 !important;
-    
-    label {
-        font-size: 1rem;
-    }
-
-    .border {
-        border: 1px solid get-color("secondary");
-    }
-
-}
-
-.download-button {
-    background: white;
-    border: solid 2px get-color("orange");
-    color: get-color("secondary");
-    font-weight: 700;
-
-    &:hover, &:focus {
-        // border: solid 2px get-color("primary");
-        background: get-color("orange");
-    }
 }

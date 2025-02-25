@@ -8,211 +8,53 @@
         padding-top: 5rem;
     }
 
-    .hero-container {
-        max-width: 1700px;
-        margin: auto;
+    .hero-slider-image {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: calc(75vh);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        .page-title {
-            display: none;
+        @include breakpoint("large") {
+            height: calc(100vh - 5rem);
         }
 
-        .hero-slider-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        @include breakpoint("large") {
+            align-items: flex-end;
         }
 
-        .hero-slider {
-            padding-bottom: 4rem;
-
-            @include breakpoint("medium") {
-                padding-bottom: 3rem;
-            }
-
-            .swiper-button-prev, .swiper-button-next {
-                color: get-color("secondary");
-            }
-
-            .swiper-pagination-bullet-active {
-                background: get-color("secondary");
-            }
-
-            .swiper-pagination-bullet {
-                width: 1rem;
-                height: 0.3rem;
-                border-radius: 0;
-            }
-        }
-
-        .hero-slider-image {
-            width: 100%;
-        }
-
-        .hero-image {
-            background-image: url("../images/hero.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            min-height: 18rem;
-
-            @media screen and (min-width: 638px) and (max-width: 1500px) {
-                margin-left: 0 !important;
-            }
-        }
-
-        .hero-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            @include breakpoint("medium") {
-                justify-content: space-between;
-            }
-        }
-
-        .swiper-navigation {
-            display: flex;
-        }
-        
-        .swiper-hero-button-prev,
-        .swiper-hero-button-next {
-            background-color: get-color("secondary");
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            border-radius: 5px;
+        .hero-text {
+            // margin-top: 8rem;
+            // margin-bottom: 5rem;
+            display: inline-block;
+            color: $white;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.5;
             position: relative;
-            z-index: 10;
-        }
-        
-        .swiper-hero-button-prev {
-            // position: relative;
-            // left: -20px; /* Move outside container */
-            &::after {
-                content: "\f060";
-                font-family: $icon-font-family;
-                font-weight: 700;
-            }
-        }
-        
-        .swiper-hero-button-next {
-            // position: relative;
-            // right: -20px; /* Move outside container */
-            &::after {
-                content: "\f061";
-                font-family: $icon-font-family;
-                font-weight: 700;
-            }
-        }
-          
+            // bottom: 3rem;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
 
-        .claim-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .claim {
-                text-align: center;
-                margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
-                .claim-text {
-                    font-weight: bold;
-                    font-size: 22px;
-                    line-height: normal;
-                    color: get-color("secondary");
-                }
-                @include breakpoint('medium') {
-                    text-align: left;
-                    margin-top: 3.5rem;
-                    margin-bottom: 3.5rem;
-                    .claim-text {
-                        font-size: 2rem;
-                    }
-                }
-
-                @include breakpoint('large') {
-                    .claim-text {
-                        font-size: 3rem;
-                    }
-                }
-
-                @include breakpoint('xxlarge') {
-                    .claim-text {
-                        font-size: 4rem;
-                    }
-                }
-
-                .detail {
-                    text-align: justify;
-
-                    .author {
-                        text-align: right;
-                        font-style: italic;
-                        color: get-color("secondary");
-                    }
-                }
-
-                .button {
-                    background-color: get-color("tertiary");
-                    color: $white;
-                    font-weight: 700;
-                }
-
-            }
-        }
-
-        .copyright {
-            display: none;
-        }
-    }
-}
-
-body:not(.home) {
-    .hero-wrapper {
-        .hero-container {
-            background-repeat: no-repeat;
-            background-position: bottom;
-            background-size: 100% 100%;
-            background-color: rgba(255, 255, 255, 0.45);
-            background-blend-mode: overlay;
-            position: relative;
-            max-width: 100% !important;
-
-            .hero-image, .claim-container {
-                display: none;
-            }
-
-            .page-title {
-                display: block;
-                min-height: 13rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                
-                h1 {
-                    // position: absolute;
-                    margin-top: 1rem;
-                }
-
-                span {
-                    position: absolute;
-                    bottom: 4rem;
-                    font-weight: 700;
-
-                }
-            }
-
-            .copyright {
-                display: block !important;
-                position: absolute;
-                right: 1rem;
-                bottom: 0.5rem;
-                font-size: 0.8rem;
+            @include breakpoint("large") {
+                bottom: 3rem;
             }
         }
     }
+
+    .hero-image {
+        height: 17rem;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: cover;
+
+        // @include breakpoint("large") {
+        //     background-size: 100% 100%;
+        // }
+    }
+
 }

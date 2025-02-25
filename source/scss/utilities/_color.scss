@@ -12,6 +12,6 @@ $u-text-colors: map-merge(
 
 @each $name, $color in $u-text-colors {
     .text-#{$name} {
-        color: $color;
+        color: $color !important;
     }
 }

@@ -1,4 +1,4 @@
-title: Slider-listing
+title: Formations
 '@extends':
     type: default
     context: blueprints://pages
@@ -24,6 +24,12 @@ form:
                   label: Title
                   validate:
                     required: true
+                .date_start:
+                  type: date
+                  label: Date start
+                .date_end:
+                  type: date
+                  label: Date end
                 .duration:
                   type: text
                   label: Duration

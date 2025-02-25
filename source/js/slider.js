@@ -26,15 +26,19 @@ const itemsSlider = new Swiper('.items-slider', {
             spaceBetween: 20,
         },
         1024: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 70,
         },
+        // 1440: {
+        //     slidesPerView: 4,
+        //     spaceBetween: 70,
+        // },
     },
 })
 
 const heroSlider = new Swiper('.hero-slider', {
     ...options,
-    speed: 100,
+    speed: 500,
     pagination,
     loop: true,
     centerInsufficientSlides: true,
@@ -51,23 +55,23 @@ const heroSlider = new Swiper('.hero-slider', {
     },
 })
 
-// Add keyboard functionality to hero navigation buttons
-const prevButton = document.querySelector('.swiper-hero-button-prev');
-const nextButton = document.querySelector('.swiper-hero-button-next');
+// // Add keyboard functionality to hero navigation buttons
+// const prevButton = document.querySelector('.swiper-hero-button-prev');
+// const nextButton = document.querySelector('.swiper-hero-button-next');
 
-function handleKeydown(event, callback) {
-    if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault(); // Prevent default scrolling behavior for spacebar
-        callback();
-    }
-}
+// function handleKeydown(event, callback) {
+//     if (event.key === 'Enter' || event.key === ' ') {
+//         event.preventDefault(); // Prevent default scrolling behavior for spacebar
+//         callback();
+//     }
+// }
 
-// Handle "Previous" button
-prevButton.addEventListener('keydown', (event) => {
-    handleKeydown(event, () => heroSlider.slidePrev());
-});
+// // Handle "Previous" button
+// prevButton.addEventListener('keydown', (event) => {
+//     handleKeydown(event, () => heroSlider.slidePrev());
+// });
 
-// Handle "Next" button
-nextButton.addEventListener('keydown', (event) => {
-    handleKeydown(event, () => heroSlider.slideNext());
-});
+// // Handle "Next" button
+// nextButton.addEventListener('keydown', (event) => {
+//     handleKeydown(event, () => heroSlider.slideNext());
+// });

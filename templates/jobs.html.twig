@@ -1,0 +1,39 @@
+{% import "partials/macros.html.twig" as helpers %}
+{% extends "default.html.twig" %}
+
+{% block content %}
+    <div class="job-list">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell">
+                {{ page.content|raw }}
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x align-center">
+            {% for job in page.header.jobs %}
+                {% if job.show_job %}
+                    {% set id = job.id|default(helpers.pageLinkName(job.titre) ~ loop.index) %}
+
+                    <div class="cell medium-6 large-4 job box_trigger mt-2" data-open="{{ id }}">
+                        <div class="h5 text-center">{{ job.titre|raw }}</div>
+                        <div class=""><span class="title">Lieu:</span> {{ job.lieu|raw }}</div>
+                        <div class=""><span class="title">Contrat:</span> {{ job.contrat|raw }}</div>
+                        <div class=""><span class="title">Durée:</span> {{ job.duree|raw }}</div>
+                        <div class="mt-3 mb-6">{{ job.teaser|raw }}</div>
+                        <div class="mt-3 text-center more"><button class="button" data-open="{{ id }}">En savoir plus</button></div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="grid-x grid-margin-x align-center details">
+            <div class="cell">
+                {% for job in page.header.jobs %}
+                    {% if job.show_job %}
+                        {% set id = job.id|default(helpers.pageLinkName(job.titre) ~ loop.index) %}
+                        {% include "partials/job.html.twig" with {item: job, id: id} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

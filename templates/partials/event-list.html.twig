@@ -1,21 +1,20 @@
 {% set format = "d M Y" %}
-<div class="event-section grid-x grid-margin-x align-center">
+<div class="event-section grid-x grid-margin-x align-center align-stretch text-center">
     {% for item in collection.published %}
         {% set event = item.header.event %}
         {% set url = event.url ?: item.url %}
 
         <div class="cell {{ page.header.extra_class == "event-list" ? "medium-8" : "medium-6" }}  mb-1">
             {% if event.url %}
-                <a class="card" style="background-color:#ececec;" href="{{ url }}" target="_blank">
+                <a class="card bg-secondary" style="height:100%;" href="{{ url }}" target="_blank">
             {% else %}
-                <div class="card" style="background-color:#ececec;">
+                <div class="card bg-secondary" style="height:100%;">
             {% endif %}
                 <div class="card-section">
                     <div class="content text-center">
-                        <h6 class="mb-2 mt-0"><i class="fa fa-calendar text-primary"></i> {{ item.title|raw }}
-                        </h4>
+                        <div class="mb-2 mt-0 h6 text-primary"><i class="fa fa-calendar text-primary"></i> {{ item.title|raw }}</div>
 
-                        <div style="color:black;">
+                        <div class="text-white">
                             {% if event.start %}
                                 {{ event.start|date(format)|raw }}
                             {% endif %}
@@ -26,12 +25,12 @@
                         </div>
 
                         {% if event.location %}
-                            <div style="color:black;">
+                            <div class="text-white">
                                 <i>{{ event.location|raw }}</i>
                             </div>
                         {% endif %}
 
-                        <div style="color:black;">
+                        <div class="text-white">
                             {{ item.summary|markdown|raw }}
                         </div>
                     </div>

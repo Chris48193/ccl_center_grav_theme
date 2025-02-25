@@ -27,7 +27,8 @@
         }
         &:hover {
             .holder {
-                background: darken(get-color('secondary'), 10%);
+                background: darken(get-color('primary'), 10%);
+                color: get-color("secondary");
             }
         }
     }

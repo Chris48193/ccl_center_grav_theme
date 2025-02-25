@@ -1,0 +1,83 @@
+// -----------------------------------------------------------------------------
+// Styles for the job page
+// -----------------------------------------------------------------------------
+
+.job-list {
+    .job {
+        color: get-color("secondary");
+        background-color: get-color("primary");
+        padding: 2rem;
+        border-radius: 10px;
+        border: solid 0.5px get-color("secondary");
+        position: relative;
+        cursor: pointer;
+
+        .more {
+            position: absolute;
+            bottom: 1rem;
+            width: 100%;
+            left: 0;
+        }
+
+        .button {
+            background-color: get-color("secondary");
+            color: white;
+            border-radius: 20px;
+            padding-inline: 2rem;
+            padding-block: 0.5rem;
+            font-weight: 700;
+
+            &:hover {
+                background-color: get-color("secondary-light");
+                color: get-color("secondary");
+            }
+        }
+
+        .title {
+            font-weight: 700;
+        }
+
+        .active {
+            button {
+                color: get-color("secondary");
+                font-weight: 700;
+            }
+
+            &:before {
+                color: get-color("tertiary");
+                transform-origin: center;
+                transform: rotate(90deg) translate(4px, 4px);
+            }
+        }
+    }
+}
+
+
+.details {
+    margin-top: 3.5rem;
+
+    .job-box {
+        line-height: normal;
+
+        .box_title {
+            text-align: center !important;
+            padding: 1rem 1rem;
+            font-size: 1.2rem;
+            text-transform: none !important;
+
+            @include breakpoint("medium") {
+                padding: 1rem 2rem;
+            }
+        }
+
+        .box_content {
+            .info {
+                background-color: get-color("secondary");
+                color: white;
+                padding: 1rem;
+                border-radius: 10px;
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}

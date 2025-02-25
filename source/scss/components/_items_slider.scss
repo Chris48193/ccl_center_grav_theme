@@ -3,11 +3,12 @@
 // -----------------------------------------------------------------------------
 
 .items-slider {
+
     .item {
         position: relative;
         border-radius: 1rem;
         cursor: pointer;
-        height: 15rem;
+        height: 17rem;
         overflow: hidden;
 
         img {
@@ -16,16 +17,55 @@
             height: 100%;
         }
 
+        // .text, .duration, .price {
+        //     color: white;
+        //     position: absolute;
+        //     z-index: 2;
+        // }
+
         .text {
             position: absolute;
-            bottom: 1rem;
+            bottom: 0;
             width: 100%;
+            height: 100%;
             text-align: center;
             color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
             line-height: normal;
             z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .title {
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+
+            .duration {
+                font-size: 0.9rem;
+            }
+
+            .price {
+                font-weight: 700;
+                font-size: 1.2rem;
+                margin-top: 3.5rem;
+                margin-bottom: 3.5rem;
+            }
+
+            .button {
+                background-color: get-color("secondary-light");
+                color: get-color("secondary");
+                border-radius: 20px;
+                padding-inline: 2rem;
+                padding-block: 0.5rem;
+                font-weight: 700;
+
+                &:hover {
+                    background-color: get-color("secondary");
+                    color: white;
+                }
+            }
         }
 
         &:after {
@@ -35,8 +75,8 @@
             height: 100%;
             left: 0;
             top: 0;
-            background: rgba(0,0,0,0.7);
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(255, 255, 255,0.1) 100%);
+            background: rgba(0,0,0,0.34);
+            // background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(255, 255, 255,0.1) 100%);
             border-radius: 1rem;
             z-index: 1;
         }
@@ -51,5 +91,11 @@
 .items-reveal {
     padding: 0;
     border-radius: 10px;
-    width: 65%;
+    margin: auto;
+}
+
+@media screen and (max-width: 640px) {
+    .items-reveal {
+        width: 94% !important;
+    }
 }

@@ -6,35 +6,37 @@
 {% block content %}
 
     {# Events-Bereich #}
-    <div class="grid-container news-listing">
-        <div class="grid-x grid-margin-x">
-            <div class="cell text-center">
-                {# Check if events exist #}
-                {% if page.collection('events')|length > 0 %}
-                    {# <h2 class="h3">Latest Events</h2> #}
-                    {% include "partials/event-list.html.twig" with { collection: page.collection('events') } %}
+    {% if page.collection('events')|length > 0 %}
+        <div class="grid-container news-listing mb-7">
+            {# <div class="grid-x grid-margin-x">
+                <div class="cell text-center"> #}
+                    {# Check if events exist #}
+                    
+                        <div class="h2 text-center">Événements à venir</div>
+                        {% include "partials/event-list.html.twig" with { collection: page.collection('events') } %}
 
-                    <div class="grid-x grid-margin-x align-center">
-                        <div class="cell medium-4 mb-10">
-                            <a href="/events" class="button expanded"><i class="fa fa-list"></i> All Events</a>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="grid-x grid-margin-x align-center">
-                        <div class="cell medium-4 mb-10">
-                            <a href="/events" class="button expanded"><i class="fa fa-list"></i> Show past events</a>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
+                        {# <div class="grid-x grid-margin-x align-center">
+                            <div class="cell medium-4 mb-10">
+                                <a href="/events" class="button expanded"><i class="fa fa-list"></i> Lister tout les événements</a>
+                            </div>
+                        </div> #}
+                    {# {% else %} #}
+                        {# <div class="grid-x grid-margin-x align-center">
+                            <div class="cell medium-4 mb-10">
+                                <a href="/events" class="button expanded primary"><i class="fa fa-list"></i> Show past events</a>
+                            </div>
+                        </div> #}
+                    
+                {# </div>
+            </div> #}
         </div>
-    </div>
+    {% endif %}
 
     {# News-Bereich #}
     <div class="grid-container news-listing">
         <div class="grid-x grid-margin-x">
             <div class="cell">
-                {# <h2 class="h3">News and Updates</h2> #}
+                <div class="h2 text-center">News</div>
                 {% set news = page.collection()|first %}
                 {% set category = news.taxonomy.news_category|first %}
 
@@ -45,14 +47,14 @@
                         </a>
                     </div>
                     <div class="media-object-section pl-1 pr-1">
-                        <div class="tag mb-2 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                        <div class="tag mb-2 bg-{{ site.cat_color_map[category]|default('primary') }}">{{ category|default("Others")|raw }}</div>
                         <h3 class="mb-2 title">
                             {{ news.title|raw }}
                         </h3>
                         <div>{{ news.header.subheader ? : news.summary(200)|markdown|raw }}</div>
                         <div>
                             <a href="{{ news.url }}" class="button">
-                                Learn more
+                                Lire plus
                             </a>
                         </div>
                     </div>
@@ -61,14 +63,14 @@
         </div>
         <div class="grid-x grid-margin-x">
             <div class="cell medium-4 large-3 mt-4">
-                <h2>Categories</h2>
+                <h2>Catégories</h2>
                 <p>
-                    <a href="{{ page.url }}">All ({{ page.children|length }})</a></br>
+                    <a href="{{ page.url }}" class="text-secondary">Tout ({{ page.children|length }})</a></br>
                     {% set news_categories = taxonomy.taxonomy['news_category'] %}
                     {% if news_categories %}
                         {% for category in news_categories %}
                             {% set cat = page.find(page.url ~ '/' ~ category|first|first).taxonomy.news_category|first %}
-                            <a href="{{ page.url ~ '/news_category:' ~ cat }}">{{ cat|raw }} ({{ taxonomy.findTaxonomy({'news_category':cat})|length }})</a></br>
+                            <a href="{{ page.url ~ '/news_category:' ~ cat }}" class="text-secondary">{{ cat|raw }} ({{ taxonomy.findTaxonomy({'news_category':cat})|length }})</a></br>
                         {% endfor %}
                     {% endif %}
                 </p>

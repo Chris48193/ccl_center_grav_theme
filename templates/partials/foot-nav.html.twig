@@ -2,15 +2,15 @@
 <div class="foot-menu">
     <div class="grid-container">
         <div class="grid-x grid-margin-x align-middle">
-            <div class="cell medium-3 text-center mt-2 mb-2">{{ media["theme://images/EN_Co-fundedbytheEU_RGB_NEG.png"].cropResize(220,220).quality(100).html("EIC logo", "Co-Funded by the EU logo")|raw }}</div>
-            <div class="cell medium-3 text-center mt-2 mb-2">{{ media["theme://images/UKRI_logo.png"].cropResize(150,150).quality(100).html("UKRI logo", "UKRI logo")|raw }}</div>
-            <div class="cell medium-6 mt-2 mb-2">
+            {# <div class="cell medium-4 text-center mt-2 mb-2">{{ media["theme://images/logo.png"].cropResize(75,75).quality(100).html("CCL Center logo", "CCL Center logo")|raw }}</div> #}
+            <div class="cell medium-4 text-center mt-2 mb-2 copyright">@Copyright CCL-Center</div>
+            <div class="cell medium-8 mt-2 mb-2">
                 <nav class="foot-nav" role="navigation">
                     <ul class="menu align-center">
                         {% for item in page.find("/").header.foot_nav %}
                             {% set p = page.find(item.url) %}
                             {% if p %}
-                                <li><a href="{{ p.url }}" class="text-primary foot-nav__link">{{ p.menu|upper }}</a></li>
+                                <li><a href="{{ p.url }}" class="foot-nav__link">{{ p.menu|raw }}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>

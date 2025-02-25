@@ -1,9 +1,0 @@
-<div class="grid-container">
-	<div class="grid-x grid-margin-x align-center">
-        {% for document in page.header.documents %}
-            <a href="{{ page.media[document.url].url }}" class="cell button shrink download-button" target="_blank">
-                <i class="fa fa-fw fa-download"></i> {{ document.title|raw }}
-            </a>
-        {% endfor %}
-	</div>
-</div>

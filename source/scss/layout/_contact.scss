@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// Contact page layout
+// -----------------------------------------------------------------------------
+
+
+.contact {
+    .contact-info {
+        margin-bottom: 2rem;
+
+        .item {
+            background-color: get-color("secondary-light");
+            padding: 1rem;
+            border-radius: 10px;
+
+            .field {
+                font-weight: 700;
+                font-size: 1.1rem;
+                color: get-color("secondary");
+            }
+
+            .content {
+                margin-top: 1.5rem;
+
+                // a {
+                //     color: black;
+                // }
+            }
+        }
+    }
+    // Contact form styles
+    .form-label {
+        label {
+            font-weight: 700;
+            color: get-color("secondary");
+        }
+    }
+
+    .border {
+        border: 1px solid get-color("secondary");
+    }
+
+    .button {
+        background-color: get-color("secondary");
+        color: white;
+        font-weight: 700;
+    }
+}

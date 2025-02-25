@@ -14,16 +14,15 @@
 
 @import
     'layout/atsi',
-    'layout/2-col',
     'layout/page',
+    'layout/contact',
     'layout/news-events',
     'layout/box',
+    'layout/explorer',
     'layout/head-nav',
     'layout/hero',
-    'layout/main',
-    'layout/partners',
-    'layout/key-terms',
-    'layout/funding';
+    'layout/loader',
+    'layout/jobs';
 
 @import
     'components/accordion',
@@ -37,6 +36,7 @@
     'utilities/background',
     'utilities/border',
     'utilities/color',
+    'utilities/button',
     'utilities/spacing';
 
 @import

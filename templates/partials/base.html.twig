@@ -34,45 +34,48 @@
 
     <body class="{{ page.header.body_classes }}">
         {% include "partials/no-js.html.twig" %}
-        {% block header %}
-            <header class="page-head">
-                 <div class="data-sticky-container"> 
-                    <div data-sticky data-options="marginTop:0; stickyOn:small">
-                        {% block navigation %}
-                            {% include "partials/navigation.html.twig" %}
-                        {% endblock %}
+        {% include "partials/loader.html.twig" %}
+        <div class="wrapper" id="wrapper">
+            {% block header %}
+                <header class="page-head">
+                    <div class="data-sticky-container">
+                        <div data-sticky data-options="marginTop:0; stickyOn:small">
+                            {% block navigation %}
+                                {% include "partials/navigation.html.twig" %}
+                            {% endblock %}
+                        </div>
                     </div>
-                </div>
-            </header>
-        {% endblock %}
+                </header>
+            {% endblock %}
 
-        {% block hero %}
-            {% include "partials/hero.html.twig" %}
-        {% endblock %}
-        
-        {% block sidenavigation %}
-            {% include "partials/side-navigation.html.twig" %}
-        {% endblock %}
+            {% block hero %}
+                {% include "partials/hero.html.twig" %}
+            {% endblock %}
+            
+            {% block sidenavigation %}
+                {% include "partials/side-navigation.html.twig" %}
+            {% endblock %}
 
-        {% block main %}
-            <main class="page-main">
-                {% block content %}
-                    {{ content }}
-                {% endblock %}
-            </main>
-        {% endblock %}
+            {% block main %}
+                <main class="page-main">
+                    {% block content %}
+                        {{ content }}
+                    {% endblock %}
+                </main>
+            {% endblock %}
 
-        {% block footer %}
-            <footer class="page-foot">
-                {% include "partials/foot-nav.html.twig" %}
-            </footer>
-        {% endblock %}
+            {% block footer %}
+                <footer class="page-foot">
+                    {% include "partials/foot-nav.html.twig" %}
+                </footer>
+            {% endblock %}
 
-        {% block bottom deferred %}
-        {{ assets.js()|raw }}
-        {{ assets.js("bottom")|raw }}
-        {% endblock %}
-        
-        <a href="#" id="top-button" class="top-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+            {% block bottom deferred %}
+            {{ assets.js()|raw }}
+            {{ assets.js("bottom")|raw }}
+            {% endblock %}
+            
+            <a href="#" id="top-button" class="top-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
     </body>
 </html>

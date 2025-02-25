@@ -69,3 +69,33 @@ $(document).ready(function(){
         return false; 
     }); 
 });
+
+// Loading page logic
+var loadingContainer = document.getElementById("loader-container");
+var websiteContainer = document.getElementById("wrapper");
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    window.addEventListener("load", function() {
+
+        if (window.location.pathname === "/") {
+            setTimeout(function() {
+                websiteContainer.style.opacity = "1";
+                loadingContainer.classList.add("loaded");
+            }, 100);
+
+            setTimeout(function() {
+                loadingContainer.style.display = "none";
+            }, 1000);
+        } else {
+            websiteContainer.style.opacity = "1";
+            loadingContainer.style.display = "none";
+        }
+    });
+});
+
+// Will remove overlay after 40secs for users that cannnot load properly.
+setTimeout(function() {
+    websiteContainer.style.opacity = "1";
+    loadingContainer.style.display = "none";
+}, 40000);
