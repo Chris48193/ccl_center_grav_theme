@@ -2,7 +2,7 @@
     <meta {% if meta.name %}name="{{ meta.name|e }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv|e }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset|e }}" {% endif %}{% if meta.property %}property="{{ meta.property|e }}" {% endif %}{% if meta.content %}content="{{ meta.content|raw }}" {% endif %}/>
 {% endfor %}
 
-{% set preview = grav.uri.base(true) ~ media['user://open-graph/voice-og.png'].url() %}
+{% set preview = grav.uri.base(true) ~ media['user://open-graph/ccl-og.png'].url() %}
 {% if page.template == "news" %}
     {% set preview = grav.uri.base(true) ~ media['user://open-graph/news.jpg'].url() %}
 
