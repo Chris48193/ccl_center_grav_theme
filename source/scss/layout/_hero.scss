@@ -1,60 +1,84 @@
-// -----------------------------------------------------------------------------
-// Hero
-// -----------------------------------------------------------------------------
-.hero-wrapper {
-    padding-top: 9rem;
+.hero-master {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: get-color('dark-grey');
 
-    @include breakpoint("large") {
-        padding-top: 5rem;
+    // Heights
+    &.hero--standard { min-height: 70vh; }
+    &.hero--tall { min-height: 100vh; }
+    &.hero--short { min-height: 40vh; }
+    &.hero--dark {
+        color: get-color('grey-light');
+        h1, h2, h3, h4, h5, h6 {
+            color: white;
+        }
     }
 
-    .hero-slider-image {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: calc(75vh);
+    .hero-bg-container {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+
+        .hero-static-bg, .hero-slider, .hero-video-bg, .swiper-slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            object-fit: cover;
+        }
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%);
+        z-index: 2;
+    }
+
+    &.hero--gradient .hero-overlay {
+        background: linear-gradient(to bottom, get-color('secondary-light') 0%, #ffffff 100%);
+        opacity: 1;
+    }
+
+    .hero-foreground {
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        z-index: 10;
+        padding: 4rem 0;
 
-        @include breakpoint("large") {
-            height: calc(100vh - 5rem);
-        }
-
-        @include breakpoint("large") {
-            align-items: flex-end;
-        }
-
-        .hero-text {
-            // margin-top: 8rem;
-            // margin-bottom: 5rem;
-            display: inline-block;
-            color: $white;
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: 1.5;
-            position: relative;
-            // bottom: 3rem;
-            padding: 1rem;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-align: center;
-
-            @include breakpoint("large") {
-                bottom: 3rem;
-            }
+        @include breakpoint('large') {
+            min-width: 60%;
         }
     }
 
-    .hero-image {
-        height: 17rem;
-        background-repeat: no-repeat;
-        background-position: top;
-        background-size: cover;
-
-        // @include breakpoint("large") {
-        //     background-size: 100% 100%;
-        // }
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
     }
 
+    .hero-body {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto; // Fallback for centered text
+
+        @include breakpoint('large') {
+            margin: 0; // Left align for grid mode
+        }
+    }
+
+    .hero-visual-wrapper {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        transform: perspective(1000px) rotateY(-5deg); // Subtle 3D effect
+        
+        img, video {
+            width: 100%;
+            display: block;
+        }
+    }
 }

@@ -2,10 +2,10 @@
 {% set user = grav.user %}
 
 <div class="grid-container">
-    <nav class="head-nav grid-x align-middle" role="navigation">
-        <div class="cell large-4 logo-container">
+    <nav class="head-nav grid-x align-middle align-center pb-2 lg-pb-0" role="navigation">
+        <div class="cell large-2 logo-container">
             <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
-                {{ page.media["theme://images/logo.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
+                {{ page.media["theme://images/logo-ecl.png"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
                 {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo logo-dark")|raw }}
             </a>
         </div>
@@ -15,12 +15,21 @@
                 <span class="head-nav__menu-text">Menu</span>
             </button>
         </div>
-        <div class="cell large-8">
+        <div class="cell large-auto">
             <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
                 <ul class="head-nav__menu menu vertical large-horizontal" data-responsive-menu="accordion large-dropdown">
                     {{ self.loop(pages, 1) }}
                 </ul>
             </div>
+        </div>
+        <div class="cell large-2 lg-ml-4 text-center large-text-right">
+            {% include 'partials/button.html.twig' with {
+                'url': '/inscription',
+                'text': "S'inscrire",
+                'icon': 'fa-user-plus',
+                'classes': "btn-small",
+                'outline': true
+            } %}
         </div>
     </nav>
 </div>
@@ -41,7 +50,11 @@
         {% endif %}
 
         <li class="{{ implode(" ", classes) }}">
-            <a href="{{ p.routable ? p.url : "#" }}" class="head-nav__link {{ active ? "head-nav__link--active" : "" }}">
+            {% set destination = p.header.external_link ?: (p.routable ? p.url : "#") %}
+            {% set target = p.header.external_link ? 'target="_blank" rel="noopener noreferrer"' : '' %}
+
+            {# Use the dynamic destination variable here #}
+            <a href="{{ destination }}" {{ target|raw }} class="head-nav__link {{ active ? "head-nav__link--active" : "" }}">
                 {{ p.menu }}
             </a>
 

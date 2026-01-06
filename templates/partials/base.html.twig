@@ -36,10 +36,20 @@
         {% include "partials/no-js.html.twig" %}
         {% include "partials/loader.html.twig" %}
         <div class="wrapper" id="wrapper">
+            </div>
             {% block header %}
                 <header class="page-head">
                     <div class="data-sticky-container">
                         <div data-sticky data-options="marginTop:0; stickyOn:small">
+                        {% if site.announcement.active and site.announcement.text is not empty %}
+                            <div class="announcement-bar">
+                                <div class="announcement-bar__inner">
+                                    <span class="announcement-bar__text">{{ site.announcement.text }}</span>
+                                    {# Repeat the text once to ensure a seamless loop #}
+                                    <span class="announcement-bar__text" aria-hidden="true">{{ site.announcement.text }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
                             {% block navigation %}
                                 {% include "partials/navigation.html.twig" %}
                             {% endblock %}
@@ -48,9 +58,9 @@
                 </header>
             {% endblock %}
 
-            {% block hero %}
+            {# {% block hero %}
                 {% include "partials/hero.html.twig" %}
-            {% endblock %}
+            {% endblock %} #}
             
             {% block sidenavigation %}
                 {% include "partials/side-navigation.html.twig" %}
@@ -66,7 +76,8 @@
 
             {% block footer %}
                 <footer class="page-foot">
-                    {% include "partials/foot-nav.html.twig" %}
+                    {# {% include "partials/foot-nav.html.twig" %} #}
+                    {% include "partials/footer.html.twig" %}
                 </footer>
             {% endblock %}
 

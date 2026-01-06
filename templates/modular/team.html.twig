@@ -1,0 +1,37 @@
+{% extends 'modular/base.html.twig' %}
+
+{% block module_content %}
+{% set columns = page.header.columns|default(3) %}
+
+<div class="team-section">
+    {% for category in page.header.team_categories %}
+        <div class="team-category mb-10">
+            <div class="mb-4 text-center">
+                <h3 class="team-category__title">{{ category.category_title }}</h3>
+                <p class="team-category__desc">{{ category.category_desc }}</p>
+            </div>
+
+            <div class="grid-x grid-padding-x small-up-1 medium-up-2 large-up-3 align-center">
+                {% for person in category.members %}
+                    <div class="cell display-flex align-center small-12 medium-6 large-{{ 12 / columns }} mb-2">
+                        <div class="team-card">
+                            <div class="team-card__image-wrapper">
+                                {% set image = page.media[person.image] %}
+                                {% if image %}
+                                    {{ image.cropZoom(400,400).html(person.name, person.name, 'team-card__img')|raw }}
+                                {% else %}
+                                    <div class="team-card__placeholder"></div>
+                                {% endif %}
+                            </div>
+                            <div class="team-card__content">
+                                <h5 class="team-card__name">{{ person.name }}</h5>
+                                <p class="team-card__bio">{{ person.bio }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

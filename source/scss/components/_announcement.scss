@@ -1,0 +1,33 @@
+/*
+Announcement bar
+*/
+
+.announcement-bar {
+    background-color: darken(get-color("secondary"), 20%);
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: relative;
+
+    &__inner {
+        display: inline-block;
+        padding-left: 100%; // Start off-screen
+        animation: marquee 20s linear infinite;
+        
+        &:hover {
+            animation-play-state: paused; // Nice UX: stop on hover so people can read
+        }
+    }
+
+    &__text {
+        padding-right: 90%; // Space between loops
+    }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-120%); }
+}

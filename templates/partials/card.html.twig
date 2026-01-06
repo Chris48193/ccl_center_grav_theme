@@ -1,0 +1,11 @@
+{% set extra_classes = (classes and classes != 'none') ? classes : '' %}
+
+<div class="ecl-card {{ extra_classes }}">
+    <div class="icon-box">
+        <i class="{{ icon|default('fa-star') }} ecl-card__icon"></i>
+    </div>
+    <div class="ecl-card__text-wrapper">
+        <h5 class="ecl-card__heading">{{ heading }}</h5>
+        <p class="ecl-card__content">{{ content }}</p>
+    </div>
+</div>

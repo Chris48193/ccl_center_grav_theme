@@ -1,0 +1,121 @@
+// ECL CCL Card
+.ecl-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 .25rem 2.25rem rgba(0, 0, 0, 0.08); // Softer shadow like the image
+    gap: 1.5rem;
+    height: 100%; // Critical for equal height
+    width: 100%;
+    transition: transform 0.3s ease;
+
+    @include breakpoint('large') {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .icon-box {
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: rgba(get-color('secondary-light'), 0.25);
+        border-radius: 0.75rem; // Rounded square look
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; // Prevent icon box from squishing
+        transition: all 0.3s ease;
+    }
+
+    &:hover,&:focus {
+        transform: translateY(-5px);
+
+        .icon-box {
+            background-color: rgba(get-color('primary'), .3);
+        }
+    }
+
+    &__icon {
+        font-size: 1.8rem;
+        color: get-color('secondary');
+    }
+
+    &__heading {
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: get-color('secondary');
+    }
+
+    &__content {
+        color: get-color('dark-grey'); 
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+}
+
+// Helper to ensure the cell allows children to stretch
+.display-flex {
+    display: flex !important;
+}
+
+.team-category {
+
+    &__title {
+        color: get-color('secondary');
+        margin-bottom: 0.5rem;
+    }
+    &__desc {
+        color: #777;
+    }
+
+    &__title, &__desc {
+        margin: 0 auto;
+        max-width: 60rem;
+    }
+}
+
+.team-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    &__image-wrapper {
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #f0f0f0;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    &__placeholder {
+        aspect-ratio: 1 / 1;
+        background: #e0e0e0;
+    }
+
+    &__name {
+        font-size: 1.25rem;
+        color: #333;
+        margin-bottom: 0.75rem;
+    }
+
+    &__bio {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+    }
+}

@@ -1,0 +1,28 @@
+{# templates/modular/base.html.twig #}
+    <div class="grid-container">
+        {# 1. Section Header (Common to all) #}
+        {% if page.title or page.content %}
+            <div class="grid-x grid-padding-x align-center {{ page.outer_classes ?? '' }}">
+                <div class="cell small-12 medium-10">
+                    {% if not page.header.no_title %}
+                        <h2 class="mb-6 text-center">{{ page.title }}</h2>
+                    {% endif %}
+                    {% if page.content %}
+                        <div class="mb-2 {{ page.header.classes }}">{{ page.content|raw }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        {# 2. Where the specific module content goes #}
+        {% block module_content %}{% endblock %}
+
+        {# 3. Common Bottom Button #}
+        {% if page.header.buttons %}
+            <div class="actions {{page.header.button_outer_classes}}">
+                {% for btn in page.header.buttons %}
+                    {% include 'partials/button.html.twig' with btn %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>

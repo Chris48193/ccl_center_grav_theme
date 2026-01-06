@@ -1,0 +1,26 @@
+{% extends 'modular/base.html.twig' %}
+
+{% block module_content %}
+    {# {% include 'partials/card-container.html.twig' with {
+        columns: page.header.columns|default(2),
+        items: page.header.features
+    } %} #}
+
+{% set classes = page.header.classes %}
+{% set features = page.header.features %}
+{% set columns = page.header.columns|default(2) %}
+
+<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-{{ columns|default(2) }} align-center">
+    {% for feature in features %}
+        <div class="cell display-flex small-12 medium-6 large-{{ 12 / columns }} mb-2">
+            {% include 'partials/card.html.twig' with {
+                icon: feature.icon,
+                heading: feature.heading,
+                content: feature.content,
+                classes: classes
+            } %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

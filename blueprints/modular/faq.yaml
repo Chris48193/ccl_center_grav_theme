@@ -1,0 +1,27 @@
+title: FAQ Module
+extends@: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        content:
+          fields:
+            header.faq_groups:
+              type: list
+              label: "Groupes de FAQ (ex: Cours, Examens)"
+              fields:
+                .group_title:
+                  type: text
+                  label: Titre du Groupe
+                .items:
+                  type: list
+                  label: Questions & Réponses
+                  fields:
+                    .question:
+                      type: text
+                      label: Question
+                    .answer:
+                      type: editor
+                      label: Réponse

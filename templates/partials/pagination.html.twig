@@ -1,0 +1,36 @@
+{# partials/pagination.html.twig #}
+
+{% if total_pages > 1 %}
+<nav class="pagination-container" aria-label="Pagination">
+    <ul class="pagination align-center">
+        
+        {# Previous Button #}
+        {% set prev_url = (current_page > 1) ? base_url ~ '/page' ~ config.system.param_sep ~ (current_page - 1) : '#' %}
+        <li class="pagination-previous {{ current_page == 1 ? 'disabled' : '' }}">
+            <a href="{{ prev_url }}">
+                <i class="fa fa-arrow-left"></i> Previous
+            </a>
+        </li>
+
+        {# Page Numbers #}
+        {% for i in 1..total_pages %}
+            {% if i == current_page %}
+                <li class="current"><a href="#">{{ i }}</a></li>
+            {% else %}
+                {# Using config.system.param_sep (usually ':') makes it compatible with all Grav setups #}
+                <li>
+                    <a href="{{ base_url ~ '/page' ~ config.system.param_sep ~ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {# Next Button #}
+        {% set next_url = (current_page < total_pages) ? base_url ~ '/page' ~ config.system.param_sep ~ (current_page + 1) : '#' %}
+        <li class="pagination-next {{ current_page == total_pages ? 'disabled' : '' }}">
+            <a href="{{ next_url }}">
+                Next <i class="fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+{% endif %}

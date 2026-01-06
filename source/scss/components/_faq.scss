@@ -1,0 +1,77 @@
+// Place in components/_faq.scss
+.faq-group {
+    &__title {
+        color: get-color('secondary');
+        font-weight: 700;
+        margin: 2.5rem 0 1.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.75rem;
+    }
+}
+
+.accordion {
+    border: none;
+    background: transparent;
+    margin-left: 0; // Reset theme margin
+
+    &-item {
+        // background: #f4f4f4; // Light grey background from Figma
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+        border: none;
+        list-style: none !important; // Force remove theme bullets
+
+        // Reset the :before pseudo-element from _page.scss
+        &:before {
+            content: none !important;
+        }
+
+        &.is-active {
+            .accordion-title {
+                background: get-color('secondary-light') !important;
+                color: get-color('secondary') !important;
+                // &:before {
+                //     // content: "\f106"; // FontAwesome Chevron Up
+                //     color: ;
+                // }
+            }
+        }
+    }
+
+    &-title {
+        border: none;
+        color: #333; // Neutral dark instead of secondary blue
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover, &:focus {
+            // background: #ededed !important;
+            color: #000;
+        }
+
+        // Custom Chevron for Figma look
+        &:before {
+            // content: "\f107"; // FontAwesome Chevron Down
+            // font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 2rem;
+            color: #fff;
+            margin-left: 1rem;
+            position: static; // Override theme's absolute positioning
+        }
+    }
+
+    &-content {
+        border: none;
+        background: lighten(get-color('secondary'), 80%) !important; // White background for the answer area
+        margin: 0 1px 1px 1px;
+        padding: 1.25rem;
+        color: #555;
+        border-radius: 0 0 6px 6px;
+    }
+}

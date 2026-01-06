@@ -10,3 +10,5 @@ entry:
     - js/box.js
   video:
     - js/video.js
+  countdown:
+    - js/countdown.js

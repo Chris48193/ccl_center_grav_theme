@@ -1,0 +1,39 @@
+{% extends 'modular/base.html.twig' %}
+
+{% block module_content %}
+    {% set limit = 3 %} {# Number of groups per page #}
+    {% set current_page = uri.param('page') ?: 1 %}
+    {% set total_items = page.header.faq_groups|length %}
+    {% set total_pages = (total_items / limit)|round(0, 'ceil') %}
+    {% set start_index = (current_page - 1) * limit %}
+    
+    {# Slice the groups for the current view #}
+    {% set paged_groups = page.header.faq_groups|slice(start_index, limit) %}
+
+    <div class="grid-x grid-padding-x align-center">
+        <div class="cell small-12 medium-10">
+            {% for group in paged_groups %}
+                <div class="faq-group">
+                    <h5 class="faq-group__title text-center">{{ group.group_title }}</h5>
+                    <ul class="accordion no-bullet" data-accordion data-allow-all-closed="true">
+                        {% for item in group.items %}
+                            <li class="accordion-item" data-accordion-item>
+                                <a href="#" class="accordion-title">{{ item.question }}</a>
+                                <div class="accordion-content" data-tab-content>
+                                    {{ item.answer|raw }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+
+            {# Include the reusable pagination #}
+            {% include 'partials/pagination.html.twig' with {
+                'total_pages': total_pages,
+                'current_page': current_page,
+                'base_url': page.parent.url
+            } %}
+        </div>
+    </div>
+{% endblock %}
