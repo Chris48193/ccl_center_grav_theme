@@ -22,6 +22,7 @@
     'layout/head-nav',
     'layout/hero',
     'layout/loader',
+    'layout/tables',
     'layout/jobs';
 
 @import
@@ -30,7 +31,14 @@
     'components/items_slider',
     'components/svg',
     'components/side-navigation',
-    'components/flag-icon';
+    'components/flag-icon',
+    'components/announcement',
+    'components/footer',
+    'components/faq',
+    'components/countdown',
+    'components/pagination',
+    'components/mycard',
+    'components/image-grid';
 
 @import
     'utilities/background',

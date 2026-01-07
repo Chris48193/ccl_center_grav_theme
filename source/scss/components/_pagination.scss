@@ -1,0 +1,52 @@
+.pagination-container {
+    margin-top: 3rem;
+    
+    .pagination {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 0.5rem;
+
+        li {
+            padding-left: 0 !important; // Reset global list styles
+            &:before { content: none !important; } // Reset bullets
+
+            a, span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 2.5em;
+                height: 2.5em;
+                padding: 0 .625em;
+                border-radius: .5em;
+                color: #777;
+                font-weight: 500;
+                transition: all 0.2s ease;
+            }
+
+            a:hover {
+                background: #f0f0f0;
+                color: #000;
+            }
+
+            &.current {
+                background: #333; // Dark background from your image
+                color: #fff;
+                border-radius: 8px;
+                font-weight: bold;
+            }
+
+            &.disabled {
+                opacity: 0.4;
+                pointer-events: none;
+            }
+            
+            &.pagination-previous, &.pagination-next {
+                a {
+                    font-size: 0.9rem;
+                    i { margin: 0 0.5rem; }
+                }
+            }
+        }
+    }
+}

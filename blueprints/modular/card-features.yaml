@@ -1,0 +1,44 @@
+title: Features Module
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            features_section:
+              type: section
+              title: Configuration des Cartes
+              underline: true
+
+            header.columns:
+              type: select
+              label: Nombre de colonnes (Desktop)
+              default: 2
+              options:
+                1: "1 Colonne"
+                2: "2 Colonnes"
+                3: "3 Colonnes"
+                4: "4 Colonnes"
+
+            header.features:
+              type: list
+              label: Liste des Cartes
+              btnLabel: Ajouter une carte
+              fields:
+                .icon:
+                  type: text
+                  label: Icon Class (FontAwesome)
+                  placeholder: "fa-globe"
+                  help: "Ex: fa-globe, fa-shield-alt, fa-comments"
+                
+                .heading:
+                  type: text
+                  label: Titre de la carte
+                  placeholder: "International Recognition"
+                
+                .content:
+                  type: textarea
+                  label: Description
+                  placeholder: "Entrez le texte de la carte ici..."

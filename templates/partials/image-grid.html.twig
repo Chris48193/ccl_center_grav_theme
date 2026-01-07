@@ -1,0 +1,30 @@
+{# 1. Find the gallery page #}
+{% set gallery_page = page.find('/gallerie') %}
+
+{# 2. Get the images and force them into a plain array using |values #}
+{% if gallery_page and gallery_page.media.images|length > 0 %}
+    {% set all_images = gallery_page.media.images %}
+{% else %}
+    {% set all_images = page.media.images %}
+{% endif %}
+
+{# 3. Now shuffle will work because all_images is a true array #}
+{% set grid_images = all_images %}
+
+{% if page.header.limit %}
+ {% set limit = page.header.limit %}
+ {% set grid_images = all_images|slice(0, limit) %}
+{% endif %}
+
+<div class="image-grid {{ limit ? 'image-grid--hero' : 'image-grid--full' }}">
+    {% for img in grid_images %} 
+        <div class="image-grid__item image-grid__item--{{ loop.index }}">
+            {# Use cropZoom to ensure uniform boxes #}
+            {% if limit %}
+                {{ img.cropZoom(600, 600).html(page.title, page.title, 'image-grid__img')|raw }}
+            {% else %}
+                {{ img.resize(800).html(page.title, page.title, 'image-grid__img')|raw }}
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

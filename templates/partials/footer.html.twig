@@ -1,0 +1,78 @@
+<footer class="footer pt-4 lg-pt-8 text-center large-text-left">
+  <div class="grid-container">
+    {# Rangée supérieure : Logo et Informations de contact #}
+    <div class="grid-x grid-padding-x align-justify footer__top">
+      <div class="cell small-12 medium-4 footer__brand">
+        <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
+            {{ page.media["theme://images/logo-ecl.png"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo")|raw }}
+            {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo logo-dark")|raw }}
+        </a>
+        <p class="footer__description">
+          Centre officiel d'examen ECL et de formation linguistique proposant des examens d'allemand certifiés du niveau A2 au C1.
+        </p>
+      </div>
+
+      <div class="cell small-12 medium-5 footer__contact lg-pt-2">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt icon"></i>
+          <p>1er Étage immeuble de la pharmacie GOTCH<br>Av Jacques Opangault, Songolo, Pointe-Noire<br>République du Congo</p>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp icon"></i>
+          <p><a href="https://wa.me/242069286707" target="_blank" rel="noopener">+242 06 928 6707</a></p>
+        </div>
+        <div class="contact-item">
+          <i class="far fa-envelope icon"></i>
+          <p><a href="mailto:info@ccl-center.com">info@ccl-center.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer__divider">
+
+  <div class="grid-container">
+    {# Rangée du milieu : Liens et Réseaux sociaux #}
+    <div class="grid-x grid-padding-x footer__middle">
+      <div class="grid-x cell small-12 medium-5 align-justify">
+        <div class="cell small-6 medium-6">
+          <h5>Liens Rapides</h5>
+          <ul class="vertical menu">
+            <li><a href="{{ base_url_relative }}/">Accueil</a></li>
+            <li><a href="http://ccl-center.com/a-propos-de-ccl-center">À Propos</a></li>
+            <li><a href="{{ base_url_relative }}/inscription">Inscription</a></li>
+          </ul>
+        </div>
+
+        <div class="cell small-6 medium-6">
+          <h5>Ressources</h5>
+          <ul class="vertical menu">
+            <li><a href="#">Préparation aux examens</a></li>
+            <li><a href="#">Exemples de tests</a></li>
+            <li><a href="#">Infos résultats</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cell small-12 medium-4 medium-offset-2 footer__socials">
+        <h5>Suivez-nous</h5>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/youtube.png') }}" alt="YouTube"></a>
+          <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/facebook.png') }}" alt="Facebook"></a>
+          <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/instagram.png') }}" alt="Instagram"></a>
+          <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/tiktok.png') }}" alt="TikTok"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Rangée inférieure : Copyright #}
+  <div class="footer__bottom">
+    <div class="grid-container">
+      <div class="grid-x align-justify">
+        <div class="cell shrink">@Copyright 2025 CCL-Center</div>
+        <div class="cell shrink"><a href="/politique-de-confidentialite">Politique de confidentialité</a></div>
+      </div>
+    </div>
+  </div>
+</footer>

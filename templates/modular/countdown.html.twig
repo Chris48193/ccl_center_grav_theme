@@ -1,0 +1,34 @@
+{# templates/partials/countdown.html.twig #}
+
+{% set target_date = site.exam.date|date('U') %}
+{% set now = "now"|date('U') %}
+
+{% if site.exam.active and target_date > now %}
+<div class="countdown-container">
+    <div class="grid-container">
+        <p class="countdown-title">
+            {{ page.header.subtitle }}: <strong>{{ site.exam.session }}</strong>
+        </p>
+        
+        <div class="countdown" id="ecl-countdown" data-date="{{ site.exam.date|date('Y/m/d H:i:s') }}">
+            <div class="countdown__item countdown__item--large">
+                <span class="countdown__number" id="days">00</span>
+                <span class="countdown__label">JOURS</span>
+            </div>
+            <div class="countdown__item">
+                <span class="countdown__number" id="hours">00</span>
+                <span class="countdown__label">HEURES</span>
+            </div>
+            <div class="countdown__item">
+                <span class="countdown__number" id="minutes">00</span>
+                <span class="countdown__label">MINUTES</span>
+            </div>
+            <div class="countdown__item">
+                <span class="countdown__number" id="seconds">00</span>
+                <span class="countdown__label">SECONDES</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}

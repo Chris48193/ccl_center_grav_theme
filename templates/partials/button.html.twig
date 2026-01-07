@@ -1,0 +1,21 @@
+{#
+  Reusable Button Partial
+  Parameters:
+  - url: The link (string)
+  - text: The button text (string)
+  - icon: FontAwesome class (string, optional, e.g., 'fa-arrow-right')
+  - outline: Boolean (optional, default false)
+  - classes: Additional classes (string, optional)
+#}
+
+{% set outline_class = outline ? 'styled-button--outline' : '' %}
+
+{# Only add the class if it exists and isn't the string 'none' #}
+{% set extra_classes = (classes and classes != 'none') ? classes : '' %}
+
+<a href="{{ url|default('#') }}" class="button large styled-button {{ outline_class }} {{ extra_classes }}">
+    <span class="styled-button__text">{{ text }}</span>
+    {% if icon %}
+        <i class="fa {{ icon }} styled-button__icon"></i>
+    {% endif %}
+</a>
