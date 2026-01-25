@@ -1,0 +1,45 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+{# Find the parent page #}
+{% set news_parent = page.find('/news-and-events') %}
+
+{# Fetch the collection as defined in news-list.md and take the first 3 #}
+{% set news_items = news_parent.collection().slice(0, 3) %}
+
+<div class="grid-container modular-news-section">
+    <div class="grid-x grid-margin-x align-middle mb-2">
+        <div class="cell auto">
+            {# <h2 class="section-title">{{ page.title }}</h2> #}
+        </div>
+        <div class="cell shrink">
+            <a href="{{ news_parent.url }}" class="button secondary hollow">Voir tout</a>
+        </div>
+    </div>
+    {% set size = 300 %}
+
+    <div class="grid-x grid-margin-x align-center news-listing">
+        {% for news in news_items %}
+            {% set category = news.taxonomy.news_category|first %}
+            <div class="cell medium-4 mt-4 bg-grey-light">
+
+                <a href="{{ news.url }}">
+                    <div>
+                        {{ helpers.news_image(news, size, "img news-item-border-" ~ site.cat_color_map[category]|default('orange')) }}
+                    </div>
+                    <div class="tag mb-2 ml-1 mr-1 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                    <div class="ml-1 mr-1">
+                        <h5 class="title">{{ news.header.hero_title|default(news.title)|raw }}</h5>
+                        <p class="news-card-excerpt">{{ news.summary(120)|striptags }}...</p>
+                        <span class="read-more mb-0" style="color: var(--primary-color);">En savoir plus &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+/* .modular-news-section { padding: 4rem 0; } */
+.news-card-excerpt { font-size: 0.9rem; color: #555; }
+.read-more { font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+</style>
