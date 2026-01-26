@@ -1,40 +1,43 @@
 {% import "partials/macros.html.twig" as helpers %}
+{% extends 'modular/base.html.twig' %}
 
-<div class="grid-container">
-    <div class="grid-x grid-margin-x">
-        <div class="cell large-12 list">
-            <div class="swiper items-slider">
-                <div class="swiper-wrapper">
-                    {% for item in page.header.items %}
-                        {% set image = item.image|default("theme://images/dummy.png") %}
-                        {% set id = item.id|default(helpers.pageLinkName(item.text)) %}
+{% block module_content %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell large-12 list">
+                <div class="swiper items-slider">
+                    <div class="swiper-wrapper">
+                        {% for item in page.header.items %}
+                            {% set image = item.image|default("theme://images/dummy.png") %}
+                            {% set id = item.id|default(helpers.pageLinkName(item.text)) %}
 
-                        <div class="swiper-slide item">
-                            <div class="image">{{ page.media[image].cropZoom(500,500).html("image for " ~ item.text, "image for " ~ item.text)|raw }}</div>
+                            <div class="swiper-slide item">
+                                <div class="image">{{ page.media[image].cropZoom(500,500).html("image for " ~ item.text, "image for " ~ item.text)|raw }}</div>
 
-                            <div class="text">
-                                <div class="title">{{ item.text|raw }}</div>
-                                <div class="duration">Durée: {{ item.duration|raw }}</div>
-                                <div class="price">Frais: {{ item.price|raw }}</div>
-                                <button class="button" data-open="{{ id }}">En savoir plus</button>
-                            </div>
-                        </div>
-
-
-                        <div class="reveal large items-reveal" id="{{ id }}" data-reveal>
-                            <div>
-                                {% include "partials/box.html.twig" with {title: item.text, content: item.content, title_classes: page.header.color|default("bg-secondary")} %}
+                                <div class="text">
+                                    <div class="title">{{ item.text|raw }}</div>
+                                    {% if item.duration %}<div class="duration">Durée: {{ item.duration|raw }}</div>{% endif %}
+                                    {% if item.price %}<div class="price">Frais: {{ item.price|raw }}</div>{% endif %}
+                                    <button class="button mt-3" data-open="{{ id }}">En savoir plus</button>
+                                </div>
                             </div>
 
-                            <button class="close-button" data-close aria-label="Close modal" type="button">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    {% endfor %}
+
+                            <div class="reveal large items-reveal" id="{{ id }}" data-reveal>
+                                <div>
+                                    {% include "partials/box.html.twig" with {title: item.text, content: item.content, title_classes: page.header.color|default("bg-secondary")} %}
+                                </div>
+
+                                <button class="close-button" data-close aria-label="Close modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="swiper-pagination"></div>
                 </div>
-
-                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
-</div>
+{% endblock %}

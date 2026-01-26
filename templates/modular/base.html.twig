@@ -3,7 +3,7 @@
         {# 1. Section Header (Common to all) #}
         {% if page.title or page.content %}
             <div class="grid-x grid-padding-x align-center {{ page.outer_classes ?? '' }}">
-                <div class="cell small-12 medium-10">
+                <div class="cell small-12">
                     {% if not page.header.no_title %}
                         <h2 class="mb-6 text-center">{{ page.title }}</h2>
                     {% endif %}

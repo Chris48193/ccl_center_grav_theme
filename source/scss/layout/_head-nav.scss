@@ -30,11 +30,17 @@
 
             &__logo {
                 margin-bottom: 1rem;
+                margin-top: 1rem;
                 height: 6rem;
                 // background: $white;
                 opacity: 1;
                 visibility: visible;
                 transition: 0.3s;
+
+                
+                @include breakpoint('large') {
+                    margin-block: 0.5rem;
+                }
             }
 
             &__link {
@@ -57,7 +63,12 @@
                 &-toggle {
                     color: get-color("secondary");
                     background-color: get-color("primary");
+                    margin-bottom: 0.5rem;
                 }
+            }
+
+            &__register-button {
+                display: none;
             }
 
             @include breakpoint('large') {
@@ -66,6 +77,10 @@
                     // background: transparent;
                     border-radius: 0;
                     padding-block: 0;
+                }
+
+                &__register-button {
+                    display: flex;
                 }
             }
 
@@ -97,28 +112,16 @@
                     height: 0;
                     opacity: 0;
                     visibility: hidden;
-                }
-            }
-            
-        }
-        @include breakpoint('large') {
-            // background:$white;
-            .head-nav {
-                &__logo {
-                    margin-bottom: 0rem;
-                    // background: transparent;
-                }
-            }
-            &.is-stuck {
-                .head-nav {
-                    &__logo {
-                        height: 4rem;
+                    
+                    @include breakpoint('large') {
+                        margin-block: 0;
+                        height: 5rem;
                         opacity: 1;
                         visibility: visible;
                     }
                 }
-                
             }
+            
         }
     }
 }

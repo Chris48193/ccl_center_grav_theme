@@ -13,7 +13,7 @@
 {# Only add the class if it exists and isn't the string 'none' #}
 {% set extra_classes = (classes and classes != 'none') ? classes : '' %}
 
-<a href="{{ url|default('#') }}" class="button large styled-button {{ outline_class }} {{ extra_classes }}">
+<a href="{{ url|default('#') }}" class="button btn-small styled-button {{ outline_class }} {{ extra_classes }}" target="_blank">
     <span class="styled-button__text">{{ text }}</span>
     {% if icon %}
         <i class="fa {{ icon }} styled-button__icon"></i>

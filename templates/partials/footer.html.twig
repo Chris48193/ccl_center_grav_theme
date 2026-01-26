@@ -1,18 +1,18 @@
-<footer class="footer pt-4 lg-pt-8 text-center large-text-left">
-  <div class="grid-container">
+<footer class="footer mt-10 text-center large-text-left">
+  <div class="grid-container mt-8 mb-8">
     {# Rangée supérieure : Logo et Informations de contact #}
     <div class="grid-x grid-padding-x align-justify footer__top">
       <div class="cell small-12 medium-4 footer__brand">
-        <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
-            {{ page.media["theme://images/logo-ecl.png"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo")|raw }}
-            {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo logo-dark")|raw }}
+        <a class="head-nav__home" href="https://ccl-center.com/">
+            {{ page.media["theme://images/logo.png"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo")|raw }}
+            {# {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo logo-dark")|raw }} #}
         </a>
-        <p class="footer__description">
+        <p class="footer__description mb-0">
           Centre officiel d'examen ECL et de formation linguistique proposant des examens d'allemand certifiés du niveau A2 au C1.
         </p>
       </div>
 
-      <div class="cell small-12 medium-5 footer__contact lg-pt-2">
+      <div class="cell small-12 medium-5 footer__contact mt-5 md-mt-0 lg-pt-2">
         <div class="contact-item">
           <i class="fas fa-map-marker-alt icon"></i>
           <p>1er Étage immeuble de la pharmacie GOTCH<br>Av Jacques Opangault, Songolo, Pointe-Noire<br>République du Congo</p>
@@ -31,7 +31,7 @@
 
   <hr class="footer__divider">
 
-  <div class="grid-container">
+  <div class="grid-container mt-8 mb-8">
     {# Rangée du milieu : Liens et Réseaux sociaux #}
     <div class="grid-x grid-padding-x footer__middle">
       <div class="grid-x cell small-12 medium-5 align-justify">
@@ -40,16 +40,16 @@
           <ul class="vertical menu">
             <li><a href="{{ base_url_relative }}/">Accueil</a></li>
             <li><a href="http://ccl-center.com/a-propos-de-ccl-center">À Propos</a></li>
-            <li><a href="{{ base_url_relative }}/inscription">Inscription</a></li>
+            <li><a href="https://exam.eclexam.eu">Inscription</a></li>
           </ul>
         </div>
 
         <div class="cell small-6 medium-6">
           <h5>Ressources</h5>
           <ul class="vertical menu">
-            <li><a href="#">Préparation aux examens</a></li>
-            <li><a href="#">Exemples de tests</a></li>
-            <li><a href="#">Infos résultats</a></li>
+            <li><a href="https://eclexam.eu/deutsch/mustertests/">Préparation aux examens</a></li>
+            <li><a href="https://eclexam.eu/deutsch/mustertests/">Exemples de tests</a></li>
+            <li><a href="https://eclexam.eu/deutsch/prufungsergebnisse/">Infos résultats</a></li>
           </ul>
         </div>
       </div>
@@ -71,7 +71,7 @@
     <div class="grid-container">
       <div class="grid-x align-justify">
         <div class="cell shrink">@Copyright 2025 CCL-Center</div>
-        <div class="cell shrink"><a href="/politique-de-confidentialite">Politique de confidentialité</a></div>
+        <div class="cell shrink"><a href="/politique-de-confidentialite" target="_blank">Politique de confidentialité</a></div>
       </div>
     </div>
   </div>

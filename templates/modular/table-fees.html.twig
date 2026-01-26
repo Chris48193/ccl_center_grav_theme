@@ -1,38 +1,5 @@
 {% extends 'modular/base.html.twig' %}
 
 {% block module_content %}
-    <div class="table-container">
-        <div class="table-scroll"> {# Foundation class for mobile responsiveness #}
-            <table class="ecl-table">
-                <thead>
-                    <tr>
-                        <th rowspan="2">Niveau</th>
-                        <th colspan="2">Candidats CCL-Center</th>
-                        <th colspan="2">Candidats Externes</th>
-                    </tr>
-                    <tr>
-                        <th>Examen Complet</th>
-                        <th>Partiel (Oral/Écrit)</th>
-                        <th>Examen Complet</th>
-                        <th>Partiel (Oral/Écrit)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in page.header.fees_table %}
-                    <tr>
-                        <td class="text-bold">{{ row.level }}</td>
-                        <td>{{ row.ccl_full }}</td>
-                        <td>{{ row.ccl_partial }}</td>
-                        <td>{{ row.ext_full }}</td>
-                        <td>{{ row.ext_partial }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        {% if page.header.footer_note %}
-            <p class="table-footer-note mt-1 text-center"><em>{{ page.header.footer_note }}</em></p>
-        {% endif %}
-    </div>
+    {# {{content|raw}} #}
 {% endblock %}

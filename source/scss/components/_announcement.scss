@@ -3,8 +3,8 @@ Announcement bar
 */
 
 .announcement-bar {
-    background-color: darken(get-color("secondary"), 20%);
-    color: white;
+    background-color: get-color("quaternary");
+    color: get-color("secondary");
     overflow: hidden;
     white-space: nowrap;
     padding: 0.5rem 0;

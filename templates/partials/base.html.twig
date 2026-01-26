@@ -29,8 +29,7 @@
 
         {% include "partials/favicons.html.twig" %}
         {% endblock %}
-    </head>
-    
+    </head>    
 
     <body class="{{ page.header.body_classes }}">
         {% include "partials/no-js.html.twig" %}
@@ -41,12 +40,12 @@
                 <header class="page-head">
                     <div class="data-sticky-container">
                         <div data-sticky data-options="marginTop:0; stickyOn:small">
-                        {% if site.announcement.active and site.announcement.text is not empty %}
+                        {% if page.find("/").header.announcement %}
                             <div class="announcement-bar">
                                 <div class="announcement-bar__inner">
-                                    <span class="announcement-bar__text">{{ site.announcement.text }}</span>
+                                    <span class="announcement-bar__text">{{ page.find("/").header.announcement }}</span>
                                     {# Repeat the text once to ensure a seamless loop #}
-                                    <span class="announcement-bar__text" aria-hidden="true">{{ site.announcement.text }}</span>
+                                    <span class="announcement-bar__text" aria-hidden="true">{{ page.find("/").header.announcement }}</span>
                                 </div>
                             </div>
                         {% endif %}

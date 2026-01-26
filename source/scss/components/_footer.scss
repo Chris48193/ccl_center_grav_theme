@@ -2,6 +2,7 @@
   background-color: get-color('secondary');
   color: #ffffff;
   font-size: 0.9rem;
+    padding-top: 1rem;
 
   a {
     color: #fff;
@@ -79,7 +80,6 @@
   // 2. DESKTOP REFINEMENTS (Breakpoints)
   @include breakpoint('large') {
     text-align: left; // Revert to left align for desktop rows
-    padding-top: 4rem;
 
     &__logo {
       margin: 0 0 1.5rem 0; // Align logo left
@@ -95,7 +95,7 @@
     .contact-item {
       flex-direction: row; // Horizontal layout for desktop
       align-items: center;
-      margin-bottom: 1.2rem;
+      // margin-bottom: 1.2rem;
       gap: 1rem;
 
       i { width: 2.5rem; }

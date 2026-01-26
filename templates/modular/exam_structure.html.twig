@@ -1,0 +1,18 @@
+{% extends 'modular/base.html.twig' %}
+
+{% block module_content %}
+    <div class="exam_structure">
+        {% for item in page.header.items %}
+            {% set isEven = loop.index % 2 == 0 %}
+            <div class="grid-x grid-margin-x align-center resource">
+                <div class="cell medium-6 image {{ isEven ? '' : 'medium-push-6' }}">
+                    {{ page.media[item.image].resize(600,600).html(item.text)|raw }}
+                </div>
+
+                <div class="cell medium-6 exam_structure_text {{ isEven ? '' : 'medium-pull-6' }}">
+                    <div class="">{{ item.text|markdown|raw }}</div>                    
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

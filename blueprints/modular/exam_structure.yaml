@@ -1,0 +1,20 @@
+title: Exam structure
+extends@: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        content:
+          fields:
+            header.items:
+              type: list
+              style: vertical
+              fields:
+                .text:
+                  type: markdown
+                  label: Text
+                .image:
+                  type: filepicker
+                  label: Image
