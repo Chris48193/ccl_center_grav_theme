@@ -1,0 +1,30 @@
+// Partners
+
+.partners-title { font-weight: 800; margin-bottom: 1rem; }
+.partners-content { margin-bottom: 3rem; color: #666; font-size: 1.1rem; }
+
+/* Vertical layout grid styling */
+.partners-grid-v { 
+    margin-top: 2rem;
+    justify-content: center;
+}
+.partner-logo-wrapper { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    /* border: 1px solid gray; */
+    height: 120px;
+}
+.partner-img { 
+    filter: grayscale(30%); 
+    opacity: 0.8; 
+    transition: all 0.4s ease-in-out; 
+    max-height: 115px; /* Adjust based on your logo sizes */
+    width: auto; 
+}
+.partner-logo-wrapper:hover .partner-img { 
+    filter: grayscale(0%); 
+    opacity: 1; 
+    transform: scale(1.1);
+}
