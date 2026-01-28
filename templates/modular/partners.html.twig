@@ -1,0 +1,65 @@
+{% import "partials/macros.html.twig" as helpers %}
+
+<div class="grid-container partners-section">
+    <div class="grid-x grid-margin-x align-center">
+        
+        {# Left Side: Title and Description #}
+        <div class="cell small-12 medium-10 large-8">
+            {# <h2 class="partners-title">{{ page.title }}</h2> #}
+            {% include "partials/title.html.twig" with {"title": page.title, "tag": "h2", "classes": page.header.title_classes} only %}
+            <div class="partners-content">
+                {{ page.content|raw }}
+            </div>
+        </div>
+
+        {# Right Side: Logo Grid #}
+        <div class="cell small-12">
+            <div class="grid-x grid-margin-x small-up-2 medium-up-3 partners-grid-v">
+                {% for partner in page.header.partners %}
+                    <div class="cell partner-logo-wrapper">
+                        <a href="{{ partner.url|default('#') }}" target="_blank" rel="noopener" class="partner-link">
+                            {% set image = page.media[partner.logo] %}
+                            {% if image %}
+                                {{ image.resize(250).html(partner.name, partner.name, "partner-img")|raw }}
+                            {% else %}
+                                <img src="{{ url('theme://images/dummy.png') }}" alt="{{ partner.name }}" class="partner-img">
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+.partners-title { font-weight: 800; margin-bottom: 1rem; }
+.partners-content { margin-bottom: 3rem; color: #666; font-size: 1.1rem; }
+
+/* Vertical layout grid styling */
+.partners-grid-v { 
+    margin-top: 2rem;
+    justify-content: center;
+}
+.partner-logo-wrapper { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    /* border: 1px solid gray; */
+    height: 120px;
+}
+.partner-img { 
+    filter: grayscale(30%); 
+    opacity: 0.8; 
+    transition: all 0.4s ease-in-out; 
+    max-height: 115px; /* Adjust based on your logo sizes */
+    width: auto; 
+}
+.partner-logo-wrapper:hover .partner-img { 
+    filter: grayscale(0%); 
+    opacity: 1; 
+    transform: scale(1.05);
+}
+</style>
