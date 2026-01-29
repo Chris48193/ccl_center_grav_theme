@@ -47,6 +47,10 @@
                     </div>
                 </header>
             {% endblock %}
+            
+            {% block popup %}
+                {% include 'partials/ecl-popup.html.twig' %}
+            {% endblock %}
 
             {% block hero %}
                 {% include "partials/hero.html.twig" %}
