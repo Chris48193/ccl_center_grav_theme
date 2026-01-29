@@ -1,0 +1,38 @@
+{# Check if we are on the homepage #}
+{% if page.home %}
+<div class="reveal large ecl-announcement-modal" id="eclExamModal" data-reveal data-close-on-click="false" data-animation-in="fade-in" data-animation-out="fade-out">
+    <div class="modal-content text-center">
+        <h2 class="text-primary">🎓 Examens ECL Officiels</h2>
+        <hr>
+        <p class="lead">Les prochaines sessions d'examens ECL à Pointe-Noire approchent !</p>
+        
+        <div class="callout secondary">
+            <p><strong>Date limite d'inscription :</strong> 15 Mars 2026</p>
+            <p><strong>Dates des examens :</strong> 10 - 12 Avril 2026</p>
+        </div>
+
+        <p>Veuillez prendre connaissance des modalités avant de poursuivre vers le site.</p>
+        
+        <div class="checkbox-container">
+            <input id="ack-check" type="checkbox">
+            <label for="ack-check">J'ai compris et je souhaite accéder au site</label>
+        </div>
+
+        <div id="modal-footer" class="mt-2" style="height: 50px;">
+            {# Close button is hidden by default via CSS #}
+            <button class="button success hidden" id="close-ecl-modal" data-close aria-label="Close modal" type="button">
+                Continuer vers CCL Center
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Modal takes up most of the window */
+.ecl-announcement-modal { min-height: 70vh; padding: 3rem !important; border-radius: 12px; }
+.hidden { display: none !important; }
+.checkbox-container { margin: 2rem 0; font-size: 1.1rem; }
+.checkbox-container label { cursor: pointer; font-weight: bold; }
+input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; }
+</style>
+{% endif %}

@@ -12,3 +12,5 @@ entry:
     - js/video.js
   countdown:
     - js/countdown.js
+  # ecl-pop-up:
+  #   - js/ecl-pop-up.js
