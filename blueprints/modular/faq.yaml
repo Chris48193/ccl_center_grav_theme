@@ -15,6 +15,9 @@ form:
                 .group_title:
                   type: text
                   label: Titre du Groupe
+                .link:
+                  type: text
+                  label: Lien du groupe
                 .items:
                   type: list
                   label: Questions & Réponses
@@ -23,5 +26,5 @@ form:
                       type: text
                       label: Question
                     .answer:
-                      type: editor
+                      type: markdown
                       label: Réponse
