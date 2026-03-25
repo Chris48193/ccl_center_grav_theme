@@ -12,7 +12,9 @@
                 <div class="grid-container">
                     <div class="grid-x grid-margin-x">
                         <div class="cell">
-                            {% include "partials/title.html.twig" with {"title": module.title, "tag": "h2", "classes": page.header.title_classes} only %}
+                        {% if page.header.show_title|defined(true) %}
+                                {% include "partials/title.html.twig" with {"title": module.title, "tag": "h2", "classes": page.header.title_classes} only %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

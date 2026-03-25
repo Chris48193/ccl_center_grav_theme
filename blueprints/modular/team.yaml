@@ -1,0 +1,34 @@
+title: Team Module
+extends@: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        content:
+          fields:
+            header.team_categories:
+              type: list
+              label: Catégories d'équipe
+              fields:
+                .category_title:
+                  type: text
+                  label: "Titre de la catégorie (ex: Instructeurs)"
+                .category_desc:
+                  type: textarea
+                  label: Description de la catégorie
+                .members:
+                  type: list
+                  label: Membres de l'équipe
+                  fields:
+                    .name:
+                      type: text
+                      label: Nom
+                    .bio:
+                      type: textarea
+                      label: Courte biographie
+                    .image:
+                      type: filepicker
+                      label: Photo de profil
+                      folder: 'self@'

@@ -1,0 +1,93 @@
+title: Master Hero
+extends@: default
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        content:
+          fields:
+            background_section:
+              type: section
+              title: 1. Background Configuration
+              underline: true
+            
+            header.bg_type:
+              type: select
+              label: Type de Fond
+              default: none
+              options:
+                none: "Aucun"
+                static: "Image Fixe"
+                slider: "Slider (Images défilantes)"
+                video: "Vidéo (Arrière-plan)"
+                gradient: "Dégradé Thème"
+
+            header.hero_bg:
+              type: filepicker
+              label: Image de fond (ou Poster Vidéo)
+              folder: 'self'
+              preview_images: true
+              condition: "last(header.bg_type) == 'static' or last(header.bg_type) == 'video'"
+
+            header.hero_slider:
+              type: list
+              label: Images du Slider
+              condition: "last(header.bg_type) == 'slider'"
+              fields:
+                .img:
+                  type: filepicker
+                  label: Image
+                  folder: 'self'
+
+            visual_section:
+              type: section
+              title: 2. Foreground Visuals
+              underline: true
+
+            header.hero_visual_type:
+              type: select
+              label: Élément visuel (à côté du texte)
+              default: none
+              options:
+                none: "Aucun (Texte seul)"
+                image: "Image Unique"
+                grid: "Grille ECL"
+                video: "Vidéo (Player)"
+
+            header.hero_image:
+              type: filepicker
+              label: Image visuelle
+              folder: 'self'
+              condition: "last(header.hero_visual_type) == 'image'"
+
+            header.hero_video:
+              type: filepicker
+              label: Fichier Vidéo
+              folder: 'self'
+              condition: "last(header.hero_visual_type) == 'video'"
+
+            layout_section:
+              type: section
+              title: 3. Layout & Styling
+              underline: true
+
+            header.reverse:
+              type: toggle
+              label: Inverser l'ordre
+              help: "Met le visuel à gauche et le texte à droite"
+              highlight: 1
+              default: 0
+              options:
+                1: Oui
+                0: Non
+
+            header.height_class:
+              type: select
+              label: Hauteur
+              default: hero--standard
+              options:
+                hero--standard: Standard
+                hero--tall: Plein Écran (Tall)
+                hero--short: Compact

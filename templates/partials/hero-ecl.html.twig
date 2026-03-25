@@ -1,0 +1,87 @@
+{# templates/partials/hero.html.twig #}
+{% set h = page.header %}
+{% set has_content = (page.content|trim is not empty or h.buttons) %}
+{% set isHome = page.url == "/" %}
+
+<div class="{{ h.classes ?? '' }} {{ h.height_class|default('') }} {{ h.bg_type == 'gradient' ? 'hero--gradient' : '' }}">
+    
+    {# 1. Background Layer #}
+    <div class="hero-bg-container">
+        {% if h.bg_type == 'static' or h.bg_type == 'video' %}
+            {% set bg_url = page.media[h.hero_bg].url|default(url('theme://images/default-bg.jpg')) %}
+            <div class="hero-static-bg" style="background-image: url('{{ bg_url }}');"></div>
+            {% if h.bg_type == 'video' and h.hero_bg_video %}
+                    <video autoplay muted loop playsinline class="hero-video-bg">
+                    <source src="{{ page.media[h.hero_bg_video].url }}" type="video/mp4">
+                    </video>
+            {% endif %}
+        {% endif %}
+
+        {% if h.bg_type == 'slider' %}
+            <div class="swiper hero-slider">
+                <div class="swiper-wrapper">
+                    {% for item in h.hero_slider %}
+                        <div class="swiper-slide" style="background-image:url('{{ page.media[item.img].url }}');"></div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if h.bg_type != 'none' %}
+            <div class="hero-overlay"></div>
+        {% endif %}
+    </div>
+        
+    
+
+    {# 2. Content Layer #}
+    {% if has_content or h.hero_visual_type != 'none' %}
+    <div class="grid-container {{ h.grid_classes }}">
+        <div class="grid-x grid-margin-x align-justify align-middle {{ h.reverse ? 'flex-dir-row-reverse' : '' }}">
+            
+            {# Text Column #}
+            {% if has_content %}
+            <div class="cell small-12 mt-4 lg-mt-0 mb-4 lg-mb-0 {{ h.hero_visual_type != 'none' ? 'large-6' : 'large-12 large-offset-2' }}">
+                <div class="hero-text-content text-center large-text-left">
+                    {% if h.show_title %}
+                        <h2 class="hero-title">{{ page.title }}</h2> 
+                    {% endif %}
+                    <div class="hero-body">{{ page.content|raw }}</div>
+                    
+                    {% if h.buttons %}
+                        <div class="hero-actions mt-4">
+                            {% for btn in h.buttons %}
+                                {% include 'partials/button.html.twig' with btn %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {# Visual Column #}
+            {% if h.hero_visual_type != 'none' %}
+                <div class="cell small-12 large-5">
+                    <div class="hero-visual-wrapper">
+                        {% if h.hero_visual_type == 'grid' %}
+                            {% include 'partials/image-grid.html.twig' %}
+                        {% elseif h.hero_visual_type == 'image' %}
+                            {{ page.media[h.hero_image].html(null, page.title, 'hero-main-img')|raw }}
+                        {% elseif h.hero_visual_type == 'video' %}
+                            {# <video controls class="hero-main-video">
+                                <source src="{{ page.media[h.hero_video].url }}" type="video/mp4">
+                            </video> #}
+                            
+                            {% include "partials/video.html.twig" with {
+                                url: page.media[h.hero_video].url,
+                                poster: page.media[h.hero_video_poster].url,
+                            } %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+    {% endif %}
+</div>

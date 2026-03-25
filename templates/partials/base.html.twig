@@ -53,7 +53,9 @@
             {% endblock %}
 
             {% block hero %}
-                {% include "partials/hero.html.twig" %}
+                {% if not page.header.team %}
+                    {% include "partials/hero.html.twig" %}
+                {% endif %}
             {% endblock %}
             
             {% block sidenavigation %}
