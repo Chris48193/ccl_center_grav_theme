@@ -3,35 +3,24 @@
 
 <div class="grid-container">
     <nav class="head-nav grid-x align-middle" role="navigation">
-        <div class="cell shrink logo-container">
+        <div class="cell large-2 logo-container">
             <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
                 {{ page.media["theme://images/logo.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
                 {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo logo-dark")|raw }}
             </a>
         </div>
+
         <div class="cell text-center hide-for-large">
-            <button class="button head-nav__menu-toggle hide-for-large" type="button" data-toggle="responsive-menu">
+             <button class="button head-nav__menu-toggle hide-for-large" type="button" data-toggle="responsive-menu">
                 <i class="head-nav__menu-icon"></i>
                 <span class="head-nav__menu-text">Menu</span>
             </button>
         </div>
-        <div class="cell large-auto">
-            <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
-                <ul class="head-nav__menu menu vertical large-horizontal nowrap" data-responsive-menu="accordion large-dropdown">
-                    {{ self.loop(pages, 1) }}
 
-                    {# Add the button as a list item at the end #}
-                    <li class="head-nav__item head-nav__item--button-container">
-                        <div class="head-nav__button-wrapper">
-                            {% include 'partials/button.html.twig' with {
-                                'url': 'https://ecl.ccl-center.com',
-                                'text': "Examen ECL",
-                                'icon': 'fa fa-external-link-alt',
-                                'classes': "btn-small head-nav__register-button",
-                                'outline': true
-                            } %}
-                        </div>
-                    </li>
+        <div class="cell auto">
+            <div id="responsive-menu" class="navigation-line show-for-large text-right" data-toggler="show-for-large">
+                <ul class="head-nav__menu menu vertical large-horizontal align-right" data-responsive-menu="accordion large-dropdown">
+                    {{ self.loop(pages, 1) }}
                 </ul>
             </div>
         </div>

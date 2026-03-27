@@ -3,18 +3,66 @@
 // -----------------------------------------------------------------------------
 
 .styled-button {
-    background-color: get-color("secondary-light");
-    color: get-color("secondary");
+    // 1. Layout & Alignment
+    display: inline-flex;       // Better for buttons than 'flex'
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;    // Centers content horizontally
+    gap: .75rem;                  // Reliable spacing between text and icon
+    
+    // 2. Shape & Typography
     border-radius: 10px;
-    padding-inline: 3rem;
-    font-weight: 700;
+    box-shadow: 0 .3rem 1.5rem rgba(get-color(dark-grey), 0.5);
+
+    margin: 0;
+    padding-inline: 1.8rem;
+    // font-weight: 700;
+    transition: all 0.4s ease;  // Smooth hover transition
+    
+    // 3. Base Colors
+    background-color: get-color("secondary");
+    color: white;
+    border: 1px solid transparent; // Prevents "jumping" when border added on hover
 
     @include breakpoint('large') {
-        padding-inline: 5rem;
+        padding-inline: 2rem;
     }
 
-    &:hover {
-        background-color: darken(get-color("secondary"), 2%);
+    // 4. Icon/Text specific tweaks
+    &__icon {
+        font-size: 0.9em; // Slightly smaller than text if desired
+        flex-shrink: 0;   // Prevents the icon from squishing
+    }
+
+    &__text {
+        flex-grow: 0;
+    }
+
+     &:hover {
+        background-color: get-color("secondary-light");
+        color: get-color("secondary");
+        border-color: get-color("secondary-light"); // Keeps border consistent
+    }
+    // 5. Outline Variant
+    &--outline {
+        background-color: transparent;
+        border: 1px solid white;
         color: white;
+        box-shadow: none;
+
+        // When the class .coloured is also present
+        &.coloured {
+            border-color: get-color("secondary");
+            color: get-color("secondary");
+        }
+    }
+
+}
+
+.btn-small {
+    font-size: 1rem !important;
+
+    .styled-button__icon {
+        font-size: 0.9em; // Slightly smaller than text if desired
     }
 }

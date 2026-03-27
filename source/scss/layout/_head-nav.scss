@@ -39,6 +39,8 @@
 
             &__link {
                 color: $white;
+                white-space: nowrap;
+                
                 @include breakpoint('large') {
                     // color: black;
                     // font-weight: 700;
@@ -62,15 +64,31 @@
 
             @include breakpoint('large') {
                 &__menu {
-                    justify-content: space-around;
+                    justify-content: flex-end;
                     // background: transparent;
                     border-radius: 0;
                     padding-block: 0;
+
+                    flex-wrap: nowrap !important;
+                    align-items: center; 
+                    
+                    gap: 0.5rem !important;
                 }
             }
 
             &__item {
                 text-align: center;
+                &--button-container {
+                    display: flex;
+                    align-items: center;    // This prevents the button from stretching vertically
+                    justify-content: center;
+                    padding-left: 1.25rem;  // Spacing between the last menu link and the button
+                    height: auto;           // Ensures it doesn't inherit a forced height
+
+                    .head-nav__button-wrapper {
+                        line-height: 1;     // Prevents text line-height from adding extra vertical bulk
+                    }
+                }
             }
 
             // &__item{
