@@ -12,6 +12,12 @@
     overflow: hidden; // Keeps corners rounded
     box-shadow: 0 .25rem .75rem rgba(0,0,0,0.05);
 
+    &--text-left {
+        td:nth-child(2) {
+            text-align: left !important;
+        }
+    }
+
     thead {
         background: rgba(get-color('secondary'), .1);
         color: get-color('secondary');
@@ -42,6 +48,7 @@
             }
         }
     }
+
 }
 
 .table-footer-note {

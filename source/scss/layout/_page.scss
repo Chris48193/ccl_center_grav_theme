@@ -47,7 +47,7 @@ body:not(.home) {
 }
 main, .reveal-overlay {
     ul.no-bullet, ol.no-bullet {
-        li {
+        & > li {
             padding-left:0!important;
             &:before {
                 content:none!important;

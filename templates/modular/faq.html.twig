@@ -14,18 +14,29 @@
         <div class="cell small-12 medium-10">
             {% for group in paged_groups %}
                 <div class="faq-group">
+                {% if group.link %}
+                <a href="{{group.link}}">
+                    <h5 class="faq-group__title faq-group__title--link text-center">{{ group.group_title }}</h5>
+                </a>
+                {% else %}
                     <h5 class="faq-group__title text-center">{{ group.group_title }}</h5>
+                {% endif %}
+                
                     <ul class="accordion no-bullet" data-accordion data-allow-all-closed="true">
                         {% for item in group.items %}
                             <li class="accordion-item" data-accordion-item>
                                 <a href="#" class="accordion-title">{{ item.question }}</a>
                                 <div class="accordion-content" data-tab-content>
-                                    {{ item.answer|raw }}
+                                    {{ item.answer|markdown|raw }}
                                 </div>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
+                {% if group.link %}
+                    <a href="{{group.link}}" target="_blank" class="faq-group__more text-center">En savoir plus <i class="fa fa-external-link"></i></a>
+                {% endif %}
+                
             {% endfor %}
 
             {# Include the reusable pagination #}

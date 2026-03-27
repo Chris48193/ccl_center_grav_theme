@@ -6,6 +6,27 @@
         margin: 2.5rem 0 1.5rem;
         border-bottom: 1px solid #eee;
         padding-bottom: 0.75rem;
+        transition: all 0.2s ease;
+    }
+
+    & > a {
+        .faq-group__title {
+            color: lighten(get-color('secondary'), 15%);
+        }
+    }
+    & > a:hover {
+        .faq-group__title {
+            color: get-color('secondary');
+            transform: scale(1.02);
+        }
+    }
+
+    &__more {
+        color: get-color('secondary');
+        display: block;
+    }
+    &__more:is(:hover, :focus) {
+        color: lighten(get-color('secondary'), 10%);
     }
 }
 
