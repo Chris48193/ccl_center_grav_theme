@@ -9,23 +9,18 @@
      data-reveal 
      data-close-on-click="false" 
      data-active="{{ exam_data.active }}"
-     {# Restored this line so your JS can find the date #}
      data-exam-date="{{ exam_data.deadline|date("Y-m-d H:i") }}">
      
     <div class="modal-content text-center">
-        <h2 class="text-secondary">🚨 {{ exam_data.session }}</h2>
-        <hr>
         
-        <div class="lead">
-            {{ exam_data.custom_text|raw }}
-        </div>
+        {# This line pulls EVERYTHING you typed in the Admin Panel 'content' box #}
+        {{ exam_data.content|raw }}
         
         <div class="callout secondary" style="margin-top: 2rem;">
             <h5>Date limite d'inscription :</h5>
             <p class="h4">
                 <strong>
                     {% set dt = exam_data.deadline|date("d F Y") %}
-                    {# Manual translation for French months #}
                     {{ dt|replace({
                         'January': 'janvier', 'February': 'février', 'March': 'mars', 
                         'April': 'avril', 'May': 'mai', 'June': 'juin', 
@@ -54,6 +49,5 @@
 .hidden { display: none !important; }
 .checkbox-container { margin: 1.5rem 0; font-size: 1.1rem; }
 #modal-footer .button { font-weight: bold; padding: 1rem 2rem; border-radius: 5px; }
-.modal-content .lead { line-height: 1.6; }
 </style>
 {% endif %}
