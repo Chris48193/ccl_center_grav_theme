@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/* document.addEventListener('DOMContentLoaded', function() {
     // We use querySelector but keep the check simple
     const modalElement = document.getElementById('eclExamModal');
     if (!modalElement) return;
@@ -44,4 +44,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+}); */
+
+// -------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    const popups = document.querySelectorAll('.ecl-announcement-modal');
+    
+    popups.forEach((modal, index) => {
+        const popupId = modal.getAttribute('data-popup-id');
+        const expiryDate = new Date(modal.getAttribute('data-expiry')).getTime();
+        const cooldownDays = parseInt(modal.getAttribute('data-cooldown')) || 7;
+        const now = new Date().getTime();
+
+        const storageKey = `ecl_seen_${popupId}`;
+        const lastSeen = localStorage.getItem(storageKey);
+        const cooldownMillis = cooldownDays * 24 * 60 * 60 * 1000;
+
+        if (expiryDate > now) {
+            if (!lastSeen || (now - lastSeen) > cooldownMillis) {
+                // Stagger multiple popups so they don't overlap all at once
+                setTimeout(() => {
+                    $(modal).foundation('open');
+                }, 5000 + (index * 2000)); 
+
+                const checkbox = modal.querySelector('.popup-ack-check');
+                const closeBtn = modal.querySelector('.close-ecl-modal');
+
+                checkbox.addEventListener('change', function() {
+                    this.checked ? closeBtn.classList.remove('hidden') : closeBtn.classList.add('hidden');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    localStorage.setItem(storageKey, new Date().getTime());
+                });
+            }
+        }
+    });
 });

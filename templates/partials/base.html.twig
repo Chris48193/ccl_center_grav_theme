@@ -77,11 +77,17 @@
             {% endblock %}
 
             {% block bottom deferred %}
-            {{ assets.js()|raw }}
-            {{ assets.js("bottom")|raw }}
+                {# Ensure jQuery and Foundation are rendered first #}
+                {{ assets.js()|raw }} 
+                
+                {# Now add and render the popup #}
+                {% do assets.addJs('theme://js/ecl-popup.7147ebe2.js', {'group': 'bottom', 'priority': 10}) %}
+                {{ assets.js("bottom")|raw }}
             {% endblock %}
             
             <a href="#" id="top-button" class="top-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
         </div>
+
+        {% include "partials/ecl-popup.html.twig" %}
     </body>
 </html>
