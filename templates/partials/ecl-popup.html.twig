@@ -15,7 +15,7 @@
                 {# Unified Date display if deadline exists #}
                 {% if popup.deadline %}
                 <div class="callout secondary" style="margin-top: 2rem;">
-                    <h5>Date limite :</h5>
+                    <h5> {{ popup.limit_text }}</h5>
                     <p class="h4"><strong>{{ popup.deadline|date("d F Y")|replace({'January': 'janvier', 'February': 'février', 'March': 'mars', 'April': 'avril', 'May': 'mai', 'June': 'juin', 'July': 'juillet', 'August': 'août', 'September': 'septembre', 'October': 'octobre', 'November': 'novembre', 'December': 'décembre'}) }}</strong></p>
                 </div>
                 {% endif %}
