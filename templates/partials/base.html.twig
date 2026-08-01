@@ -11,6 +11,11 @@
 
             {% include "partials/metadata.html.twig" %}
 
+            {# --- HREFLANG MULTI-LANGUAGE SEO TAGS --- #}
+            {% if config.plugins.langswitcher.enabled %}
+                {% include 'partials/langswitcher.hreflang.html.twig' %}
+            {% endif %}
+
             <link rel="canonical" href="{{ page.url(true, true) }}" />
 
             {% do assets.add("runtime", 100) %}
