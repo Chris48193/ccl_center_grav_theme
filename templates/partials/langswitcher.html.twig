@@ -1,0 +1,22 @@
+{% if config.plugins.langswitcher.enabled %}
+  {% set current_lang = grav.language.getLanguage() %}
+  {% set supported_languages = config.system.languages.supported %}
+
+  <a href="#" class="head-nav__link head-nav__lang-trigger">
+    <i class="fa-solid fa-globe"></i>
+    <span>{{ current_lang|upper }}</span>
+  </a>
+  
+  <ul class="head-nav__submenu head-nav__lang-dropdown">
+    {% for lang in supported_languages %}
+      {% if lang != current_lang %}
+        {% set lang_url = page.url(lang, true) %}
+        <li>
+          <a href="{{ lang_url ~ uri.params }}">
+            {{ lang|upper }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
