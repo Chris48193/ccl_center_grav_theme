@@ -22,12 +22,12 @@
 
                     {# --- LANGUAGE SWITCHER INTEGRATION --- #}
                     {% if config.plugins.langswitcher.enabled %}
-                        <li class="head-nav__item head-nav__item--langswitcher">
+                        <li class="head-nav__item head-nav__item--has-submenu head-nav__item--langswitcher">
                             {% include 'partials/langswitcher.html.twig' %}
                         </li>
                     {% endif %}
 
-                    {# Add the button as a list item at the end #}
+                    {# --- CTA BUTTON (RIGHTMOST ITEM) --- #}
                     <li class="head-nav__item head-nav__item--button-container">
                         <div class="head-nav__button-wrapper">
                             {% include 'partials/button.html.twig' with {
@@ -44,6 +44,7 @@
         </div>
     </nav>
 </div>
+
 {% macro loop(page, levels = 2) %}
     {% import _self as self %}
     {% for p in page.children.visible %}

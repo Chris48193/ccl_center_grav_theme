@@ -140,3 +140,62 @@
         }
     }
 }
+
+// -----------------------------------------------------------------------------
+// Language Switcher Component
+// -----------------------------------------------------------------------------
+.head-nav__item--langswitcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .head-nav__lang-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.6rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: $white;
+    border: 1px solid rgba($white, 0.25);
+    border-radius: $global-radius;
+    transition: all 0.2s ease;
+
+    i {
+      font-size: 0.8rem;
+      color: get-color('primary');
+    }
+
+    &:hover {
+      border-color: get-color('primary');
+      color: get-color('primary');
+    }
+  }
+
+  // Override dropdown styling specifically for language menu
+  .head-nav__lang-dropdown {
+    min-width: 70px !important;
+    width: auto !important;
+    padding: 0.5rem 0 !important;
+    background-color: get-color('secondary') !important;
+    border: 1px solid rgba(get-color('primary'), 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
+    li {
+      a {
+        color: $white !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        text-align: center;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background-color: get-color('primary') !important;
+          color: get-color('secondary') !important;
+        }
+      }
+    }
+  }
+}
