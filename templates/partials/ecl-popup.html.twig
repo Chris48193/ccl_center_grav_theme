@@ -1,6 +1,10 @@
+{% set current_lang = grav.language.getLanguage %}
 
 {% for popup in config.site.ecl_popups %}
     {% if popup.active == '1' %}
+        {# Language Fallback Strategy: Active Lang -> English -> Direct Property #}
+        {% set p_lang = popup[current_lang] ?? popup['en'] ?? popup %}
+        
         <div class="reveal middle ecl-announcement-modal" 
              id="modal-{{ popup.id }}" 
              data-reveal 
@@ -10,23 +14,27 @@
              data-cooldown="{{ popup.cooldown }}">
              
             <div class="modal-content text-center">
-                {{ popup.content|raw }}
+                {{ p_lang.content|raw }}
 
                 {# Unified Date display if deadline exists #}
                 {% if popup.deadline %}
                 <div class="callout secondary" style="margin-top: 2rem;">
-                    <h5> {{ popup.limit_text }}</h5>
-                    <p class="h4"><strong>{{ popup.deadline|date("d F Y")|replace({'January': 'janvier', 'February': 'février', 'March': 'mars', 'April': 'avril', 'May': 'mai', 'June': 'juin', 'July': 'juillet', 'August': 'août', 'September': 'septembre', 'October': 'octobre', 'November': 'novembre', 'December': 'décembre'}) }}</strong></p>
+                    <h5>{{ p_lang.limit_text }}</h5>
+                    <p class="h4"><strong>{{ popup.deadline|date("d F Y")|t }}</strong></p>
                 </div>
                 {% endif %}
 
-                <div class="checkbox-container grid-x align-center-middle">
-                    <input id="ack-{{ popup.id }}" type="checkbox" class="popup-ack-check" style="width: auto; margin-right: 15px; transform: scale(1.5);">
-                    <label for="ack-{{ popup.id }}" style="cursor: pointer; font-weight: bold;">J'ai compris</label>
+                <div class="checkbox-container">
+                    <label for="ack-{{ popup.id }}" class="checkbox-label">
+                        <input id="ack-{{ popup.id }}" type="checkbox" class="popup-ack-check">
+                        <span>{{ 'PLUGIN_ECL_POPUPS.I_UNDERSTAND'|t }}</span>
+                    </label>
                 </div>
 
                 <div class="modal-footer" style="min-height: 50px;">
-                    <button class="button success hidden shadow close-ecl-modal" data-close type="button">Continuer</button>
+                    <button class="button success hidden shadow close-ecl-modal" data-close type="button">
+                        {{ 'PLUGIN_ECL_POPUPS.CONTINUE'|t }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -34,8 +42,43 @@
 {% endfor %}
 
 <style>
-.ecl-announcement-modal { min-height: 60vh; padding: 2rem !important; border-radius: 12px; border: none; box-shadow: 0 10px 50px rgba(0,0,0,0.3); max-width: 600px; }
+.ecl-announcement-modal { 
+    min-height: 60vh; 
+    padding: 2rem !important; 
+    border-radius: 12px; 
+    border: none; 
+    box-shadow: 0 10px 50px rgba(0,0,0,0.3); 
+    max-width: 600px; 
+}
 .hidden { display: none !important; }
-.checkbox-container { margin: 1.5rem 0; font-size: 1.1rem; }
-#modal-footer .button { font-weight: bold; padding: 1rem 2rem; border-radius: 5px; }
+
+/* Flexbox alignment for checkbox and label */
+.checkbox-container { 
+    margin: 1.5rem 0; 
+    font-size: 1.1rem; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+.popup-ack-check {
+    margin: 0 !important;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.modal-footer .button { 
+    font-weight: bold; 
+    padding: 1rem 2rem; 
+    border-radius: 5px; 
+}
 </style>

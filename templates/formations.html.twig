@@ -16,12 +16,11 @@
 
                         <div class="text">
                             <div class="title">{{ item.text|raw }}</div>
-                            <div class="duration">Durée: {{ item.duration|raw }}</div>
-                            <div class="price">Frais: {{ item.price|raw }}</div>
-                            <button class="button" data-open="{{ id }}">En savoir plus</button>
+                            <div class="duration">{{ 'THEME_CCL.DURATION'|t }}: {{ item.duration|raw }}</div>
+                            <div class="price">{{ 'THEME_CCL.FEES'|t }}: {{ item.price|raw }}</div>
+                            <button class="button" data-open="{{ id }}">{{ 'THEME_CCL.READ_MORE'|t }}</button>
                         </div>
                     </div>
-
 
                     <div class="reveal large items-reveal" id="{{ id }}" data-reveal>
                         <div>
@@ -38,10 +37,11 @@
             <div class="grid-x grid-margin-x align-center mt-5">
                 <div class="cell text-center">
                     <div class="callout primary">
-                        <div><b>Je ne connais pas la formation qui me convient</b></div>
-                        <div><a href="/contact" class="button mt-3">Réserver une consultation</a></div>
+                        <div><b>{{ 'THEME_CCL.HELP_CHOOSING_COURSE'|t }}</b></div>
+                        <div><a href="/contact" class="button mt-3">{{ 'THEME_CCL.BOOK_CONSULTATION'|t }}</a></div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 {% endblock %}
