@@ -2,7 +2,12 @@
 // Hero
 // -----------------------------------------------------------------------------
 .hero-wrapper {
-    padding-top: 9rem;
+    // REDUCE THIS: Change 9rem to match the shorter horizontal header height (e.g., 4.5rem to 5rem)
+    padding-top: 4.5rem; 
+
+    @include breakpoint("large") {
+        padding-top: 5rem;
+    }
 
     @include breakpoint("large") {
         padding-top: 5rem;

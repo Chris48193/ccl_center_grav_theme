@@ -2,37 +2,56 @@
 {% set user = grav.user %}
 
 <div class="grid-container">
-    <nav class="head-nav grid-x align-middle" role="navigation">
-        <div class="cell shrink logo-container">
+    {# Added align-justify so logo stays far-left and controls stay far-right #}
+    <nav class="head-nav grid-x align-middle align-justify" role="navigation">
+
+        {# --- LEFT: LOGO --- #}
+        <div class="cell auto large-shrink logo-container">
             <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
                 {{ page.media["theme://images/logo.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
                 {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo logo-dark")|raw }}
             </a>
         </div>
-        <div class="cell text-center hide-for-large">
-            <button class="button head-nav__menu-toggle hide-for-large" type="button" data-toggle="responsive-menu">
-                <i class="head-nav__menu-icon"></i>
-                <span class="head-nav__menu-text">Menu</span>
+
+        {# --- MOBILE ONLY CONTROLS (Langswitcher + Sandwich Toggle) --- #}
+        <div class="cell shrink hide-for-large head-nav__mobile-controls">
+            
+            {# Direct Mobile Langswitcher #}
+            {% if config.plugins.langswitcher.enabled %}
+                <div class="head-nav__item--langswitcher head-nav__item--langswitcher-mobile">
+                    {% include 'partials/langswitcher.html.twig' %}
+                </div>
+            {% endif %}
+
+            {# Sandwich / Close Toggle Button #}
+            <button class="head-nav__menu-toggle" type="button" data-toggle="responsive-menu" aria-label="Toggle Navigation">
+                <span class="head-nav__hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </button>
         </div>
-        <div class="cell large-auto">
+
+        {# --- DESKTOP & EXPANDED MOBILE MENU --- #}
+        <div class="cell small-12 large-auto">
             <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
                 <ul class="head-nav__menu menu vertical large-horizontal nowrap" data-responsive-menu="accordion large-dropdown">
                     {{ self.loop(pages, 1) }}
 
-                    {# --- LANGUAGE SWITCHER INTEGRATION --- #}
+                    {# --- DESKTOP LANGUAGE SWITCHER --- #}
                     {% if config.plugins.langswitcher.enabled %}
-                        <li class="head-nav__item head-nav__item--has-submenu head-nav__item--langswitcher">
+                        <li class="head-nav__item head-nav__item--has-submenu head-nav__item--langswitcher show-for-large">
                             {% include 'partials/langswitcher.html.twig' %}
                         </li>
                     {% endif %}
 
-                    {# --- CTA BUTTON (RIGHTMOST ITEM) --- #}
+                    {# --- CTA BUTTON --- #}
                     <li class="head-nav__item head-nav__item--button-container">
                         <div class="head-nav__button-wrapper">
                             {% include 'partials/button.html.twig' with {
                                 'url': 'https://ecl.ccl-center.com',
-                                'text': "Examen ECL",
+                                'text': 'THEME_CCL.ECL_EXAM'|t,
                                 'icon': 'fa fa-external-link-alt',
                                 'classes': "btn-small head-nav__register-button",
                                 'outline': true
@@ -42,6 +61,7 @@
                 </ul>
             </div>
         </div>
+
     </nav>
 </div>
 
