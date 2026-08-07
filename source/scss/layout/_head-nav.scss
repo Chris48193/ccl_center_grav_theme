@@ -283,3 +283,49 @@
         font-size: 0.75rem;
     }
 }
+
+// for langswitcher
+
+#responsive-menu {
+    @include breakpoint('large') {
+        display: flex !important;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+// Ensure the links UL fills the middle area
+.head-nav__menu {
+    @include breakpoint('large') {
+        flex-grow: 1; /* Pushes the menu to fill space between logo and actions */
+        display: flex;
+        align-items: center;
+        
+        /* OPTION A: Centered links with clean spacing */
+        justify-content: center; 
+        gap: 2rem; 
+
+        /* OPTION B: Evenly spread across the middle space (uncomment if preferred) */
+        // justify-content: space-evenly;
+        
+        border-radius: 0;
+        padding-block: 0;
+    }
+}
+
+.head-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-left: auto; /* Guarantees actions stick to the far right */
+    flex-shrink: 0;   /* Prevents button/langswitcher from squishing */
+
+    .head-nav__item--langswitcher {
+        width: auto;
+        padding: 0;
+    }
+
+    .head-nav__register-button {
+        display: inline-flex;
+    }
+}
