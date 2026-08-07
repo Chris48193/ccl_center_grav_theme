@@ -1,15 +1,12 @@
-{% extends "default.html.twig" %}
-
-{% set category = page.taxonomy.news_category|first %}
-
-{% block title %}
-{% endblock %}
+{# Normalize default category fallback key #}
+{% set category = page.taxonomy.news_category|first|default('other') %}
+{% set category_color = site.cat_color_map[category]|default('secondary') %}
 
 {% block content %}
     <div class="title-news text-center">
         <h1>{{ page.title }}</h1>
-        <time datetime='{{ page.date|date("c") }}' class="" style="display:block;">
-            {{ page.date|date("j F Y") }}, {{ (page.content|split(" ")|length / 200)|round }} minute de lecture
+        <time datetime='{{ page.date|date("c") }}' style="display:block;">
+            {{ page.date|date("j F Y") }}, {{ (page.content|split(" ")|length / 200)|round }} {{ 'THEME_CCL.READING_TIME'|t }}
         </time>
     </div>
 
@@ -23,7 +20,9 @@
         {% endif %}
         <div class="grid-x grid-margin-x pt-4">
             <div class="cell medium-10 medium-push-2 pt-1">
-                <div class="tag mb-2 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                <div class="tag mb-2 bg-{{ category_color }}">
+                    {{ ('THEME_CCL.CATEGORY.' ~ category)|t }}
+                </div>
                 <div>
                     {{ page.content|raw }}
                 </div>
@@ -33,24 +32,17 @@
                             {% block item %}
                                 <div class="cell mb-4">
                                     {{
-                                        page.media[item.image].lightbox(1200, 675).cropZoom(
-                                            600,
-                                            400
-                                        ).quality(
-                                            70
-                                        ).html(
-                                            item.text
-                                        )|raw
+                                        page.media[item.image].lightbox(1200, 675).cropZoom(600, 400).quality(70).html(item.text)|raw
                                     }}
                                     <div class="text-center">{{ item.text|raw }}</div>
                                 </div>
-                            {% endblock %}
+                            {% block end %}
                         {% endembed %}
                     </div>
                 </div>
             </div>
             <div class="cell medium-2 medium-pull-10 pt-1">
-                Partager:
+                {{ 'THEME_CCL.SHARE'|t }}:
                 <div>
                     {% include "partials/share.html.twig" %}
                 </div>

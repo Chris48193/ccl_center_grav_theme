@@ -12,25 +12,45 @@
             {# <h2 class="section-title">{{ page.title }}</h2> #}
         </div>
         <div class="cell shrink">
-            <a href="{{ news_parent.url }}" class="button secondary hollow">Voir tout</a>
+            <a href="{{ news_parent.url }}" class="button secondary hollow">{{ 'THEME_CCL.VIEW_ALL'|t }}</a>
         </div>
     </div>
     {% set size = 300 %}
 
     <div class="grid-x grid-margin-x align-center news-listing">
-        {% for news in news_items %}
+        {# {% for news in news_items %}
             {% set category = news.taxonomy.news_category|first %}
             <div class="cell medium-3 mt-4 bg-grey-light">
 
                 <a href="{{ news.url }}">
                     <div>
-                        {{ helpers.news_image(news, size, "img news-item-border-" ~ site.cat_color_map[category]|default('orange')) }}
+                        {{ helpers.news_image(news, size, "img news-item-border-" ~ site.cat_color_map[category]|default('secondary')) }}
                     </div>
-                    <div class="tag mb-2 ml-1 mr-1 bg-{{ site.cat_color_map[category]|default('orange') }}">{{ category|default("Others")|raw }}</div>
+                    <div class="tag mb-2 ml-1 mr-1 bg-{{ site.cat_color_map[category]|default('secondary') }}">{{ category|default("Others")|raw }}</div>
                     <div class="ml-1 mr-1">
                         <h5 class="title">{{ news.header.hero_title|default(news.title)|raw }}</h5>
                         <p class="news-card-excerpt">{{ news.summary(120)|striptags }}...</p>
-                        <span class="read-more mb-0" style="color: var(--primary-color);">En savoir plus &rarr;</span>
+                        <span class="read-more mb-0" style="color: var(--primary-color);">{{ 'THEME_CCL.READ_MORE'|t }} &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %} #}
+        
+        {% for news in news_items %}
+            {% set category = news.taxonomy.news_category|first|default('other') %}
+            {% set category_color = site.cat_color_map[category]|default('secondary') %}
+            <div class="cell medium-3 mt-4 bg-grey-light">
+                <a href="{{ news.url }}">
+                    <div>
+                        {{ helpers.news_image(news, size, "img news-item-border-" ~ category_color) }}
+                    </div>
+                    <div class="tag mb-2 ml-1 mr-1 bg-{{ category_color }}">
+                        {{ ('THEME_CCL.CATEGORY.' ~ category)|t }}
+                    </div>
+                    <div class="ml-1 mr-1">
+                        <h5 class="title">{{ news.header.hero_title|default(news.title)|raw }}</h5>
+                        <p class="news-card-excerpt">{{ news.summary(120)|striptags }}...</p>
+                        <span class="read-more mb-0" style="color: var(--primary-color);">{{ 'THEME_CCL.READ_MORE'|t }} &rarr;</span>
                     </div>
                 </a>
             </div>
