@@ -2,37 +2,65 @@
 {% set user = grav.user %}
 
 <div class="grid-container">
-    <nav class="head-nav grid-x align-middle align-center pb-2 lg-pb-0" role="navigation">
-        <div class="cell large-2 logo-container">
+    <nav class="head-nav grid-x align-middle align-justify pb-2 lg-pb-0" role="navigation">
+        
+        {# --- LEFT: LOGO --- #}
+        <div class="cell auto large-shrink logo-container">
             <a class="head-nav__home" href="{{ base_url == "" ? "/" : base_url }}">
                 {{ page.media["theme://images/logo-ecl.png"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo")|raw }}
                 {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "head-nav__logo logo-dark")|raw }}
             </a>
         </div>
-        <div class="cell text-center hide-for-large">
-            <button class="button head-nav__menu-toggle hide-for-large" type="button" data-toggle="responsive-menu">
-                <i class="head-nav__menu-icon"></i>
-                <span class="head-nav__menu-text">Menu</span>
+
+        {# --- MOBILE ONLY CONTROLS (Sandwich Toggle) --- #}
+        <div class="cell shrink hide-for-large head-nav__mobile-controls">
+            {% if config.plugins.langswitcher.enabled %}
+                <div class="head-nav__item--langswitcher head-nav__item--langswitcher-mobile">
+                    {% include 'partials/langswitcher.html.twig' %}
+                </div>
+            {% endif %}
+
+            <button class="head-nav__menu-toggle" type="button" data-toggle="responsive-menu" aria-label="Toggle Navigation">
+                <span class="head-nav__hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </button>
         </div>
-        <div class="cell large-auto">
+
+        {# --- DESKTOP & EXPANDED MOBILE MENU --- #}
+        <div class="cell small-12 large-auto">
             <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
                 <ul class="head-nav__menu menu vertical large-horizontal" data-responsive-menu="accordion large-dropdown">
                     {{ self.loop(pages, 1) }}
+
+                    {# --- DESKTOP LANGUAGE SWITCHER --- #}
+                    {% if config.plugins.langswitcher.enabled %}
+                        <li class="head-nav__item head-nav__item--has-submenu head-nav__item--langswitcher show-for-large">
+                            {% include 'partials/langswitcher.html.twig' %}
+                        </li>
+                    {% endif %}
+
+                    {# --- CTA BUTTON --- #}
+                    <li class="head-nav__item head-nav__item--button-container">
+                        <div class="head-nav__button-wrapper">
+                            {% include 'partials/button.html.twig' with {
+                                'url': 'https://exam.eclexam.eu/?id=P69NL7',
+                                'text': "S'inscrire",
+                                'icon': 'fa-user-plus',
+                                'classes': "btn-small head-nav__register-button",
+                                'outline': true
+                            } %}
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
-        <div class="cell large-2 lg-ml-4 text-center large-text-right">
-            {% include 'partials/button.html.twig' with {
-                'url': 'https://exam.eclexam.eu/?id=P69NL7',
-                'text': "S'inscrire",
-                'icon': 'fa-user-plus',
-                'classes': "btn-small head-nav__register-button",
-                'outline': true
-            } %}
-        </div>
+
     </nav>
 </div>
+
 {% macro loop(page, levels = 2) %}
     {% import _self as self %}
     {% for p in page.children.visible %}
@@ -53,7 +81,6 @@
             {% set destination = p.header.external_link ?: (p.routable ? p.url : "#") %}
             {% set target = p.header.external_link ? 'target="_blank" rel="noopener noreferrer"' : '' %}
 
-            {# Use the dynamic destination variable here #}
             <a href="{{ destination }}" {{ target|raw }} class="head-nav__link {{ active ? "head-nav__link--active" : "" }}">
                 {{ p.menu }}
             </a>
