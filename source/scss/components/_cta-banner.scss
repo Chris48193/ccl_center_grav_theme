@@ -1,0 +1,5 @@
+.ecl-banner { 
+    background: linear-gradient(90deg, get-color('primary') 0%, lighten(get-color('tertiary'), 20) 100%);
+    border-radius: 8px; 
+    // margin: 2rem 0;
+}
