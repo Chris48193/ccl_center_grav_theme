@@ -7,28 +7,27 @@
 <div class="countdown-container">
     <div class="grid-container">
         <p class="countdown-title">
-            {{ page.header.subtitle }}: <strong>{{ page.header.exam.session }}</strong>
+            {{ page.header.subtitle }}: <strong>{{ 'THEME_ECL.SITE.EXAM_SESSION'|t|default(site.exam.session) }}</strong>
         </p>
         
         <div class="countdown" id="ecl-countdown" data-date="{{ page.header.exam.date|date('Y/m/d H:i:s') }}">
             <div class="countdown__item countdown__item--large">
                 <span class="countdown__number" id="days">00</span>
-                <span class="countdown__label">JOURS</span>
+                <span class="countdown__label">{{ 'THEME_ECL.COUNTDOWN.DAYS'|t }}</span>
             </div>
             <div class="countdown__item">
                 <span class="countdown__number" id="hours">00</span>
-                <span class="countdown__label">HEURES</span>
+                <span class="countdown__label">{{ 'THEME_ECL.COUNTDOWN.HOURS'|t }}</span>
             </div>
             <div class="countdown__item">
                 <span class="countdown__number" id="minutes">00</span>
-                <span class="countdown__label">MINUTES</span>
+                <span class="countdown__label">{{ 'THEME_ECL.COUNTDOWN.MINUTES'|t }}</span>
             </div>
             <div class="countdown__item">
                 <span class="countdown__number" id="seconds">00</span>
-                <span class="countdown__label">SECONDES</span>
+                <span class="countdown__label">{{ 'THEME_ECL.COUNTDOWN.SECONDS'|t }}</span>
             </div>
         </div>
     </div>
 </div>
-
 {% endif %}

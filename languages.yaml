@@ -1,125 +1,140 @@
-fr:
-  THEME_CCL:
-    READ_MORE: "En savoir plus"
-    CONTACT_US: "Contactez-nous"
-    DOWNLOAD_PDF: "Consultez le document (PDF)"
-    DURATION: "Durée"
-    FEES: "Frais"
-    HELP_CHOOSING_COURSE: "Je ne connais pas la formation qui me convient"
-    BOOK_CONSULTATION: "Réserver une consultation"
-    LOCATION: "Lieu"
-    CONTRACT: "Contrat"
-    UPCOMING_EVENTS: "Événements à venir"
-    NEWS: "Actualités"
-    CATEGORIES: "Catégories"
-    ALL: "Tout"
-    READING_TIME: "minute(s) de lecture"
-    SHARE: "Partager"
-    VIEW_ALL: "Voir tout"
-    LOADING: "Chargement"
-    MENU: "Menu"
-    ECL_EXAM: "Examen ECL"
-    NO_JS_INFO: "Ce site web nécessite JavaScript pour fonctionner correctement. Veuillez activer JavaScript dans votre navigateur."
-    FOLLOW_US_ON_FACEBOOK: "Suivez-nous sur Facebook"
-    FOLLOW_US_ON_INSTAGRAM: "Suivez-nous sur Instagram"
-    FOLLOW_US_ON_TIKTOK: "Suivez-nous sur TikTok"
-    SITE_DESCRIPTION: "Votre partenaire pour votre projet d'étude, de formation ou de travail en Allemagne"
-    CATEGORY:
-      news: "Actualités"
-      events: "Événements"
-      courses: "Cours d'allemand"
-      exams: "Examens"
-      certificates: "Certificats"
-      partnerships: "Partenariats"
-      jobs: "Emplois"
-      announcements: "Annonces"
-      other: "Autres"
-  PLUGIN_ECL_POPUPS:
-    I_UNDERSTAND: "J'ai compris"
-    CONTINUE: "Continuer"
-  GRAV:
-    MONTHS_OF_THE_YEAR: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
-
 en:
-  THEME_CCL:
-    READ_MORE: "Read More"
-    CONTACT_US: "Contact Us"
-    DOWNLOAD_PDF: "View Document (PDF)"
-    DURATION: "Duration"
-    FEES: "Fees"
-    HELP_CHOOSING_COURSE: "I don't know which course suits me"
-    BOOK_CONSULTATION: "Book a consultation"
-    LOCATION: "Location"
-    CONTRACT: "Contract"
-    UPCOMING_EVENTS: "Upcoming Events"
-    NEWS: "News"
-    CATEGORIES: "Categories"
-    ALL: "All"
-    READING_TIME: "min read"
-    SHARE: "Share"
-    VIEW_ALL: "View all"
-    LOADING: "Loading"
-    MENU: "Menu"
-    ECL_EXAM: "ECL Exam"
-    NO_JS_INFO: "This website needs JavaScript to work properly. Please activate JavaScript on your browser."
-    FOLLOW_US_ON_FACEBOOK: "Follow us on Facebook"
-    FOLLOW_US_ON_INSTAGRAM: "Follow us on Instagram"
-    FOLLOW_US_ON_TIKTOK: "Follow us on TikTok"
-    SITE_DESCRIPTION: "Your partner for your study, training, or work project in Germany"
-    CATEGORY:
-      news: "News"
-      events: "Events"
-      courses: "German Courses"
-      exams: "Exams"
-      certificates: "Certificates"
-      partnerships: "Partnerships"
-      jobs: "Jobs"
-      announcements: "Announcements"
-      other: "Other"
-  PLUGIN_ECL_POPUPS:
-    I_UNDERSTAND: "I understand"
-    CONTINUE: "Continue"
-  GRAV:
-    MONTHS_OF_THE_YEAR: [January, February, March, April, May, June, July, August, September, October, November, December]
+  THEME_ECL:
+    # Site Configuration Overrides / Fallbacks
+    SITE:
+      TITLE: "CCL - Center : ECL"
+      DESCRIPTION: "Certify your German with ECL at CCL Center – Studies, Training, and Work in Germany"
+      ANNOUNCEMENT_TEXT: "Welcome to CCL Center! Registrations for the January session are now open."
+      EXAM_SESSION: "April 2026 Session"
+      ADDRESS: "1st Floor GOTCH Pharmacy Building\nAv Jacques Opangault, Songolo, Pointe-Noire\nRepublic of the Congo"
+
+    # UI Components & Controls
+    LOADER:
+      LOADING: "Loading"
+    NO_JS:
+      MESSAGE: "This website needs JavaScript to work properly. Please activate JavaScript on your browser."
+    PAGINATION:
+      PREVIOUS: "Previous"
+      NEXT: "Next"
+    SIDE_NAV:
+      FACEBOOK: "Follow us on Facebook"
+      INSTAGRAM: "Follow us on Instagram"
+      TIKTOK: "Follow us on TikTok"
+    COUNTDOWN:
+      DAYS: "DAYS"
+      HOURS: "HOURS"
+      MINUTES: "MINUTES"
+      SECONDS: "SECONDS"
+    FAQ:
+      LEARN_MORE: "Learn more"
+    GALLERY:
+      SUBTITLE: "Please take a virtual tour of our center through a few pictures"
+
+    # Footer Section
+    FOOTER:
+      DEFAULT_DESCRIPTION: "Official ECL examination and language training center offering certified German exams from A2 to C1 levels."
+      QUICK_LINKS: "Quick Links"
+      HOME: "Home"
+      ABOUT: "About Us"
+      REGISTRATION: "Registration"
+      RESOURCES: "Resources"
+      PREPARATION: "Exam Preparation"
+      SAMPLE_TESTS: "Sample Tests"
+      RESULTS_INFO: "Results Info"
+      FOLLOW_US: "Follow Us"
+      ALL_RIGHTS_RESERVED: "All rights reserved."
+      PRIVACY_POLICY: "Privacy Policy"
+
+fr:
+  THEME_ECL:
+    # Site Configuration Overrides / Fallbacks
+    SITE:
+      TITLE: "CCL - Center : ECL"
+      DESCRIPTION: "Certifiez votre Allemand avec ECL au CCL Center – Études, Formation et Travail en Allemagne"
+      ANNOUNCEMENT_TEXT: "Bienvenue au CCL Center ! Les inscriptions pour la session de Janvier sont ouvertes."
+      EXAM_SESSION: "Session d'Avril 2026"
+      ADDRESS: "1er Étage immeuble de la pharmacie GOTCH\nAv Jacques Opangault, Songolo, Pointe-Noire\nRépublique du Congo"
+
+    # UI Components & Controls
+    LOADER:
+      LOADING: "Chargement"
+    NO_JS:
+      MESSAGE: "Ce site web nécessite JavaScript pour fonctionner correctement. Veuillez activer JavaScript dans votre navigateur."
+    PAGINATION:
+      PREVIOUS: "Précédent"
+      NEXT: "Suivant"
+    SIDE_NAV:
+      FACEBOOK: "Suivez-nous sur Facebook"
+      INSTAGRAM: "Suivez-nous sur Instagram"
+      TIKTOK: "Suivez-nous sur TikTok"
+    COUNTDOWN:
+      DAYS: "JOURS"
+      HOURS: "HEURES"
+      MINUTES: "MINUTES"
+      SECONDS: "SECONDES"
+    FAQ:
+      LEARN_MORE: "En savoir plus"
+    GALLERY:
+      SUBTITLE: "Veuillez visiter notre centre à travers quelques images"
+
+    # Footer Section
+    FOOTER:
+      DEFAULT_DESCRIPTION: "Centre officiel d'examen ECL et de formation linguistique proposant des examens d'allemand certifiés du niveau A2 au C1."
+      QUICK_LINKS: "Liens Rapides"
+      HOME: "Accueil"
+      ABOUT: "À Propos"
+      REGISTRATION: "Inscription"
+      RESOURCES: "Ressources"
+      PREPARATION: "Préparation aux examens"
+      SAMPLE_TESTS: "Exemples de tests"
+      RESULTS_INFO: "Infos résultats"
+      FOLLOW_US: "Suivez-nous"
+      ALL_RIGHTS_RESERVED: "Tous droits réservés."
+      PRIVACY_POLICY: "Politique de confidentialité"
 
 de:
-  THEME_CCL:
-    READ_MORE: "Mehr lesen"
-    CONTACT_US: "Kontaktieren Sie uns"
-    DOWNLOAD_PDF: "Dokument ansehen (PDF)"
-    DURATION: "Dauer"
-    FEES: "Gebühren"
-    HELP_CHOOSING_COURSE: "Ich weiß nicht, welcher Kurs zu mir passt"
-    BOOK_CONSULTATION: "Beratung buchen"
-    LOCATION: "Ort"
-    CONTRACT: "Vertrag"
-    UPCOMING_EVENTS: "Kommende Veranstaltungen"
-    NEWS: "Aktuelles"
-    CATEGORIES: "Kategorien"
-    ALL: "Alle"
-    READING_TIME: "Min. Lesezeit"
-    SHARE: "Teilen"
-    VIEW_ALL: "Alle anzeigen"
-    LOADING: "Laden"
-    MENU: "Menü"
-    ECL_EXAM: "ECL-Prüfung"
-    NO_JS_INFO: "Diese Website benötigt JavaScript, um ordnungsgemäß zu funktionieren. Bitte aktivieren Sie JavaScript in Ihrem Browser."
-    FOLLOW_US_ON_FACEBOOK: "Folgen Sie uns auf Facebook"
-    FOLLOW_US_ON_INSTAGRAM: "Folgen Sie uns auf Instagram"
-    FOLLOW_US_ON_TIKTOK: "Folgen Sie uns auf TikTok"
-    SITE_DESCRIPTION: "Ihr Partner für Ihr Studien-, Ausbildungs- oder Arbeitsprojekt in Deutschland"
-    CATEGORY:
-      news: "Aktuelles"
-      events: "Veranstaltungen"
-      courses: "Deutschkurse"
-      exams: "Prüfungen"
-      certificates: "Zertifikate"
-      partnerships: "Partnerschaften"
-      jobs: "Stellenangebote"
-      announcements: "Mitteilungen"
-      other: "Sonstiges"
-  PLUGIN_ECL_POPUPS:
-    I_UNDERSTAND: "Ich habe verstanden"
-    CONTINUE: "Weiter"
-  GRAV:
-    MONTHS_OF_THE_YEAR: [Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+  THEME_ECL:
+    # Site Configuration Overrides / Fallbacks
+    SITE:
+      TITLE: "CCL - Center : ECL"
+      DESCRIPTION: "Zertifizieren Sie Ihr Deutsch mit ECL im CCL Center – Studium, Ausbildung und Arbeit in Deutschland"
+      ANNOUNCEMENT_TEXT: "Willkommen im CCL Center! Die Anmeldungen für die Januar-Prüfungssession sind jetzt geöffnet."
+      EXAM_SESSION: "Session April 2026"
+      ADDRESS: "1. Etage GOTCH Apotheke-Gebäude\nAv Jacques Opangault, Songolo, Pointe-Noire\nRepublik Kongo"
+
+    # UI Components & Controls
+    LOADER:
+      LOADING: "Wird geladen"
+    NO_JS:
+      MESSAGE: "Diese Website benötigt JavaScript, um ordnungsgemäß zu funktionieren. Bitte aktivieren Sie JavaScript in Ihrem Browser."
+    PAGINATION:
+      PREVIOUS: "Zurück"
+      NEXT: "Weiter"
+    SIDE_NAV:
+      FACEBOOK: "Folgen Sie uns auf Facebook"
+      INSTAGRAM: "Folgen Sie uns auf Instagram"
+      TIKTOK: "Folgen Sie uns auf TikTok"
+    COUNTDOWN:
+      DAYS: "TAGE"
+      HOURS: "STUNDEN"
+      MINUTES: "MINUTEN"
+      SECONDS: "SEKUNDEN"
+    FAQ:
+      LEARN_MORE: "Mehr erfahren"
+    GALLERY:
+      SUBTITLE: "Besuchen Sie unser Zentrum anhand einiger Bilder"
+
+    # Footer Section
+    FOOTER:
+      DEFAULT_DESCRIPTION: "Offizielles ECL-Prüfungs- und Sprachausbildungszentrum für zertifizierte Deutschprüfungen der Niveaustufen A2 bis C1."
+      QUICK_LINKS: "Schnelllinks"
+      HOME: "Startseite"
+      ABOUT: "Über uns"
+      REGISTRATION: "Anmeldung"
+      RESOURCES: "Ressourcen"
+      PREPARATION: "Prüfungsvorbereitung"
+      SAMPLE_TESTS: "Mustertests"
+      RESULTS_INFO: "Ergebnisinformationen"
+      FOLLOW_US: "Folgen Sie uns"
+      ALL_RIGHTS_RESERVED: "Alle Rechte vorbehalten."
+      PRIVACY_POLICY: "Datenschutz-Bestimmungen"

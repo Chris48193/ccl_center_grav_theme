@@ -41,13 +41,20 @@
                     <div class="data-sticky-container">
                         <div data-sticky data-options="marginTop:0; stickyOn:small">
                         {% if page.find("/").header.announcement %}
+                            {# announcement #}
+                            {% if site.announcement.active %}
+                            {% set announcement_text = page.find("/").header.announcement 
+                                |default('THEME_ECL.SITE.ANNOUNCEMENT_TEXT'|t) 
+                                |default(site.announcement.text) %}
+
                             <div class="announcement-bar">
                                 <div class="announcement-bar__inner">
-                                    <span class="announcement-bar__text">{{ page.find("/").header.announcement }}</span>
+                                    <span class="announcement-bar__text">{{ announcement_text }}</span>
                                     {# Repeat the text once to ensure a seamless loop #}
-                                    <span class="announcement-bar__text" aria-hidden="true">{{ page.find("/").header.announcement }}</span>
+                                    <span class="announcement-bar__text" aria-hidden="true">{{ announcement_text }}</span>
                                 </div>
                             </div>
+                            {% endif %}
                         {% endif %}
                             {% block navigation %}
                                 {% include "partials/navigation.html.twig" %}

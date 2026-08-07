@@ -1,30 +1,38 @@
+{# templates/partials/footer.html.twig #}
 <footer class="footer mt-10 text-center large-text-left">
   <div class="grid-container mt-8 mb-8">
-    {# Rangée supérieure : Logo et Informations de contact #}
+    {# Top Row: Logo & Contact Info #}
     <div class="grid-x grid-padding-x align-justify footer__top">
       <div class="cell small-12 medium-4 footer__brand">
-        <a class="head-nav__home" href="https://ccl-center.com/">
+        <a class="head-nav__home" href="{{ home_url }}">
             {{ page.media["theme://images/logo.png"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo")|raw }}
-            {# {{ page.media["theme://images/logo-dark.svg"].html(site.title ~ " logo", site.title ~ " logo", "footer__logo logo-dark")|raw }} #}
         </a>
         <p class="footer__description mb-0">
-          Centre officiel d'examen ECL et de formation linguistique proposant des examens d'allemand certifiés du niveau A2 au C1.
+          {{ 'THEME_ECL.FOOTER.DEFAULT_DESCRIPTION'|t|default(site.metadata.description) }}
         </p>
       </div>
 
       <div class="cell small-12 medium-5 footer__contact mt-5 md-mt-0 lg-pt-2">
+        {% if site.contact.address or 'THEME_ECL.SITE.ADDRESS'|t != 'THEME_ECL.SITE.ADDRESS' %}
         <div class="contact-item">
           <i class="fas fa-map-marker-alt icon"></i>
-          <p>1er Étage immeuble de la pharmacie GOTCH<br>Av Jacques Opangault, Songolo, Pointe-Noire<br>République du Congo</p>
+          <p>{{ 'THEME_ECL.SITE.ADDRESS'|t|default(site.contact.address)|nl2br }}</p>
         </div>
+        {% endif %}
+        
+        {% if site.contact.whatsapp %}
         <div class="contact-item">
           <i class="fab fa-whatsapp icon"></i>
-          <p><a href="https://wa.me/242069286707" target="_blank" rel="noopener">+242 06 928 6707</a></p>
+          <p><a href="https://wa.me/{{ site.contact.whatsapp|replace({'+': '', ' ': ''}) }}" target="_blank" rel="noopener">{{ site.contact.whatsapp }}</a></p>
         </div>
+        {% endif %}
+
+        {% if site.contact.email %}
         <div class="contact-item">
           <i class="far fa-envelope icon"></i>
-          <p><a href="mailto:info@ccl-center.com">info@ccl-center.com</a></p>
+          <p><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -32,46 +40,48 @@
   <hr class="footer__divider">
 
   <div class="grid-container mt-8 mb-8">
-    {# Rangée du milieu : Liens et Réseaux sociaux #}
+    {# Middle Row: Quick Links & Socials #}
     <div class="grid-x grid-padding-x footer__middle">
       <div class="grid-x cell small-12 medium-5 align-justify">
         <div class="cell small-6 medium-6">
-          <h5>Liens Rapides</h5>
+          <h5>{{ 'THEME_ECL.FOOTER.QUICK_LINKS'|t }}</h5>
           <ul class="vertical menu">
-            <li><a href="{{ base_url_relative }}/">Accueil</a></li>
-            <li><a href="http://ccl-center.com/a-propos-de-ccl-center">À Propos</a></li>
-            <li><a href="https://exam.eclexam.eu/?id=P69NL7">Inscription</a></li>
+            <li><a href="{{ base_url_relative }}/">{{ 'THEME_ECL.FOOTER.HOME'|t }}</a></li>
+            <li><a href="{{ base_url_relative }}/a-propos-de-ccl-center">{{ 'THEME_ECL.FOOTER.ABOUT'|t }}</a></li>
+            <li><a href="{{ site.links.registration|default('https://exam.eclexam.eu/?id=P69NL7') }}" target="_blank" rel="noopener">{{ 'THEME_ECL.FOOTER.REGISTRATION'|t }}</a></li>
           </ul>
         </div>
 
         <div class="cell small-6 medium-6">
-          <h5>Ressources</h5>
+          <h5>{{ 'THEME_ECL.FOOTER.RESOURCES'|t }}</h5>
           <ul class="vertical menu">
-            <li><a href="https://eclexam.eu/deutsch/mustertests/">Préparation aux examens</a></li>
-            <li><a href="https://eclexam.eu/deutsch/mustertests/">Exemples de tests</a></li>
-            <li><a href="https://eclexam.eu/deutsch/prufungsergebnisse/">Infos résultats</a></li>
+            <li><a href="https://eclexam.eu/deutsch/mustertests/" target="_blank" rel="noopener">{{ 'THEME_ECL.FOOTER.PREPARATION'|t }}</a></li>
+            <li><a href="https://eclexam.eu/deutsch/mustertests/" target="_blank" rel="noopener">{{ 'THEME_ECL.FOOTER.SAMPLE_TESTS'|t }}</a></li>
+            <li><a href="https://eclexam.eu/deutsch/prufungsergebnisse/" target="_blank" rel="noopener">{{ 'THEME_ECL.FOOTER.RESULTS_INFO'|t }}</a></li>
           </ul>
         </div>
       </div>
 
       <div class="cell small-12 medium-4 medium-offset-2 footer__socials">
-        <h5>Suivez-nous</h5>
+        <h5>{{ 'THEME_ECL.FOOTER.FOLLOW_US'|t }}</h5>
         <div class="social-icons">
-          {# <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/youtube.png') }}" alt="YouTube"></a> #}
-          <a href="https://www.facebook.com/events/1978676729346670/?app=fbl" class="social-icon"><img src="{{ url('theme://images/icons/facebook.png') }}" alt="Facebook"></a>
-          {# <a href="#" class="social-icon"><img src="{{ url('theme://images/icons/instagram.png') }}" alt="Instagram"></a> #}
-          <a href="https://www.tiktok.com/@ccl.center?_r=1&_t=ZG-93RdzQx74fg" class="social-icon"><img src="{{ url('theme://images/icons/tiktok.png') }}" alt="TikTok"></a>
+          {% if site.social.facebook %}
+            <a href="{{ site.social.facebook }}" target="_blank" class="social-icon" rel="nofollow noopener noreferrer"><img src="{{ url('theme://images/icons/facebook.png') }}" alt="Facebook"></a>
+          {% endif %}
+          {% if site.social.tiktok %}
+            <a href="{{ site.social.tiktok }}" target="_blank" class="social-icon" rel="nofollow noopener noreferrer"><img src="{{ url('theme://images/icons/tiktok.png') }}" alt="TikTok"></a>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
 
-  {# Rangée inférieure : Copyright #}
+  {# Bottom Row: Copyright #}
   <div class="footer__bottom">
     <div class="grid-container">
       <div class="grid-x align-justify">
-        <div class="cell shrink">@Copyright 2025 CCL-Center</div>
-        <div class="cell shrink"><a href="/politique-de-confidentialite" target="_blank">Politique de confidentialité</a></div>
+        <div class="cell shrink">© {{ "now"|date("Y") }} {{ site.title|default('CCL-Center') }}. {{ 'THEME_ECL.FOOTER.ALL_RIGHTS_RESERVED'|t }}</div>
+        <div class="cell shrink"><a href="{{ base_url_relative }}/politique-de-confidentialite">{{ 'THEME_ECL.FOOTER.PRIVACY_POLICY'|t }}</a></div>
       </div>
     </div>
   </div>
