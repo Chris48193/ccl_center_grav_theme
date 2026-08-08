@@ -36,29 +36,31 @@
         {# --- DESKTOP & EXPANDED MOBILE MENU --- #}
         <div class="cell small-12 large-auto">
             <div id="responsive-menu" class="navigation-line show-for-large" data-toggler="show-for-large">
+                
+                {# Nav links list only #}
                 <ul class="head-nav__menu menu vertical large-horizontal nowrap" data-responsive-menu="accordion large-dropdown">
                     {{ self.loop(pages, 1) }}
+                </ul>
 
-                    {# --- DESKTOP LANGUAGE SWITCHER --- #}
+                {# Actions container: Langswitcher + CTA Button grouped together on Desktop #}
+                <div class="head-nav__actions show-for-large">
                     {% if config.plugins.langswitcher.enabled %}
-                        <li class="head-nav__item head-nav__item--has-submenu head-nav__item--langswitcher show-for-large">
+                        <div class="head-nav__item--langswitcher">
                             {% include 'partials/langswitcher.html.twig' %}
-                        </li>
+                        </div>
                     {% endif %}
 
-                    {# --- CTA BUTTON --- #}
-                    <li class="head-nav__item head-nav__item--button-container">
-                        <div class="head-nav__button-wrapper">
-                            {% include 'partials/button.html.twig' with {
-                                'url': 'https://ecl.ccl-center.com',
-                                'text': 'THEME_CCL.ECL_EXAM'|t,
-                                'icon': 'fa fa-external-link-alt',
-                                'classes': "btn-small head-nav__register-button",
-                                'outline': true
-                            } %}
-                        </div>
-                    </li>
-                </ul>
+                    <div class="head-nav__button-wrapper">
+                        {% include 'partials/button.html.twig' with {
+                            'url': 'https://ecl.ccl-center.com',
+                            'text': 'THEME_CCL.ECL_EXAM'|t,
+                            'icon': 'fa fa-external-link-alt',
+                            'classes': "btn-small head-nav__register-button",
+                            'outline': true
+                        } %}
+                    </div>
+                </div>
+
             </div>
         </div>
 

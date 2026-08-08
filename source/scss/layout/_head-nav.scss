@@ -46,8 +46,13 @@
                 white-space: nowrap;
                 
                 @include breakpoint('large') {
-                    // color: black;
-                    // font-weight: 700;
+                    // Allow wrapping on desktop while maintaining smooth fluid text sizing
+                    white-space: normal;
+                    text-wrap: balance; // Prevents lone single-word lines (orphan words)
+                    line-height: 1.2;
+                    
+                    // Dynamic fluid font size: min 0.8rem, scales with screen width, max 1rem
+                    font-size: clamp(0.7rem, 0.85vw, 1rem);
 
                     &--active {
                         color: get-color("primary");
@@ -68,15 +73,17 @@
 
             @include breakpoint('large') {
                 &__menu {
-                    justify-content: flex-end;
+                    justify-content: center;
                     // background: transparent;
+                    flex-grow: 1;            // Expands menu container to fill available width
                     border-radius: 0;
                     padding-block: 0;
 
                     flex-wrap: nowrap !important;
                     align-items: center; 
                     
-                    gap: 0.5rem !important;
+                    // Dynamic gap scaling between 0.35rem and 1.25rem depending on viewport width
+                    gap: clamp(0.3rem, 0.9vw, 1rem) !important;
                 }
             }
 
@@ -148,66 +155,7 @@
 // -----------------------------------------------------------------------------
 // Language Switcher Component
 // -----------------------------------------------------------------------------
-/*
-.head-nav__item--langswitcher {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  .head-nav__lang-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.4rem 0.6rem;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: $white;
-    border: 1px solid rgba($white, 0.25);
-    border-radius: $global-radius;
-    transition: all 0.2s ease;
-
-    i {
-      font-size: 0.8rem;
-      color: get-color('primary');
-    }
-
-    &:hover {
-      border-color: get-color('primary');
-      color: get-color('primary');
-    }
-  }
-
-  // Override dropdown styling specifically for language menu
-  
-  .head-nav__lang-dropdown {
-    min-width: 70px !important;
-    width: auto !important;
-    padding: 0.5rem 0 !important;
-    background-color: get-color('secondary') !important;
-    border: 1px solid rgba(get-color('primary'), 0.3);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-
-    li {
-      a {
-        color: $white !important;
-        font-weight: 600;
-        font-size: 0.85rem;
-        padding: 0.4rem 0.8rem;
-        text-align: center;
-        transition: background 0.2s ease;
-
-        &:hover {
-          background-color: get-color('primary') !important;
-          color: get-color('secondary') !important;
-        }
-      }
-    }
-  }
-  
-  
-}
-*/
 .head-nav__item--langswitcher {
   position: relative;
   display: flex;
@@ -279,68 +227,7 @@
 // -----------------------------------------------------------------------------------------------
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-// -----------------------------------------------------------------------------
-// Mobile Header Controls & Language Dropdown Fixes
-// -----------------------------------------------------------------------------
-/*
-.head-nav__mobile-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
 
-// Mobile Language Switcher Wrapper & Dropdown Behavior
-.head-nav__lang-wrapper-mobile {
-  position: relative;
-  display: inline-block;
-
-  // Hides the dropdown list by default so it doesn't stay open
-  ul, 
-  .langswitcher-dropdown, 
-  .head-nav__lang-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    z-index: 1000;
-    background-color: get-color("secondary");
-    min-width: 80px;
-    padding: 0.5rem 0;
-    margin: 0;
-    list-style: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  // Reveals dropdown on tap/hover
-  &:hover ul,
-  &:focus-within ul,
-  &:hover .langswitcher-dropdown,
-  &:hover .head-nav__lang-dropdown {
-    display: block !important;
-  }
-}
-
-// Removes default primary background from mobile button to sit clean on header blue
-.head-nav__menu-toggle {
-  background-color: transparent !important;
-  color: $white !important;
-  border: 1px solid rgba($white, 0.3);
-  padding: 0.4rem 0.6rem;
-  border-radius: $global-radius;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &:focus,
-  &:active {
-    background-color: transparent !important;
-    outline: none;
-  }
-}
-*/
-// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // -----------------------------------------------------------------------------
 // Mobile Header & Sandwich Toggle Mechanics
@@ -350,79 +237,6 @@
   align-items: center;
   gap: 0.75rem;
 }
-
-/*
-.head-nav__menu-toggle {
-  background-color: transparent;
-  border: 1px solid rgba($white, 0.25);
-  border-radius: $global-radius;
-  padding: 0.5rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-
-  // &:focus {
-  //   outline: none;
-  // }
-  &:focus,
-  &:active {
-    background-color: transparent !important;
-    outline: none;
-  }
-
-  .head-nav__hamburger-icon {
-    width: 20px;
-    height: 14px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    span {
-      display: block;
-      height: 2px;
-      width: 100%;
-      background-color: $white;
-      border-radius: 2px;
-      transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
-      transform-origin: center;
-    }
-  }
-
-  // CLOSED STATE: 3 Parallel Lines (Default)
-  &[aria-expanded="true"],
-  &:not([aria-expanded]) {
-    .head-nav__hamburger-icon {
-      span:nth-child(1) {
-        transform: none;
-      }
-      span:nth-child(2) {
-        opacity: 1;
-      }
-      span:nth-child(3) {
-        transform: none;
-      }
-    }
-  }
-
-  // OPEN STATE: Transforms into 'X' when toggled
-  &[aria-expanded="false"] {
-    .head-nav__hamburger-icon {
-      span:nth-child(1) {
-        transform: translateY(6px) rotate(45deg);
-      }
-      span:nth-child(2) {
-        opacity: 0;
-      }
-      span:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg);
-      }
-    }
-  }
-}
-*/
 
 .head-nav__menu-toggle {
   // DEFAULT / INACTIVE: Transparent background, white border & lines
@@ -490,13 +304,20 @@
 
 // Mobile Slide Menu Container
 #responsive-menu {
-  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
 
-  &:not(.show-for-large) {
-    background-color: get-color("secondary");
-    width: 100%;
-    padding: 1rem 0;
-  }
+    &:not(.show-for-large) {
+        background-color: get-color("secondary");
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    @include breakpoint('large') {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between; // Distribute menu and actions cleanly
+        width: 100%;
+    }
 }
 
 .head-nav__item--langswitcher-mobile {
@@ -504,4 +325,26 @@
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
   }
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop Right Actions (Langswitcher + CTA Button Group)
+// -----------------------------------------------------------------------------
+.head-nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    // margin-left: auto; /* Guarantees actions stick to the far right */
+    margin-left: 0; // Removed margin-left: auto so flex-grow/space-evenly on the menu handles edge boundaries
+    flex-shrink: 0;   /* Prevents button/langswitcher from squishing */
+
+    .head-nav__item--langswitcher {
+        width: auto;
+        padding: 0;
+    }
+
+    .head-nav__register-button {
+        display: inline-flex;
+    }
 }
