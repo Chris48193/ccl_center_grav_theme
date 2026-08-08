@@ -30,6 +30,14 @@ en:
     GALLERY:
       SUBTITLE: "Please take a virtual tour of our center through a few pictures"
 
+    # Training Page
+    TRAINING:
+      DURATION: "Duration"
+      PRICE: "Fees"
+      LEARN_MORE: "Learn more"
+      UNCERTAIN_CALLOUT: "I don't know which course suits me"
+      BOOK_CONSULTATION: "Book a consultation"
+
     # Footer Section
     FOOTER:
       DEFAULT_DESCRIPTION: "Official ECL examination and language training center offering certified German exams from A2 to C1 levels."
@@ -77,6 +85,14 @@ fr:
     GALLERY:
       SUBTITLE: "Veuillez visiter notre centre à travers quelques images"
 
+    # Training Page
+    TRAINING:
+      DURATION: "Durée"
+      PRICE: "Frais"
+      LEARN_MORE: "En savoir plus"
+      UNCERTAIN_CALLOUT: "Je ne connais pas la formation qui me convient"
+      BOOK_CONSULTATION: "Réserver une consultation"
+
     # Footer Section
     FOOTER:
       DEFAULT_DESCRIPTION: "Centre officiel d'examen ECL et de formation linguistique proposant des examens d'allemand certifiés du niveau A2 au C1."
@@ -123,6 +139,14 @@ de:
       LEARN_MORE: "Mehr erfahren"
     GALLERY:
       SUBTITLE: "Besuchen Sie unser Zentrum anhand einiger Bilder"
+
+    # Training Page
+    TRAINING:
+      DURATION: "Dauer"
+      PRICE: "Gebühren"
+      LEARN_MORE: "Mehr erfahren"
+      UNCERTAIN_CALLOUT: "Ich weiß nicht, welcher Kurs zu mir passt"
+      BOOK_CONSULTATION: "Beratung buchen"
 
     # Footer Section
     FOOTER:
