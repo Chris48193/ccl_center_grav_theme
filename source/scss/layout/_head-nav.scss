@@ -42,6 +42,12 @@
                 color: $white;
                 white-space: nowrap;
 
+                // 1. Fluid Font Scaling: Scales smoothly between 0.85rem and 1rem
+                font-size: clamp(0.85rem, 0.8vw + 0.5rem, 1rem);
+                
+                // 2. Controlled Spacing: Reduce padding on large screens to fit more text
+                padding-inline: 0.5rem;
+
                 @include breakpoint('large') {
                     &--active {
                         color: get-color("primary");
@@ -78,6 +84,14 @@
             &__item {
                 text-align: center;
 
+                // 3. Prevent items from growing indefinitely while allowing them to shrink
+                flex: 0 1 auto; 
+                max-width: 160px; // Cap maximum width per item
+
+                // 4. Syllable hyphenation for long German words if white-space wrapping is allowed
+                hyphens: auto;
+                word-break: break-word;
+                
                 &--button-container {
                     display: flex;
                     align-items: center;
