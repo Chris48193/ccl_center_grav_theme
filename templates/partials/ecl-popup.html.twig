@@ -1,10 +1,14 @@
 {% set current_lang = grav.language.getLanguage %}
 
-{% for popup in config.site.ecl_popups %}
+{% for popup in config.site.popups %}
     {% if popup.active == '1' %}
-        {# Language Fallback Strategy: Active Lang -> English -> Direct Property #}
-        {% set p_lang = popup[current_lang] ?? popup['en'] ?? popup %}
+        {# Dynamic key resolution with fallback to English #}
+        {% set content_key = current_lang ~ '_content' %}
+        {% set limit_text_key = current_lang ~ '_limit_text' %}
         
+        {% set content = popup[content_key] ?? popup['en_content'] %}
+        {% set limit_text = popup[limit_text_key] ?? popup['en_limit_text'] %}
+
         <div class="reveal middle ecl-announcement-modal" 
              id="modal-{{ popup.id }}" 
              data-reveal 
@@ -14,14 +18,27 @@
              data-cooldown="{{ popup.cooldown }}">
              
             <div class="modal-content text-center">
-                {{ p_lang.content|raw }}
+                {{ content|raw }}
 
-                {# Unified Date display if deadline exists #}
+                {# {% if popup.deadline %}
+                    {% set day = popup.deadline|date("d") %}
+                    {% set month_idx = popup.deadline|date("m") - 1 %}
+                    {% set year = popup.deadline|date("Y") %} #}
+                    
+                    {# Fetch the localized array cleanly using attribute lookup #}
+                     {#{% set month_name = attribute('GRAV.MONTHS_OF_THE_YEAR'|tu, month_idx) %}
+
+                    <div class="callout secondary" style="margin-top: 2rem;">
+                        <h5>{{ limit_text }}</h5>
+                        <p class="h4"><strong>{{ day }} {{ month_name }} {{ year }}</strong></p>
+                    </div>
+                {% endif %} #}
+
                 {% if popup.deadline %}
-                <div class="callout secondary" style="margin-top: 2rem;">
-                    <h5>{{ p_lang.limit_text }}</h5>
-                    <p class="h4"><strong>{{ popup.deadline|date("d F Y")|t }}</strong></p>
-                </div>
+                    <div class="callout secondary" style="margin-top: 2rem;">
+                        <h5>{{ limit_text }}</h5>
+                        <p class="h4"><strong>{{ popup.deadline|date("d/m/Y") }}</strong></p>
+                    </div>
                 {% endif %}
 
                 <div class="checkbox-container">
