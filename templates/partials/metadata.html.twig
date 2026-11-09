@@ -15,17 +15,19 @@
     {% endif %}
 {% endif %}
 
-{% set description = page.header.description|default(site.metadata.description) %}
+{# FIX HERE: Apply the |t filter to translate the fallback string from site.yaml #}
+{% set description = page.header.description|default(site.metadata.description|t) %}
 {% set description_sm = page.header.description_sm|default(description) %}
+
 <meta property="og:title" content="{{ header.title|e("html") }}" />
 <meta property="og:image" content="{{ preview }}" />
-<meta property="description" content="{{ description|raw }}" />
-<meta property="og:description" content="{{ description_sm|raw }}" />
+<meta name="description" content="{{ description|e('html_attr') }}" />
+<meta property="og:description" content="{{ description_sm|e('html_attr') }}" />
 <meta property="og:url" content="{{ page.url(true, true) }}" />
 
-<meta name="twitter:card" content="summary_large_image"></meta>
-<meta name="twitter:title" content="{{ header.title|e("html") }}" >
-<meta name="twitter:description" content="{{ description_sm|raw }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ header.title|e("html") }}" />
+<meta name="twitter:description" content="{{ description_sm|e('html_attr') }}" />
 <meta name="twitter:image" content="{{ preview }}" />
 <meta property="twitter:url" content="{{ page.url(true, true) }}" />
 
